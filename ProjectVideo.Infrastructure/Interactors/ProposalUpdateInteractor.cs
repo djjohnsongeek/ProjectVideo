@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ProjectVideo.Infrastructure.Interactors
 {
-	public class ProjectProposalInteractor
+	public class ProposalUpdateInteractor
 	{
 		private ProjectVideoDbContext _dbContext;
 
-		public ProjectProposalInteractor(ProjectVideoDbContext dbContext)
+		public ProposalUpdateInteractor(ProjectVideoDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
