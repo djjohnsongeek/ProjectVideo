@@ -32,9 +32,9 @@
                         <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
                     </div>
                     <div class="mb-2">
-                        <label class="form-label" asp-for="StaffAreVolunteers"></label>
+                        <label class="form-label" asp-for="StaffArePaid"></label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffAreVolunteers" />
+                            <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
                         </div>
                     </div>
                     <div class="mb-2">
@@ -53,7 +53,7 @@
                         <label class="form-label">Project Time Frame</label>
                         <div class="input-group">
                             <input class="form-control" asp-for="ProjectTimeFrameNumber" />
-                            <select class="form-control" asp-for="ProjectTimeFrameTimeUnit">
+                            <select class="form-control" asp-for="ProjectTimeFrameInterval">
                                 <option value="Days">Days</option>
                                 <option value="Weeks">Weeks</option>
                                 <option value="Months">Months</option>
@@ -66,8 +66,8 @@
                         <textarea class="form-control" asp-for="MainMethods"></textarea>
                     </div>
                     <div class="mb-2">
-                        <label class="form-label" asp-for="VideosToProduce"></label>
-                        <textarea class="form-control" asp-for="VideosToProduce"></textarea>
+                        <label class="form-label" asp-for="PlannedVideos"></label>
+                        <textarea class="form-control" asp-for="PlannedVideos"></textarea>
                     </div>
                     <div class="mb-2">
                         <label class="form-label" asp-for="CurrentEquipment"></label>

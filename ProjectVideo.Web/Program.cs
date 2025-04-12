@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data;
+using ProjectVideo.Infrastructure.Interactors;
 
 namespace ProjectVideo.Web
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
@@ -15,6 +17,8 @@ namespace ProjectVideo.Web
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectVideoDatabase"));
             });
+
+            builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
 
             var app = builder.Build();
 
