@@ -1,12 +1,12 @@
 ﻿namespace ProjectVideo.Infrastructure.Data.Entities
 {
-	public class ProjectProposalLink
+	public class ProposalLink
 	{
 		public int Id { get; set; }
-		public int ProjectProposalId { get; set; }
+		public int ProposalId { get; set; }
 		public required string Url { get; set; }
 
 		// Navigation Props
-		public ProjectProposal? Proposal { get; set; }
+		public Proposal? Proposal { get; set; }
 	}
 }

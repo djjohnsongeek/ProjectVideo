@@ -5,8 +5,8 @@ namespace ProjectVideo.Infrastructure.Data
 {
 	public class ProjectVideoDbContext : DbContext
 	{
-		public DbSet<ProjectProposal> ProjectProposals { get; set; }
-		public DbSet<ProjectProposalLink> ProjectProposalLinks { get; set; }
-		public DbSet<ProjectProposalTeamMember> ProjectProposalTeamMembers { get; set; }
+		public DbSet<Proposal> Proposals { get; set; }
+		public DbSet<ProposalLink> ProposalLinks { get; set; }
+		public DbSet<ProposalTeamMember> ProposalTeamMembers { get; set; }
 	}
 }

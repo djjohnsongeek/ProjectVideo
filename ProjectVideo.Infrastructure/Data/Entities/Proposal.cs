@@ -1,6 +1,6 @@
 ﻿namespace ProjectVideo.Infrastructure.Data.Entities
 {
-	public class ProjectProposal
+	public class Proposal
 	{
 		public int Id { get; set; }
 
@@ -25,8 +25,8 @@
 
 		// Navigation Props
 
-		public List<ProjectProposalTeamMember> Members { get; set; } = [];
-		public List<ProjectProposalLink> Links { get; set; } = [];
+		public List<ProposalTeamMember> Members { get; set; } = [];
+		public List<ProposalLink> Links { get; set; } = [];
 
 	}
 }

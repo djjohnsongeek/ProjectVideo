@@ -1,15 +1,15 @@
 USE [C:\USERS\DANIE\ONEDRIVE\DOCUMENTS\PROJECTVIDEO.MDF]
 GO
-/****** Object:  Table [dbo].[ProjectProposalLinks]    Script Date: 4/12/2025 9:00:18 AM ******/
+/****** Object:  Table [dbo].[ProposalLinks]    Script Date: 4/12/2025 9:29:49 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProjectProposalLinks]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProposalLinks]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[ProjectProposalLinks](
+CREATE TABLE [dbo].[ProposalLinks](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ProjectProposalId] [int] NOT NULL,
+	[ProposalId] [int] NOT NULL,
 	[Url] [nvarchar](1024) NOT NULL,
  CONSTRAINT [PK_ProjectProposalLinks] PRIMARY KEY CLUSTERED 
 (
@@ -18,14 +18,14 @@ CREATE TABLE [dbo].[ProjectProposalLinks](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[ProjectProposals]    Script Date: 4/12/2025 9:00:18 AM ******/
+/****** Object:  Table [dbo].[Proposals]    Script Date: 4/12/2025 9:29:49 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProjectProposals]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Proposals]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[ProjectProposals](
+CREATE TABLE [dbo].[Proposals](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ContactEmail] [nvarchar](128) NOT NULL,
 	[ContactName] [nvarchar](64) NOT NULL,
@@ -52,16 +52,16 @@ CREATE TABLE [dbo].[ProjectProposals](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[ProjectProposalTeamMembers]    Script Date: 4/12/2025 9:00:18 AM ******/
+/****** Object:  Table [dbo].[ProposalTeamMembers]    Script Date: 4/12/2025 9:29:49 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProjectProposalTeamMembers]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProposalTeamMembers]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[ProjectProposalTeamMembers](
+CREATE TABLE [dbo].[ProposalTeamMembers](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ProjectProposalId] [int] NOT NULL,
+	[ProposalId] [int] NOT NULL,
 	[Name] [nvarchar](64) NOT NULL,
 	[Role] [nvarchar](64) NOT NULL,
  CONSTRAINT [PK_ProjectTeamMembers] PRIMARY KEY CLUSTERED 
