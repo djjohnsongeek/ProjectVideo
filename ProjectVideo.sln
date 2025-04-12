@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Web", "ProjectVideo.Web\ProjectVideo.Web.csproj", "{090AD47A-18B2-4AD9-84A4-62784D439472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Infrastructure", "ProjectVideo.Infrastructure\ProjectVideo.Infrastructure.csproj", "{161F7FF4-3BE7-4429-883F-B8303E095C4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{090AD47A-18B2-4AD9-84A4-62784D439472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090AD47A-18B2-4AD9-84A4-62784D439472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090AD47A-18B2-4AD9-84A4-62784D439472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
