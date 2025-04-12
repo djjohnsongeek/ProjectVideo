@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Web", "Project
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Infrastructure", "ProjectVideo.Infrastructure\ProjectVideo.Infrastructure.csproj", "{161F7FF4-3BE7-4429-883F-B8303E095C4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.DatabaseSetup", "ProjectVideo.DatabaseSetup\ProjectVideo.DatabaseSetup.csproj", "{1715D634-44EF-4010-BEF5-781CA9150387}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{161F7FF4-3BE7-4429-883F-B8303E095C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1715D634-44EF-4010-BEF5-781CA9150387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1715D634-44EF-4010-BEF5-781CA9150387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1715D634-44EF-4010-BEF5-781CA9150387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1715D634-44EF-4010-BEF5-781CA9150387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
