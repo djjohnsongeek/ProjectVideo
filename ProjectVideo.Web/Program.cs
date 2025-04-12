@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ProjectVideo.Infrastructure.Data;
+
 namespace ProjectVideo.Web
 {
     public class Program
@@ -8,6 +11,10 @@ namespace ProjectVideo.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ProjectVideoDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectVideoDatabase"));
+            });
 
             var app = builder.Build();
 
