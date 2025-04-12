@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectVideo.Core\ProjectVideo.Core.csproj" />
+  </ItemGroup>
+
 </Project>
