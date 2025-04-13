@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.DatabaseSetup"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Core", "ProjectVideo.Core\ProjectVideo.Core.csproj", "{02EB5678-F454-46F7-B57F-B6D8DF446217}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectVideo.Tests", "ProjectVideo.Tests\ProjectVideo.Tests.csproj", "{74BA9898-124A-409E-A518-A8FE17E4ED4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{02EB5678-F454-46F7-B57F-B6D8DF446217}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02EB5678-F454-46F7-B57F-B6D8DF446217}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02EB5678-F454-46F7-B57F-B6D8DF446217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BA9898-124A-409E-A518-A8FE17E4ED4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BA9898-124A-409E-A518-A8FE17E4ED4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BA9898-124A-409E-A518-A8FE17E4ED4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BA9898-124A-409E-A518-A8FE17E4ED4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

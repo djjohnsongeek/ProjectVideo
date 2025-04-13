@@ -30,7 +30,7 @@ namespace ProjectVideo.Web.Controllers
 				var result = await _updateInteractor.CreateProposal(inputData);
 				if (!result.HasErrors)
 				{
-					return View("Forms/Submitted.cshtml");
+					return View("Views/Forms/Submitted.cshtml");
 				}
 			}
 

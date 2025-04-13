@@ -15,10 +15,14 @@ namespace ProjectVideo.Web
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ProjectVideoDbContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectVideoDatabase"));
+				//builder.Configuration.GetConnectionString("ProjectVideoDatabase"
+				options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ProjectVideo;")
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors();
             });
 
             builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
+            builder.Services.AddScoped<IProposalsFetchInteractor, ProposalsFetchInteractor>();
 
             var app = builder.Build();
 
