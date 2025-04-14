@@ -8,11 +8,10 @@ namespace ProjectVideo.DatabaseSetup
 
         static void Main(string[] args)
 		{
-            // Validate arguments
             (bool seed, string connStr) = ParseArgs(args);
             if (string.IsNullOrEmpty(connStr))
             {
-                Console.WriteLine("No SQL connection string argument found.");
+                WriteLine("No SQL connection string argument found.", ConsoleColor.Yellow);
                 Environment.Exit(1);
             }
 
