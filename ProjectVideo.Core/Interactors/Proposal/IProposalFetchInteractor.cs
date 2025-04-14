@@ -1,6 +1,6 @@
 ﻿namespace ProjectVideo.Core.Interactors.Proposal
 {
-	public interface IProposalsFetchInteractor
+	public interface IProposalFetchInteractor
 	{
 		Task GetProposals();
 	}

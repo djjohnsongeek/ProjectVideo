@@ -1,6 +1,6 @@
-﻿namespace ProjectVideo.Web.Models.Forms
+﻿namespace ProjectVideo.Web.Models.Proposals
 {
-	public class ProjectProposalViewModel
+	public class ProposalFormViewModel
 	{
 		public string? Email { get; set; }
 		public string? ProjectManager { get; set; }
@@ -15,7 +15,7 @@
 		public string? ProjectTimeFrameInterval { get; set; }
 		public string? MainMethods { get; set; }
 		public string? PlannedVideos { get; set; }
-		public List<ProjectProposalTeamMember> TeamMembers { get; set; } = [];
+		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
 		public string? CurrentEquipment { get; set; }
 		public bool HasAudioSpace { get; set; }
 		public string? AudioSpaceDescription { get; set; }
@@ -23,12 +23,18 @@
 		public bool HasComputer { get; set; }
 		public string? ComputerDescription { get; set; }
 		public int EstimatedProjectCost { get; set; }
-		public List<string> VideoLinks { get; set; } = [];
+		public List<ProposalLink> VideoLinks { get; set; } = [];
 	}
 
-	public class ProjectProposalTeamMember
+	public class ProposalTeamMember
 	{
 		public string? Name { get; set; }
 		public string? Role { get; set; }
+	}
+
+	public class ProposalLink
+	{
+		public string? Name { get; set; }
+		public string? Url { get; set; }
 	}
 }

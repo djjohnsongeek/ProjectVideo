@@ -22,7 +22,7 @@ namespace ProjectVideo.Web
             });
 
             builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
-            builder.Services.AddScoped<IProposalsFetchInteractor, ProposalsFetchInteractor>();
+            builder.Services.AddScoped<IProposalFetchInteractor, ProposalFetchInteractor>();
 
             var app = builder.Build();
 

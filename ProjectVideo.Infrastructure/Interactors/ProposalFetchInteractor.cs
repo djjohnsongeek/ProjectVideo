@@ -4,11 +4,11 @@ using ProjectVideo.Core.Interactors.Proposal;
 
 namespace ProjectVideo.Infrastructure.Interactors
 {
-	public class ProposalsFetchInteractor : IProposalsFetchInteractor
+	public class ProposalFetchInteractor : IProposalFetchInteractor
 	{
 		private readonly ProjectVideoDbContext _dbContext;
 
-		public ProposalsFetchInteractor(ProjectVideoDbContext dbcontext)
+		public ProposalFetchInteractor(ProjectVideoDbContext dbcontext)
 		{
 			_dbContext = dbcontext;
 		}
