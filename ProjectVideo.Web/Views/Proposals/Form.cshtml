@@ -11,128 +11,133 @@
         <form method="post">
             <div class="row">
                 <div class="col-6">
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="ProjectManager"></label>
-                        <input class="form-control" asp-for="ProjectManager" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="Email"></label>
-                        <input class="form-control" asp-for="Email" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="MainContact"></label>
-                        <input class="form-control" asp-for="MainContact" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="OrganizationName"></label>
-                        <input class="form-control" asp-for="OrganizationName" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="OrganizationHistory"></label>
-                        <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="StaffArePaid"></label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
+                    <fieldset>
+                        <legend>Organization Info</legend>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="ProjectManager"></label>
+                            <input class="form-control" asp-for="ProjectManager" />
                         </div>
-                    </div>
-                    <div class="mb-2">
-                        <fieldset>
-                            <legend>Team Members</legend>
-                            @for (int i = 0; i < 4; i++)
-                            {
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="form-label">Name</label>
-                                        <input class="form-control" name="TeamMembers[@i].Name" />
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Role</label>
-                                        <input class="form-control" name="TeamMembers[@i].Role" />
-                                    </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="Email"></label>
+                            <input class="form-control" asp-for="Email" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="MainContact"></label>
+                            <input class="form-control" asp-for="MainContact" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="OrganizationName"></label>
+                            <input class="form-control" asp-for="OrganizationName" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="OrganizationHistory"></label>
+                            <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="StaffArePaid"></label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Team Members</legend>
+                        @for (int i = 0; i < 4; i++)
+                        {
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="form-label">Name</label>
+                                    <input class="form-control" name="TeamMembers[@i].Name" />
                                 </div>
-                            }
-                        </fieldset>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="ProjectTitle"></label>
-                        <input class="form-control" asp-for="ProjectTitle" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="TargetAudience"></label>
-                        <input class="form-control" asp-for="TargetAudience" />
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="KeyObjectives"></label>
-                        <textarea class="form-control" asp-for="KeyObjectives"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Project Time Frame</label>
-                        <div class="input-group">
-                            <input class="form-control" asp-for="ProjectTimeFrameNumber" />
-                            <select class="form-control" asp-for="ProjectTimeFrameInterval">
-                                <option value="Days">Days</option>
-                                <option value="Weeks">Weeks</option>
-                                <option value="Months">Months</option>
-                                <option value="Years">Years</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="MainMethods"></label>
-                        <textarea class="form-control" asp-for="MainMethods"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="PlannedVideos"></label>
-                        <textarea class="form-control" asp-for="PlannedVideos"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="CurrentEquipment"></label>
-                        <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="HasAudioSpace"></label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" asp-for="HasAudioSpace" />
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="AudioSpaceDescription"></label>
-                        <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="HasComputer"></label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" asp-for="HasComputer" />
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="ComputerDescription"></label>
-                        <textarea class="form-control" asp-for="ComputerDescription"></textarea>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label" asp-for="EstimatedProjectCost"></label>
-                        <input class="form-control" asp-for="EstimatedProjectCost" />
-                    </div>
-                    <div class="mb-2">
-                        <fieldset>
-                            <legend>Links</legend>
-                            @for (int i = 0; i < 4; i++)
-                            {
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label>Link Name</label>
-                                        <input class="form-control" name="VideoLinks[@i].Name"/>
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Link Url</label>
-                                        <input class="form-control" name="VideoLinks[@i].Url" />
-                                    </div>
+                                <div class="col-6">
+                                    <label class="form-label">Role</label>
+                                    <input class="form-control" name="TeamMembers[@i].Role" />
                                 </div>
-                            }
-                        </fieldset>
-                    </div>
+                            </div>
+                        }
+                    </fieldset>
+                    <fieldset>
+                        <legend>Project Info</legend>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="ProjectTitle"></label>
+                            <input class="form-control" asp-for="ProjectTitle" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="TargetAudience"></label>
+                            <input class="form-control" asp-for="TargetAudience" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="KeyObjectives"></label>
+                            <textarea class="form-control" asp-for="KeyObjectives"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Project Time Frame</label>
+                            <div class="input-group">
+                                <input class="form-control" asp-for="ProjectTimeFrameNumber" />
+                                <select class="form-control" asp-for="ProjectTimeFrameInterval">
+                                    <option value="Days">Days</option>
+                                    <option value="Weeks">Weeks</option>
+                                    <option value="Months">Months</option>
+                                    <option value="Years">Years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="MainMethods"></label>
+                            <textarea class="form-control" asp-for="MainMethods"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="PlannedVideos"></label>
+                            <textarea class="form-control" asp-for="PlannedVideos"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="EstimatedProjectCost"></label>
+                            <input class="form-control" asp-for="EstimatedProjectCost" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Current Resources</legend>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="CurrentEquipment"></label>
+                            <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="HasAudioSpace"></label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" asp-for="HasAudioSpace" />
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="AudioSpaceDescription"></label>
+                            <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="HasComputer"></label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" asp-for="HasComputer" />
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" asp-for="ComputerDescription"></label>
+                            <textarea class="form-control" asp-for="ComputerDescription"></textarea>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Current Experience</legend>
+                        @for (int i = 0; i < 4; i++)
+                        {
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Link Name</label>
+                                    <input class="form-control" name="VideoLinks[@i].Name"/>
+                                </div>
+                                <div class="col-6">
+                                    <label>Link Url</label>
+                                    <input class="form-control" name="VideoLinks[@i].Url" />
+                                </div>
+                            </div>
+                        }
+                    </fieldset>
                     <button class="btn btn-primary">
                         Submit
                     </button>
