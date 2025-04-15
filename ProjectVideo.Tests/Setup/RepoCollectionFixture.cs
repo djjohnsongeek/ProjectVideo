@@ -16,7 +16,7 @@ namespace ProjectVideo.Tests.Setup
 
         public RepoCollectionFixture()
         {
-            TestDbName = $"ProjectsVideo_Test_{Guid.NewGuid().ToString().Replace("-", "")}";
+            TestDbName = $"ProjectsVideo_TestDB_{Guid.NewGuid().ToString().Replace("-", "")}";
             TestDbSnapShotName = $"{TestDbName}_SnapShot";
             var connStrBuilder = new SqlConnectionStringBuilder(TestDbConnectionStr)
             {
@@ -64,7 +64,7 @@ namespace ProjectVideo.Tests.Setup
             command.CommandText = @$"
 			    RESTORE DATABASE {TestDbName}
 			    FROM
-				    DATABASE_SNAPSHOT = '{TestDbSnapShotName}'
+				DATABASE_SNAPSHOT = '{TestDbSnapShotName}'
 			;";
             await command.ExecuteNonQueryAsync();
 
@@ -131,7 +131,7 @@ namespace ProjectVideo.Tests.Setup
             await connection.CloseAsync();
         }
 
-        private DbContextOptions<ProjectVideoDbContext> GetDbContextOptions()
+        public DbContextOptions<ProjectVideoDbContext> GetDbContextOptions()
         {
             var serviceProvider = new ServiceCollection()
                 .AddEntityFrameworkSqlServer()

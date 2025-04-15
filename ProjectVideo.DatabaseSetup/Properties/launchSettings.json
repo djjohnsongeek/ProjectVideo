@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Apply Migrations": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Data Source=(localdb)\\MSSQLLocalDB;Database=ProjectVideo;Integrated Security=True;\""
+    }
+  }
+}
