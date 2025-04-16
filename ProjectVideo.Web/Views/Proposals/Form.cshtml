@@ -42,23 +42,13 @@
                     </fieldset>
                     <fieldset>
                         <legend>Team Members</legend>
-                        <button class="btn btn-primary" id="members-input-add-btn">
+                        <button class="btn btn-primary" id="members-input-add-btn" type="button">
                             <i class="bi bi-plus"></i>
                             Add Member
                         </button>
-                        @for (int i = 0; i < 4; i++)
-                        {
-                            <div class="row" id="members-input-container">
-                                <div class="col-6">
-                                    <label class="form-label">Name</label>
-                                    <input class="form-control" name="TeamMembers[@i].Name" />
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label">Role</label>
-                                    <input class="form-control" name="TeamMembers[@i].Role" />
-                                </div>
-                            </div>
-                        }
+                        <div id="members-input-container">
+
+                        </div>
                     </fieldset>
                     <fieldset>
                         <legend>Project Info</legend>
@@ -128,23 +118,13 @@
                     </fieldset>
                     <fieldset>
                         <legend>Current Experience</legend>
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" type="button" id="links-input-add-btn">
                             <i class="bi bi-plus"></i>
                             Add Link
                         </button>
-                        @for (int i = 0; i < 4; i++)
-                        {
-                            <div class="row">
-                                <div class="col-6">
-                                    <label>Link Name</label>
-                                    <input class="form-control" name="VideoLinks[@i].Name"/>
-                                </div>
-                                <div class="col-6">
-                                    <label>Link Url</label>
-                                    <input class="form-control" name="VideoLinks[@i].Url" />
-                                </div>
-                            </div>
-                        }
+                        <div id="links-input-container">
+
+                        </div>
                     </fieldset>
                     <button class="btn btn-primary">
                         Submit
@@ -154,3 +134,7 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/ComplexCollectionInput.js" asp-append-version="true"></script>
+    <script src="~/js/ViewScripts/Proposals/Form.js" asp-append-version="true"></script>
+}
