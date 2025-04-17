@@ -3,137 +3,190 @@
     ViewData["Title"] = "Project Proposal";
 }
 
-<div class="card">
-    <div class="card-header">
-        <h1 class="card-title">Project Proposal</h1>
-    </div>
-    <div class="card-body">
-        <form method="post">
-            <div class="row">
-                <div class="col-6">
-                    <fieldset>
-                        <legend>Organization Info</legend>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="ProjectManager"></label>
-                            <input class="form-control" asp-for="ProjectManager" />
+<div class="card-container" >
+    <div class="card mt-3 mx-auto" style="max-width: 640px;">
+        <div class="card-header">
+            <h1 class="card-title">Project Proposal</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-info">
+                            <h4 class="alert-heading">
+                                About Us
+                            </h4>
+                            <span>
+                                Thank you for reaching out to us, we would love to partner and help you out.
+                                Our ministry focuses on the development of Christian media in local languages by providing equipment loans and media training.
+                                We would like to know more about your vision and what you would like to accomplish with this partnership.
+                                Please fill out this form to be submitted to the Board for approval of the project.
+                            </span>
                         </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="Email"></label>
-                            <input class="form-control" asp-for="Email" />
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="MainContact"></label>
-                            <input class="form-control" asp-for="MainContact" />
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="OrganizationName"></label>
-                            <input class="form-control" asp-for="OrganizationName" />
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="OrganizationHistory"></label>
-                            <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="StaffArePaid"></label>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
+                        <fieldset class="mb-4">
+                            <legend>Organization Info</legend>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="MainContact"></label>
+                                <input class="form-control" asp-for="MainContact" />
+                                <span class="form-text">
+                                    Name of your organization's primary point of contact.
+                                </span>
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Team Members</legend>
-                        <button class="btn btn-primary" id="members-input-add-btn" type="button">
-                            <i class="bi bi-plus"></i>
-                            Add Member
-                        </button>
-                        <div id="members-input-container">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Email"></label>
+                                <input class="form-control" asp-for="Email" />
+                                <span class="form-text">
+                                    The email for your organization's primary point of contact.
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="PhoneNumber"></label>
+                                <input class="form-control" asp-for="PhoneNumber" />
+                                <span class="form-text">
+                                    The phone number for your organization's primary point of contact.
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="OrganizationName"></label>
+                                <input class="form-control" asp-for="OrganizationName" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="OrganizationHistory"></label>
+                                <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
+                                <span class="form-text">
+                                    A brief history of your Organization.
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="StaffArePaid"></label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
+                                </div>
+                                <span class="form-text">
+                                    Justification for this question.
+                                </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-4">
+                            <legend>
+                                Team Members
+                                <button class="btn btn-primary float-end" id="members-input-add-btn" type="button">
+                                    <i class="bi bi-plus"></i>
+                                    Add Member
+                                </button>
+                            </legend>
 
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Project Info</legend>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="ProjectTitle"></label>
-                            <input class="form-control" asp-for="ProjectTitle" />
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="TargetAudience"></label>
-                            <input class="form-control" asp-for="TargetAudience" />
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="KeyObjectives"></label>
-                            <textarea class="form-control" asp-for="KeyObjectives"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">Project Time Frame</label>
-                            <div class="input-group">
-                                <input class="form-control" asp-for="ProjectTimeFrameNumber" />
-                                <select class="form-control" asp-for="ProjectTimeFrameInterval">
-                                    <option value="Days">Days</option>
-                                    <option value="Weeks">Weeks</option>
-                                    <option value="Months">Months</option>
-                                    <option value="Years">Years</option>
-                                </select>
+                            <div id="members-input-container">
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="MainMethods"></label>
-                            <textarea class="form-control" asp-for="MainMethods"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="PlannedVideos"></label>
-                            <textarea class="form-control" asp-for="PlannedVideos"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="EstimatedProjectCost"></label>
-                            <input class="form-control" asp-for="EstimatedProjectCost" />
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Current Resources</legend>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="CurrentEquipment"></label>
-                            <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="HasAudioSpace"></label>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" asp-for="HasAudioSpace" />
+                        </fieldset>
+                        <fieldset class="mb-4">
+                            <legend>Project Info</legend>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="ProjectTitle"></label>
+                                <input class="form-control" asp-for="ProjectTitle" />
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="AudioSpaceDescription"></label>
-                            <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="HasComputer"></label>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" asp-for="HasComputer" />
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="TargetAudience"></label>
+                                <input class="form-control" asp-for="TargetAudience" />
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="KeyObjectives"></label>
+                                <textarea class="form-control" asp-for="KeyObjectives"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Project Time Frame</label>
+                                <div class="input-group">
+                                    <input class="form-control" asp-for="ProjectTimeFrameNumber" />
+                                    <select class="form-control" asp-for="ProjectTimeFrameInterval">
+                                        <option value="Days">Days</option>
+                                        <option value="Weeks">Weeks</option>
+                                        <option value="Months">Months</option>
+                                        <option value="Years">Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="MainMethods"></label>
+                                <textarea class="form-control" asp-for="MainMethods"></textarea>
+                                <span class="form-text">
+                                    What are the main methods you intend to use to reach your goals?
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="PlannedVideos"></label>
+                                <textarea class="form-control" asp-for="PlannedVideos"></textarea>
+                                <span class="form-text">
+                                    Please be as specific as possible about the content / genre and approximate release dates.<br/>
+                                    For example: "January - short film about a family coming to Christ, February - testimony from a new believer"
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="EstimatedProjectCost"></label>
+                                <input class="form-control" asp-for="EstimatedProjectCost" />
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-4">
+                            <legend>Current Resources</legend>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="CurrentEquipment"></label>
+                                <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
+                                <span class="form-text">
+                                    What video and audio equipment do you currently have?
+                                </span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="HasAudioSpace"></label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="HasAudioSpace" />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="AudioSpaceDescription"></label>
+                                <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="HasComputer"></label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="HasComputer" />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="ComputerDescription"></label>
+                                <textarea class="form-control" asp-for="ComputerDescription"></textarea>
+                                <span class="form-text">
+                                    Is your computer a Mac or PC and what are it's specifications?
+                                </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-4">
+                            <legend>
+                                Current Experience
+                                <button class="btn btn-primary float-end" type="button" id="links-input-add-btn">
+                                    <i class="bi bi-plus"></i>
+                                    Add Link
+                                </button>
+                            </legend>
+                            <span class="form-text">Please include links to any previous videos made.</span>
+                            <div id="links-input-container">
+                            </div>
+                            <span class="Please include links to any previous videos made."></span>
+                        </fieldset>
+                        <div class="alert alert-info">
+                            <h4 class="alert-heading">
+                                Note
+                            </h4>
+                            Once we have the received your application it will be reviewed for approval by the board. Additional information might be required to further process the application. You should have a response within a month.
                         </div>
-                        <div class="mb-2">
-                            <label class="form-label" asp-for="ComputerDescription"></label>
-                            <textarea class="form-control" asp-for="ComputerDescription"></textarea>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Current Experience</legend>
-                        <button class="btn btn-primary" type="button" id="links-input-add-btn">
-                            <i class="bi bi-plus"></i>
-                            Add Link
+                        <button class="btn btn-primary">
+                            Submit
                         </button>
-                        <div id="links-input-container">
-
-                        </div>
-                    </fieldset>
-                    <button class="btn btn-primary">
-                        Submit
-                    </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
+
 @section Scripts {
     <script src="~/js/ComplexCollectionInput.js" asp-append-version="true"></script>
     <script src="~/js/ViewScripts/Proposals/Form.js" asp-append-version="true"></script>
