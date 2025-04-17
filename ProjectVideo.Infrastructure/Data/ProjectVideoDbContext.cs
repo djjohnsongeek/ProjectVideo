@@ -11,5 +11,7 @@ namespace ProjectVideo.Infrastructure.Data
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
 		public DbSet<ProposalTeamMember> ProposalTeamMembers { get; set; }
 
+		public DbSet<EthnicTeamRole> EthnicTeamRoles { get; set; }
+
 	}
 }
