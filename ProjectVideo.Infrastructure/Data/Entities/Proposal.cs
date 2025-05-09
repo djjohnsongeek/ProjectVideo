@@ -4,6 +4,7 @@
 	{
 		public int Id { get; set; }
 
+		public DateTime DateSubmitted { get; set; }
 		public required string ContactEmail { get; set; }
 		public required string ContactName { get; set; }
 		public required string OrganizationName {get; set;}

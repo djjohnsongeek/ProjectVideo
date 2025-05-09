@@ -1,1 +1,38 @@
-﻿<h1>Proposals</h1>
+﻿@model ProjectVideo.Web.Models.Proposals.ProposalsIndexViewModel
+
+<div class="card">
+    <div class="bi-card-heading">
+        <h1 class="card-title">
+            Proposals
+        </h1>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date Submitted</th>
+                    <th>Organization Name</th>
+                    <th>Project Title</th>
+                    <th>Contact Name</th>
+                    <th>Target Audience</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var proposal in Model.Data.Proposals)
+                {
+                    <tr>
+                        <td>@proposal.DateSubmitted.ToShortDateString()</td>
+                        <td>@proposal.OrganizationName</td>
+                        <td>@proposal.ProjectTitle</td>
+                        <td>@proposal.ContactName</td>
+                        <td>@proposal.TargetAudience</td>
+                        <td>
+                            <button class="btn btn-primary">Edit</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

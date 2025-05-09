@@ -32,6 +32,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Proposals](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DateSubmitted] [datetime2](7) NOT NULL,
 	[ContactEmail] [nvarchar](128) NOT NULL,
 	[ContactPhoneNumber] [nvarchar](32) NOT NULL,
 	[ContactName] [nvarchar](64) NOT NULL,

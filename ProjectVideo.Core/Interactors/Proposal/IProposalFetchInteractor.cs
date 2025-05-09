@@ -2,6 +2,6 @@
 {
 	public interface IProposalFetchInteractor
 	{
-		Task GetProposals();
+		Task<ProposalListResult> GetProposals();
 	}
 }

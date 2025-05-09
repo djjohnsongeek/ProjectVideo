@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Web.Models.Proposals;
 
@@ -19,10 +20,11 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			_fetchInteractor.GetProposals();
-			return View();
+			ProposalListResult result = await _fetchInteractor.GetProposals();
+			ProposalsIndexViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
+			return View(viewModel);
 		}
 
 		[HttpGet]
