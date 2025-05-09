@@ -7,6 +7,7 @@
 
 		public required string ContactEmail;
 		public required string ContactName;
+		public required string ContactPhoneNumber;
 		public required string OrganizationName;
 		public required string ProjectTitle;
 		public required string OrganizationHistory;

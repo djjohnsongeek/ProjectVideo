@@ -47,6 +47,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 			{
 				DateSubmitted = DateTime.UtcNow,
 				ContactEmail = inputData.ContactEmail,
+				 ContactPhoneNumber= inputData.ContactPhoneNumber,
 				ContactName = inputData.ContactName,
 				OrganizationName = inputData.OrganizationName,
 				OrganizationHistory = inputData.OrganizationHistory,

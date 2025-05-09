@@ -56,6 +56,7 @@ namespace ProjectVideo.Web.Controllers
 			var inputData = new CreateProposalInput
 			{
 				ContactEmail = model.Email!,
+				ContactPhoneNumber = model.PhoneNumber!,
 				ContactName = model.MainContact!,
 				OrganizationName = model.OrganizationName!,
 				ProjectTitle = model.ProjectTitle!,
