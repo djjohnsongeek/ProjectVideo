@@ -3,5 +3,7 @@
 	public interface IProposalFetchInteractor
 	{
 		Task<ProposalListResult> GetProposals();
+
+		Task<ProposalFormResult> GetFormRequirements();
 	}
 }

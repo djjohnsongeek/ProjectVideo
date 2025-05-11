@@ -28,9 +28,11 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Form()
+		public async Task<IActionResult> Form()
 		{
-			return View(new ProposalFormViewModel());
+			ProposalFormResult interactorResult = await _fetchInteractor.GetFormRequirements();
+			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(interactorResult);
+			return View(viewModel);
 		}
 
 		[HttpPost]

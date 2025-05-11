@@ -44,6 +44,8 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
 
+		public List<string> TeamMemberRoles { get; set; } = [];
+
 		[Display(Name = "Current Equipment")]
 		public string? CurrentEquipment { get; set; }
 

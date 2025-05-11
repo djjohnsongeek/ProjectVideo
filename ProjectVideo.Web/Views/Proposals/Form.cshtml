@@ -70,6 +70,12 @@
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
+                            <datalist id="rolename-options">
+                                @foreach(string roleName in Model.TeamMemberRoles)
+                                {
+                                    <option value="@roleName"></option>
+                                }
+                            </datalist>
                             <legend>
                                 Team Members
                                 <button class="btn btn-secondary float-end" id="members-input-add-btn" type="button">

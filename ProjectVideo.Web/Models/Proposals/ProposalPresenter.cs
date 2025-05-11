@@ -1,4 +1,5 @@
 ﻿using ProjectVideo.Core.Interactors;
+using ProjectVideo.Core.Interactors.Proposal;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
@@ -9,6 +10,14 @@ namespace ProjectVideo.Web.Models.Proposals
 			return new ProposalsIndexViewModel
 			{
 				Data = interactorResult
+			};
+		}
+
+		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
+		{
+			return new ProposalFormViewModel
+			{
+				TeamMemberRoles = interactorResult.EthinicTeamRoles
 			};
 		}
 	}

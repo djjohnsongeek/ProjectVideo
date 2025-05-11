@@ -2,6 +2,7 @@
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Core.Interactors;
+using ProjectVideo.Infrastructure.Data.Entities;
 
 namespace ProjectVideo.Infrastructure.Interactors
 {
@@ -26,6 +27,17 @@ namespace ProjectVideo.Infrastructure.Interactors
 					OrganizationName = p.OrganizationName,
 					TargetAudience = p.TargetAudience,
 				}).ToList()
+			};
+
+			return result;
+		}
+
+		public async Task<ProposalFormResult> GetFormRequirements()
+		{
+			var queryResult = await _dbContext.EthnicTeamRoles.ToListAsync();
+			ProposalFormResult result = new ProposalFormResult
+			{
+				EthinicTeamRoles = queryResult.Select(r => r.Name).ToList(),
 			};
 
 			return result;
