@@ -36,10 +36,10 @@
                         <td>@proposal.ContactName</td>
                         <td>@proposal.TargetAudience</td>
                         <td>
-                            <button class="btn btn-primary">
-                                <i class="bi bi-pen-fill"></i>
-                                Edit
-                            </button>
+                            <a asp-controller="Proposals" asp-action="Details" asp-route-id="@proposal.ProposalId" class="btn btn-primary">
+                                <i class="bi bi-info-circle-fill"></i>
+                                Details
+                            </a>
                         </td>
                     </tr>
                 }

@@ -1,0 +1,151 @@
+﻿@model ProjectVideo.Web.Models.Proposals.ProposalDetailsViewModel
+<div class="card mt-3">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h1 class="card-title h3">Proposal Details</h1>
+            </div>
+            <div class="col text-end align-con">
+                <a class="btn btn-outline-secondary" asp-controller="Proposals" asp-action="Index">
+                    <i class="bi bi-list"></i>
+                    Proposals List
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                    <i class="bi bi-people-fill"></i>
+                    Organization
+                </button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                    <i class="bi bi-film"></i>
+                    Project
+                </button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    <i class="bi bi-tools"></i>
+                    Resources & Experiance
+                </button>
+            </div>
+        </nav>
+        <div class="tab-content mt-3" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="ContactName"></label>
+                            <input class="form-control" disabled asp-for="ContactName" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="ContactEmail"></label>
+                            <input class="form-control" disabled asp-for="ContactEmail" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="ContactPhoneNumber"></label>
+                            <input class="form-control" disabled asp-for="ContactPhoneNumber" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="OrganizationName"></label>
+                            <input class="form-control" disabled asp-for="OrganizationName" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="OrganizationHistory"></label>
+                            <textarea class="form-control" disabled asp-for="OrganizationHistory"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="StaffArePaid"></label>
+                            <input class="form-control" disabled asp-for="StaffArePaid" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        @foreach (var member in Model.Members)
+                        {
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <label class="form-label">Name</label>
+                                    <input class="form-control" disabled  value="@member.Name" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Role</label>
+                                    <input class="form-control" disabled value="@member.Role" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="ProjectTitle"></label>
+                            <input class="form-control" disabled asp-for="ProjectTitle" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="TargetAudience"></label>
+                            <input class="form-control" disabled asp-for="TargetAudience" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Project Time Frame</label>
+                            <div class="input-group">
+                                <input class="form-control" disabled asp-for="ProjectTimeFrameTotal" />
+                                <input class="form-control" disabled asp-for="ProjectTimeFrameInterval" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="KeyObjectives"></label>
+                            <textarea class="form-control" disabled asp-for="KeyObjectives"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="Methods"></label>
+                            <textarea class="form-control" disabled asp-for="Methods"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="PlannedVideos"></label>
+                            <textarea class="form-control" disabled asp-for="PlannedVideos"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="EstimatedProjectCost"></label>
+                            <input class="form-control" disabled asp-for="EstimatedProjectCost" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="CurrentEquipment"></label>
+                            <textarea class="form-control" disabled asp-for="CurrentEquipment"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="HasAudioSpace"></label>
+                            <input class="form-control" disabled asp-for="HasAudioSpace" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="AudioSpaceDescription"></label>
+                            <textarea class="form-control" disabled asp-for="AudioSpaceDescription"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="HasComputer"></label>
+                            <input class="form-control" disabled asp-for="HasComputer" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="ComputerDescription"></label>
+                            <textarea class="form-control" disabled asp-for="ComputerDescription"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        @foreach (var link in Model.Links)
+                        {
+                            <a class="btn btn-primary" href="@link.Url">@link.Name</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

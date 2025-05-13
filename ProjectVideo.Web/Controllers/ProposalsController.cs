@@ -35,6 +35,14 @@ namespace ProjectVideo.Web.Controllers
 			return View(viewModel);
 		}
 
+		[HttpGet]
+		public async Task<IActionResult> Details(int id)
+		{
+			ProposalDetailsResult result = await _fetchInteractor.GetProposal(id);
+			ProposalDetailsViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
+			return View(viewModel);
+		}
+
 		[HttpPost]
 		public async Task<IActionResult> Form(ProposalFormViewModel model)
 		{
@@ -50,6 +58,8 @@ namespace ProjectVideo.Web.Controllers
 
 			return View(model);
 		}
+
+		
 
 
 		private CreateProposalInput BuildInput(ProposalFormViewModel model)

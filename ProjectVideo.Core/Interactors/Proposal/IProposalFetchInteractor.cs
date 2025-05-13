@@ -4,6 +4,8 @@
 	{
 		Task<ProposalListResult> GetProposals();
 
-		Task<ProposalFormResult> GetFormRequirements();
+		Task<ProposalDetailsResult> GetProposal(int id);
+
+        Task<ProposalFormResult> GetFormRequirements();
 	}
 }
