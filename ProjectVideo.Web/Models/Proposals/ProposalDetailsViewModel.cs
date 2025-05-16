@@ -1,5 +1,6 @@
 ﻿using ProjectVideo.Core.Interactors.Proposal;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
@@ -47,6 +48,14 @@ namespace ProjectVideo.Web.Models.Proposals
         public string? ComputerDescription { get; set;}
         [Display(Name = "Estimated Project Cost")]
         public int EstimatedProjectCost { get; set;}
+
+        [Display (Name = "Conducted Introductory Meeting")]
+        public bool IntroMeeting { get; set; }
+
+        [Display(Name = "Coordinator Notes")]
+        public string? CoordinatorNotes { get; set; }
+
+        public ProposalStatus Status { get; set; }
 
         public List<VideoLink> Links = [];
         public List<ProposalMember> Members = [];
