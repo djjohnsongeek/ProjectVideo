@@ -1,18 +1,21 @@
-﻿namespace ProjectVideo.Core.Interactors
+﻿using ProjectVideo.Core.Interactors.Proposal;
+
+namespace ProjectVideo.Core.Interactors
 {
 	public class ProposalListResult : InteractorResult
 	{
 
-		public List<ProposalListItem> Proposals = [];
+		public List<ProposalSummary> Proposals = [];
 
-		public class ProposalListItem
+		public class ProposalSummary
 		{
-			public int ProposalId;
-			public DateTime DateSubmitted;
-			public required string OrganizationName;
-			public required string ProjectTitle;
-			public required string ContactName;
-			public required string TargetAudience;
+			public int ProposalId { get; init; }
+			public DateTime DateSubmitted { get; init; }
+			public required string OrganizationName { get; init; }
+			public required string ProjectTitle { get; init; }
+			public required string TargetAudience { get; init; }
+			public required ProposalStatus Status { get; init; }
+			public DateTime? InfoMeetingDate { get; init; }
 		}
 	}
 }

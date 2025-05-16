@@ -1,4 +1,6 @@
-﻿namespace ProjectVideo.Infrastructure.Data.Entities
+﻿using ProjectVideo.Core.Interactors.Proposal;
+
+namespace ProjectVideo.Infrastructure.Data.Entities
 {
 	public class Proposal
 	{
@@ -24,6 +26,13 @@
 		public bool HasComputer { get; set; }
 		public string? ComputerDescription { get; set; }
 		public int EstimatedProjectCost { get; set; }
+
+		// Coordinator Files
+		public string? CoordinatorNotes { get; set; }
+
+		public DateTime? IntroMeetingDate { get; set; }
+
+		public ProposalStatus Status { get; set; }
 
 		// Navigation Props
 

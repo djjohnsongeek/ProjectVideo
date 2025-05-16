@@ -8,48 +8,34 @@ namespace ProjectVideo.Infrastructure.Interactors
 {
 	public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 	{
-		public ProposalFetchInteractor(ProjectVideoDbContext dbContext) : base(dbContext)
-		{
-
-		}
+		public ProposalFetchInteractor(ProjectVideoDbContext dbContext) : base(dbContext) { }
 
 		public async Task<ProposalListResult> GetProposals()
 		{
 			var queryResult = await _dbContext.Proposals.ToListAsync();
 			ProposalListResult result = new ProposalListResult
 			{
-				Proposals = queryResult.Select(p => new ProposalListResult.ProposalListItem
-				{
-					ProposalId = p.Id,
-					DateSubmitted = p.DateSubmitted,
-					ContactName = p.ContactName,
-					ProjectTitle = p.ProjectTitle,
-					OrganizationName = p.OrganizationName,
-					TargetAudience = p.TargetAudience,
-				}).ToList()
+				Proposals = queryResult.Select(ExtractSummary).ToList()
 			};
 
 			return result;
 		}
 
-		public async Task<ProposalDetailsResult> GetProposal(int id)
+		public async Task<ProposalDetailsResult> GetProposalDetails(int id)
 		{
-			ProposalDetailsResult result = new ProposalDetailsResult
-			{
-				Details = ProposalDetails.Empty()
-			};
-
-			var queryResult = await _dbContext.Proposals
+			Proposal? propsal = await _dbContext.Proposals
 				.Where(p => p.Id == id)
 				.Include(p => p.Members)
 				.Include(p => p.Links)
 				.FirstOrDefaultAsync();
 
-			if (queryResult != null)
+
+			ProposalDetailsResult result = new ProposalDetailsResult
 			{
-				result.Details = ExtractDetails(queryResult);
-			}
-			else
+				Details = ExtractDetails(propsal),
+			};
+
+			if (propsal == null)
 			{
 				result.AddError("Proposal not found.");
 			}
@@ -59,50 +45,72 @@ namespace ProjectVideo.Infrastructure.Interactors
 
 		public async Task<ProposalFormResult> GetFormRequirements()
 		{
-			var queryResult = await _dbContext.EthnicTeamRoles.ToListAsync();
+			List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles.ToListAsync();
 			ProposalFormResult result = new ProposalFormResult
 			{
-				EthinicTeamRoles = queryResult.Select(r => r.Name).ToList(),
+				EthinicTeamRoles = roles.Select(r => r.Name).ToList(),
 			};
 
 			return result;
 		}
 
-		private ProposalDetails ExtractDetails(Proposal entity)
+		private ProposalListResult.ProposalSummary ExtractSummary(Proposal p)
 		{
-			var details = new ProposalDetails {
-				ProposalId = entity.Id,
-				ProjectTitle = entity.ProjectTitle,
-				ContactName = entity.ContactName,
-				ContactPhoneNumber = entity.ContactPhoneNumber,
-				ContactEmail = entity.ContactEmail,
-				OrganizationName = entity.OrganizationName,
-				OrganizationHistory = entity.OrganizationHistory,
-				DateSubmitted = entity.DateSubmitted,
-				Methods = entity.Methods,
-				PlannedVideos = entity.PlannedVideos,
-				StaffArePaid = entity.StaffArePaid,
-				EstimatedProjectCost = entity.EstimatedProjectCost,
-				KeyObjectives = entity.KeyObjectives,
-				TargetAudience = entity.TargetAudience,
-				ProjectTimeFrameInterval = entity.ProjectTimeFrameInterval,
-				ProjectTimeFrameTotal = entity.ProjectTimeFrameTotal,
-				CurrentEquipment = entity.CurrentEquipment,
-				HasComputer = entity.HasComputer,
-				ComputerDescription = entity.ComputerDescription,
-				HasAudioSpace = entity.HasAudioSpace,
-				AudioSpaceDescription = entity.AudioSpaceDescription,
-				Links = entity.Links.Select(x => new VideoLink {
-					Name = x.Name,
-					Url = x.Url
-				}).ToList(),
-				Members = entity.Members.Select(x => new ProposalMember {
-					Name = x.Name,
-					Role = x.Role
-				}).ToList()
+			return new ProposalListResult.ProposalSummary
+			{
+				ProposalId = p.Id,
+				DateSubmitted = p.DateSubmitted,
+				ProjectTitle = p.ProjectTitle,
+				OrganizationName = p.OrganizationName,
+				TargetAudience = p.TargetAudience,
+				InfoMeetingDate = p.IntroMeetingDate,
+				Status = p.Status,
 			};
+		}
 
-			return details;
+        private ProposalDetails ExtractDetails(Proposal? entity)
+		{
+			if (entity != null)
+			{
+                return new ProposalDetails
+                {
+					ProposalId = entity.Id,
+					ProjectTitle = entity.ProjectTitle,
+					ContactName = entity.ContactName,
+					ContactPhoneNumber = entity.ContactPhoneNumber,
+					ContactEmail = entity.ContactEmail,
+					OrganizationName = entity.OrganizationName,
+					OrganizationHistory = entity.OrganizationHistory,
+					DateSubmitted = entity.DateSubmitted,
+					Methods = entity.Methods,
+					PlannedVideos = entity.PlannedVideos,
+					StaffArePaid = entity.StaffArePaid,
+					EstimatedProjectCost = entity.EstimatedProjectCost,
+					KeyObjectives = entity.KeyObjectives,
+					TargetAudience = entity.TargetAudience,
+					ProjectTimeFrameInterval = entity.ProjectTimeFrameInterval,
+					ProjectTimeFrameTotal = entity.ProjectTimeFrameTotal,
+					CurrentEquipment = entity.CurrentEquipment,
+					HasComputer = entity.HasComputer,
+					ComputerDescription = entity.ComputerDescription,
+					HasAudioSpace = entity.HasAudioSpace,
+					AudioSpaceDescription = entity.AudioSpaceDescription,
+					Links = entity.Links.Select(x => new VideoLink
+					{
+						Name = x.Name,
+						Url = x.Url
+					}).ToList(),
+					Members = entity.Members.Select(x => new ProposalMember
+					{
+						Name = x.Name,
+						Role = x.Role
+					}).ToList()
+                };
+            }
+			else
+			{
+				return ProposalDetails.Empty;
+			}
 		}
 	}
 }

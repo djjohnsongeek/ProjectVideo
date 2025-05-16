@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectVideo.Core.Interactors.Proposal
+﻿namespace ProjectVideo.Core.Interactors.Proposal
 {
     public class ProposalDetailsResult : InteractorResult
     {
@@ -13,68 +7,61 @@ namespace ProjectVideo.Core.Interactors.Proposal
 
     public class ProposalDetails
     {
-        public int ProposalId;
-        public DateTime DateSubmitted;
-        public required string ContactEmail;
-        public required string ContactPhoneNumber;
-        public required string ContactName;
-        public required string OrganizationName;
-        public required string OrganizationHistory;
-        public bool StaffArePaid;
-        public required string ProjectTitle;
-        public required string TargetAudience;
-        public required string KeyObjectives;
-        public required string ProjectTimeFrameInterval;
-        public int ProjectTimeFrameTotal;
-        public required string Methods;
-        public required string PlannedVideos;
-        public required string CurrentEquipment;
-        public bool HasAudioSpace;
-        public string? AudioSpaceDescription;
-        public bool HasComputer;
-        public string? ComputerDescription;
-        public int EstimatedProjectCost;
+        public int ProposalId { get; init; }
+        public DateTime DateSubmitted { get; init; }
+        public required string ContactEmail { get; init; }
+        public required string ContactPhoneNumber { get; init; }
+        public required string ContactName { get; init; }
+        public required string OrganizationName { get; init; }
+        public required string OrganizationHistory { get; init; }
+        public bool StaffArePaid { get; init; }
+        public required string ProjectTitle { get; init; }
+        public required string TargetAudience { get; init; }
+        public required string KeyObjectives { get; init; }
+        public required string ProjectTimeFrameInterval { get; init; }
+        public int ProjectTimeFrameTotal { get; init; }
+        public required string Methods { get; init; }
+        public required string PlannedVideos { get; init; }
+        public required string CurrentEquipment { get; init; }
+        public bool HasAudioSpace { get; init; }
+        public string? AudioSpaceDescription { get; init; }
+        public bool HasComputer { get; init; }
+        public string? ComputerDescription { get; init; }
+        public int EstimatedProjectCost { get; init; }
 
         public List<VideoLink> Links = [];
         public List<ProposalMember> Members = [];
 
-        public static ProposalDetails Empty()
+        public string? CoordinatorNotes { get; init; }
+        public DateTime? InfoMeetingDate { get; init; }
+        public bool IsApproved { get; init; }
+
+        public static ProposalDetails Empty => new ProposalDetails
         {
-            return new ProposalDetails {
-                ProposalId = 0,
-                DateSubmitted = DateTime.MinValue,
-                ContactEmail = "",
-                ContactPhoneNumber = "",
-                ContactName = "",
-                OrganizationName = "",
-                OrganizationHistory = "",
-                StaffArePaid = false,
-                ProjectTitle = "",
-                TargetAudience = "",
-                KeyObjectives = "",
-                ProjectTimeFrameInterval = "",
-                ProjectTimeFrameTotal = 0,
-                Methods = "",
-                PlannedVideos = "",
-                CurrentEquipment = "",
-                HasAudioSpace = false,
-                AudioSpaceDescription = "",
-                HasComputer = false,
-                ComputerDescription = "",
-                EstimatedProjectCost = 0,
-            };
-        }
+            ContactEmail = string.Empty,
+            ContactPhoneNumber = string.Empty,
+            ContactName = string.Empty,
+            OrganizationName = string.Empty,
+            OrganizationHistory = string.Empty,
+            ProjectTitle = string.Empty,
+            TargetAudience = string.Empty,
+            KeyObjectives = string.Empty,
+            ProjectTimeFrameInterval = string.Empty,
+            Methods = string.Empty,
+            PlannedVideos = string.Empty,
+            CurrentEquipment = string.Empty,
+        };
     }
 
     public class VideoLink
     {
-        public required string Name;
-        public required string Url;
+        public required string Name { get; init; }
+        public required string Url { get; init; }
     }
 
     public class ProposalMember
     {
-        public required string Name;
-        public required string Role;
+        public required string Name { get; init; }
+        public required string Role { get; init; }
     }
 }

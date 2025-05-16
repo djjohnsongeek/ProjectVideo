@@ -38,7 +38,7 @@ namespace ProjectVideo.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Details(int id)
 		{
-			ProposalDetailsResult result = await _fetchInteractor.GetProposal(id);
+			ProposalDetailsResult result = await _fetchInteractor.GetProposalDetails(id);
 			ProposalDetailsViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);
 		}

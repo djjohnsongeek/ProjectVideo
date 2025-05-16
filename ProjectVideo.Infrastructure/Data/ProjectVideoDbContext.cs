@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data.Entities;
+using System.Data;
 
 namespace ProjectVideo.Infrastructure.Data
 {
@@ -12,5 +15,17 @@ namespace ProjectVideo.Infrastructure.Data
 		public DbSet<ProposalTeamMember> ProposalTeamMembers { get; set; }
 		public DbSet<EthnicTeamRole> EthnicTeamRoles { get; set; }
 
-	}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Proposal>(Configure);
+        }
+
+        private void Configure(EntityTypeBuilder<Proposal> builder)
+        {
+            builder.Property(x => x.Status).HasConversion(
+                v => v.ToString(),
+                v => (ProposalStatus)Enum.Parse(typeof(ProposalStatus), v));
+        }
+    }
 }

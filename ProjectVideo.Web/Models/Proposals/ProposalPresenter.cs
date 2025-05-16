@@ -7,11 +7,11 @@ namespace ProjectVideo.Web.Models.Proposals
 	{
 		public ProposalsIndexViewModel BuildViewModel(ProposalListResult interactorResult)
 		{
-			return new ProposalsIndexViewModel
-			{
-				Data = interactorResult
-			};
-		}
+            return new ProposalsIndexViewModel
+            {
+                Proposals = interactorResult.Proposals.Select(BuildProposalSummary).ToList()
+            };
+        }
 
 		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
 		{
@@ -20,6 +20,39 @@ namespace ProjectVideo.Web.Models.Proposals
 				TeamMemberRoles = interactorResult.EthinicTeamRoles
 			};
 		}
+
+        private ProposalsIndexViewModel.ProposalSummary BuildProposalSummary(ProposalListResult.ProposalSummary interactorSummary)
+        {
+
+            string status;
+            switch (interactorSummary.Status)
+            {
+                case ProposalStatus.Approved:
+                case ProposalStatus.Denied:
+                    status = interactorSummary.Status.ToString();
+                    break;
+                case ProposalStatus.Interviewed:
+                    status = $"Interviewed on {interactorSummary.InfoMeetingDate!.Value}";
+                    break;
+                case ProposalStatus.PendingInterview:
+                    status = "Pending Interview";
+                    break;
+                default:
+                    status = "Invalid Status";
+                    break;
+            }
+
+            return new ProposalsIndexViewModel.ProposalSummary
+            {
+                Status = status,
+                InterviewDate = interactorSummary.InfoMeetingDate?.ToString("g"),
+                SubmitDate = interactorSummary.DateSubmitted.ToString("g"),
+                OrganizationName = interactorSummary.OrganizationName,
+                ProjectTitle = interactorSummary.ProjectTitle,
+                ProposalId = interactorSummary.ProposalId,
+                TargetAudience = interactorSummary.TargetAudience,
+            };
+        }
 
         internal ProposalDetailsViewModel BuildViewModel(ProposalDetailsResult result)
         {
