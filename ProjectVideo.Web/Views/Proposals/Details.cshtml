@@ -35,33 +35,34 @@
                 </button>
             </div>
         </nav>
+        <form method="POST">
         <div class="tab-content mt-3" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label" asp-for="ContactName"></label>
-                            <input class="form-control" disabled asp-for="ContactName" />
+                            <input class="form-control" readonly asp-for="ContactName" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="ContactEmail"></label>
-                            <input class="form-control" disabled asp-for="ContactEmail" />
+                            <input class="form-control" readonly asp-for="ContactEmail" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="ContactPhoneNumber"></label>
-                            <input class="form-control" disabled asp-for="ContactPhoneNumber" />
+                            <input class="form-control" readonly asp-for="ContactPhoneNumber" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="OrganizationName"></label>
-                            <input class="form-control" disabled asp-for="OrganizationName" />
+                            <input class="form-control" readonly asp-for="OrganizationName" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="OrganizationHistory"></label>
-                            <textarea class="form-control" disabled asp-for="OrganizationHistory"></textarea>
+                            <textarea class="form-control" readonly asp-for="OrganizationHistory"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="StaffArePaid"></label>
-                            <input class="form-control" disabled asp-for="StaffArePaid" />
+                            <input class="form-control" readonly asp-for="StaffArePaid" />
                         </div>
                     </div>
                     <div class="col-6">
@@ -71,11 +72,11 @@
                             <div class="row mt-3">
                                 <div class="col">
                                     <label class="form-label">Name</label>
-                                    <input class="form-control" disabled  value="@member.Name" />
+                                    <input class="form-control" readonly  value="@member.Name" />
                                 </div>
                                 <div class="col">
                                     <label class="form-label">Role</label>
-                                    <input class="form-control" disabled value="@member.Role" />
+                                    <input class="form-control" readonly value="@member.Role" />
                                 </div>
                             </div>
                         }
@@ -88,36 +89,36 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label" asp-for="ProjectTitle"></label>
-                            <input class="form-control" disabled asp-for="ProjectTitle" />
+                            <input class="form-control" readonly asp-for="ProjectTitle" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="TargetAudience"></label>
-                            <input class="form-control" disabled asp-for="TargetAudience" />
+                            <input class="form-control" readonly asp-for="TargetAudience" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Project Time Frame</label>
                             <div class="input-group">
-                                <input class="form-control" disabled asp-for="ProjectTimeFrameTotal" />
-                                <input class="form-control" disabled asp-for="ProjectTimeFrameInterval" />
+                                <input class="form-control" readonly asp-for="ProjectTimeFrameTotal" />
+                                <input class="form-control" readonly asp-for="ProjectTimeFrameInterval" />
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="EstimatedProjectCost"></label>
-                            <input class="form-control" disabled asp-for="EstimatedProjectCost" />
+                            <input class="form-control" readonly asp-for="EstimatedProjectCost" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label" asp-for="KeyObjectives"></label>
-                            <textarea class="form-control" disabled asp-for="KeyObjectives"></textarea>
+                            <textarea class="form-control" readonly asp-for="KeyObjectives"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="Methods"></label>
-                            <textarea class="form-control" disabled asp-for="Methods"></textarea>
+                            <textarea class="form-control" readonly asp-for="Methods"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="PlannedVideos"></label>
-                            <textarea class="form-control" disabled asp-for="PlannedVideos"></textarea>
+                            <textarea class="form-control" readonly asp-for="PlannedVideos"></textarea>
                         </div>
                     </div>
                 </div>
@@ -127,23 +128,23 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label" asp-for="CurrentEquipment"></label>
-                            <textarea class="form-control" disabled asp-for="CurrentEquipment"></textarea>
+                            <textarea class="form-control" readonly asp-for="CurrentEquipment"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="HasAudioSpace"></label>
-                            <input class="form-control" disabled asp-for="HasAudioSpace" />
+                            <input class="form-control" readonly asp-for="HasAudioSpace" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="AudioSpaceDescription"></label>
-                            <textarea class="form-control" disabled asp-for="AudioSpaceDescription"></textarea>
+                            <textarea class="form-control" readonly asp-for="AudioSpaceDescription"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="HasComputer"></label>
-                            <input class="form-control" disabled asp-for="HasComputer" />
+                            <input class="form-control" readonly asp-for="HasComputer" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" asp-for="ComputerDescription"></label>
-                            <textarea class="form-control" disabled asp-for="ComputerDescription"></textarea>
+                            <textarea class="form-control" readonly asp-for="ComputerDescription"></textarea>
                         </div>
                     </div>
                     <div class="col-6">
@@ -158,25 +159,37 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-coordinator" role="tabpanel" aria-labelledby="nav-coordinator-tab" tabindex="0">
-                <idv class="row">
+                <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label" asp-for="Status"></label>
-                            <select class="form-control" asp-for="Status" asp-items="Html.GetEnumSelectList<ProposalStatus>()">
+                            <label class="form-label" asp-for="CoordinatorFields.Status"></label>
+                            <select class="form-control" asp-for="CoordinatorFields.Status" asp-items="Html.GetEnumSelectList<ProposalStatus>()">
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" asp-for="CoordinatorNotes"></label>
-                            <textarea class="form-control" asp-for="CoordinatorNotes"></textarea>
+                            <label class="form-label" asp-for="CoordinatorFields.CoordinatorNotes"></label>
+                            <textarea class="form-control" asp-for="CoordinatorFields.CoordinatorNotes"></textarea>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" asp-for="IntroMeeting">
-                            <label class="form-check-label" asp-for="IntroMeeting"></label>
-                            <span class="form-text">Date Met If Available</span>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" asp-for="CoordinatorFields.InterviewOccured">
+                                <label class="form-check-label" asp-for="CoordinatorFields.InterviewOccured"></label>
+                                @if (Model.CoordinatorFields.InterviewDate.HasValue)
+                                {
+                                    <span class="form-text">@Model.CoordinatorFields.InterviewDate.Value.ToString("g")</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-floppy2-fill"></i>
+                                Save Changes
+                            </button>
                         </div>
                     </div>
-                </idv>
+                </div>
             </div>
         </div>
+        </form>
     </div>
 </div>

@@ -30,7 +30,7 @@ namespace ProjectVideo.Infrastructure.Data.Entities
 		// Coordinator Files
 		public string? CoordinatorNotes { get; set; }
 
-		public DateTime? IntroMeetingDate { get; set; }
+		public DateTime? InterviewDate { get; set; }
 
 		public ProposalStatus Status { get; set; }
 

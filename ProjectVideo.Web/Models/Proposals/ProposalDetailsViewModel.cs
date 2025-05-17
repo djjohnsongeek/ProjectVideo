@@ -1,10 +1,9 @@
 ﻿using ProjectVideo.Core.Interactors.Proposal;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
-    public class ProposalDetailsViewModel
+	public class ProposalDetailsViewModel
     {
         public int ProposalId;
         [Display(Name = "Date Submitted")]
@@ -49,13 +48,7 @@ namespace ProjectVideo.Web.Models.Proposals
         [Display(Name = "Estimated Project Cost")]
         public int EstimatedProjectCost { get; set;}
 
-        [Display (Name = "Conducted Introductory Meeting")]
-        public bool IntroMeeting { get; set; }
-
-        [Display(Name = "Coordinator Notes")]
-        public string? CoordinatorNotes { get; set; }
-
-        public ProposalStatus Status { get; set; }
+        public required CoordinatorFields CoordinatorFields { get; set;}
 
         public List<VideoLink> Links = [];
         public List<ProposalMember> Members = [];
@@ -63,4 +56,17 @@ namespace ProjectVideo.Web.Models.Proposals
         // cooridnator notes
         // status
     }
+
+    public class CoordinatorFields
+    {
+		[Display(Name = "Conducted Introductory Meeting")]
+		public bool InterviewOccured { get; set; }
+
+		[Display(Name = "Coordinator Notes")]
+		public string? CoordinatorNotes { get; set; }
+
+		public ProposalStatus Status { get; set; }
+
+        public DateTime? InterviewDate { get; set; }
+	}
 }

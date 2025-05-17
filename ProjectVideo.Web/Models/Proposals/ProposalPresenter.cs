@@ -81,6 +81,12 @@ namespace ProjectVideo.Web.Models.Proposals
                 AudioSpaceDescription = result.Details.AudioSpaceDescription,
                 Links = result.Details.Links,
                 Members = result.Details.Members,
+                CoordinatorFields = new CoordinatorFields {
+                    CoordinatorNotes = result.Details.CoordinatorProperties.CoordinatorNotes,
+                    InterviewOccured = result.Details.CoordinatorProperties.InterviewDate.HasValue,
+                    Status = result.Details.CoordinatorProperties.Status,
+                    InterviewDate = result.Details.CoordinatorProperties.InterviewDate,
+                }
             };
         }
     }

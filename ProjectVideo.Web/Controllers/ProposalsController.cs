@@ -44,6 +44,12 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpPost]
+		public async Task<IActionResult> Details(ProposalDetailsViewModel? detailsModel)
+		{
+			return View(detailsModel);
+		}
+
+		[HttpPost]
 		public async Task<IActionResult> Form(ProposalFormViewModel model)
 		{
 			if (ModelState.IsValid)

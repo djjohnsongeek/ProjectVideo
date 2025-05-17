@@ -29,12 +29,12 @@
         public string? ComputerDescription { get; init; }
         public int EstimatedProjectCost { get; init; }
 
+        public required CoordinatorProperties CoordinatorProperties { get; init; }
+
         public List<VideoLink> Links = [];
         public List<ProposalMember> Members = [];
 
-        public string? CoordinatorNotes { get; init; }
-        public DateTime? InfoMeetingDate { get; init; }
-        public bool IsApproved { get; init; }
+
 
         public static ProposalDetails Empty => new ProposalDetails
         {
@@ -50,6 +50,7 @@
             Methods = string.Empty,
             PlannedVideos = string.Empty,
             CurrentEquipment = string.Empty,
+            CoordinatorProperties = new CoordinatorProperties()
         };
     }
 
@@ -64,4 +65,11 @@
         public required string Name { get; init; }
         public required string Role { get; init; }
     }
+
+    public class CoordinatorProperties
+    {
+		public string? CoordinatorNotes { get; init; }
+		public DateTime? InterviewDate { get; init; }
+		public ProposalStatus Status { get; init; }
+	}
 }

@@ -63,7 +63,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 				ProjectTitle = p.ProjectTitle,
 				OrganizationName = p.OrganizationName,
 				TargetAudience = p.TargetAudience,
-				InfoMeetingDate = p.IntroMeetingDate,
+				InfoMeetingDate = p.InterviewDate,
 				Status = p.Status,
 			};
 		}
@@ -104,7 +104,14 @@ namespace ProjectVideo.Infrastructure.Interactors
 					{
 						Name = x.Name,
 						Role = x.Role
-					}).ToList()
+					}).ToList(),
+					CoordinatorProperties = new CoordinatorProperties
+					{
+						InterviewDate = entity.InterviewDate,
+						CoordinatorNotes = entity.CoordinatorNotes,
+						Status = entity.Status,
+					}
+					
                 };
             }
 			else
