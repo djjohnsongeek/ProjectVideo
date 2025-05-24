@@ -6,7 +6,13 @@
     <title>@ViewData["Title"] - ProjectVideo.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/icons/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.3.1/datatables.min.css" rel="stylesheet" integrity="sha384-rOq+bSqJVRwotGgW1XZO3EINtS8WzFI0Irekl0IRWM4qvgF+bIgfIaaGfzrOvkZL" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+
+
+  
 </head>
 <body>
     <header>
@@ -50,8 +56,8 @@
             @RenderBody()
         </main>
     </div>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.3.1/datatables.min.js" integrity="sha384-BE8jgQ18lLIDRFU5irQ26MTXl+tzWCKvu313il+U+Wo2wVTDr47xBIDmggcM21dh" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
