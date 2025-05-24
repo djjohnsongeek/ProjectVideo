@@ -59,9 +59,13 @@ namespace ProjectVideo.Web.Controllers
 			return View(model);
 		}
 
+		[HttpPost]
+		public async Task<IActionResult> Update(ProposalUpdateViewModel updateModel)
+		{
+			return Ok();
+		}
+
 		
-
-
 		private CreateProposalInput BuildInput(ProposalFormViewModel model)
 		{
 			// TO
