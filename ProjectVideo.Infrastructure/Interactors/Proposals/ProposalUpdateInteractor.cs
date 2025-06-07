@@ -3,7 +3,6 @@ using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Data.Entities;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ProjectVideo.Infrastructure.Interactors
 {
