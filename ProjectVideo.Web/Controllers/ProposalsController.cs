@@ -60,9 +60,11 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Update(ProposalUpdateViewModel updateModel)
+		public async Task<IActionResult> Details(ProposalUpdateViewModel updateModel)
 		{
-			return Ok();
+			UpdateProposalInput inputData = BuildInput(updateModel);
+			var result = await _updateInteractor.UpdateProposal(inputData);
+			return RedirectToAction("Details", new { id = updateModel.ProposalId });
 		}
 
 		
@@ -102,6 +104,19 @@ namespace ProjectVideo.Web.Controllers
 					Name = tm.Name,
 					Role = tm.Role,
 				}).ToList()
+			};
+
+			return inputData;
+		}
+
+		private UpdateProposalInput BuildInput(ProposalUpdateViewModel model)
+		{
+			var inputData = new UpdateProposalInput
+			{
+				InterviewDate = model.InterviewDate,
+				CoordinatorNotes = model.CoordinatorNotes,
+				Status = model.Status,
+				ProposalId = model.ProposalId,
 			};
 
 			return inputData;

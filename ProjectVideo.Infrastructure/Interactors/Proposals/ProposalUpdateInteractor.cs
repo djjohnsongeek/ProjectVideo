@@ -3,6 +3,7 @@ using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Data.Entities;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ProjectVideo.Infrastructure.Interactors
 {
@@ -23,19 +24,36 @@ namespace ProjectVideo.Infrastructure.Interactors
 				Proposal newProposal = BuildProposal(inputData);
 				_dbContext.Add(newProposal);
 
-				try
-				{
-					int changeCount = await _dbContext.SaveChangesAsync();
-					if (changeCount == 0)
-					{
-						result.AddError("Unknown error. Failed to create new Proposal.");
-					}
-				}
-				catch (DbUpdateException ex)
-				{
-					result.AddError("Database error. Failed to create new Proposal.");
-					// TODO Log ex
-				}
+				await UpdateChanges(result, errorContext: "Failed to create new Proposal");
+			}
+
+			return result;
+		}
+
+		public async Task<InteractorResult> UpdateProposal(UpdateProposalInput inputData)
+		{
+			InteractorResult result = new InteractorResult();
+
+			Proposal? proposal = await _dbContext.Proposals
+				.Where(x => x.Id == inputData.ProposalId)
+				.FirstOrDefaultAsync();
+
+			if (proposal == null)
+			{
+				result.AddError("Proposal Not Found.");
+			}
+
+			// TODO Validate
+
+			if (!result.HasErrors)
+			{
+				// Update entity properties
+				proposal!.CoordinatorNotes = inputData.CoordinatorNotes;
+				proposal.Status = inputData.Status;
+				proposal.InterviewDate = inputData.InterviewDate;
+
+				// Update the entity
+				await UpdateChanges(result, errorContext: "Failed to update tthe Proposal");
 			}
 
 			return result;

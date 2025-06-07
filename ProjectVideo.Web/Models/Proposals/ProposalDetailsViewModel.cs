@@ -48,25 +48,9 @@ namespace ProjectVideo.Web.Models.Proposals
         [Display(Name = "Estimated Project Cost")]
         public int EstimatedProjectCost { get; set;}
 
-        public required CoordinatorFields CoordinatorFields { get; set;}
+        public required ProposalUpdateViewModel CoordinatorFields { get; set;}
 
         public List<VideoLink> Links = [];
         public List<ProposalMember> Members = [];
-
-        // cooridnator notes
-        // status
     }
-
-    public class CoordinatorFields
-    {
-		[Display(Name = "Conducted Introductory Meeting")]
-		public bool InterviewOccured { get; set; }
-
-		[Display(Name = "Coordinator Notes")]
-		public string? CoordinatorNotes { get; set; }
-
-		public ProposalStatus Status { get; set; }
-
-        public DateTime? InterviewDate { get; set; }
-	}
 }

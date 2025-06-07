@@ -1,0 +1,29 @@
+﻿@using ProjectVideo.Core.Interactors.Proposal
+@model ProjectVideo.Web.Models.Proposals.ProposalUpdateViewModel
+
+<form id="coordinator-fields-form" method="POST">
+    <input type="hidden" asp-for="ProposalId" />
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Status"></label>
+                <select class="form-control" asp-for="Status" asp-items="Html.GetEnumSelectList<ProposalStatus>()">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="InterviewDate"></label>
+                <input class="form-control" asp-for="InterviewDate" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="CoordinatorNotes"></label>
+                <textarea class="form-control" asp-for="CoordinatorNotes"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-floppy2-fill"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

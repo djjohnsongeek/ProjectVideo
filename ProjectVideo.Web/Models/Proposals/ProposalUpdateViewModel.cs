@@ -1,15 +1,20 @@
 ﻿using ProjectVideo.Core.Interactors.Proposal;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalUpdateViewModel
 	{
-		ProposalStatus Status { get; set; }
+		public int ProposalId { get; set; }
 
+		public ProposalStatus Status { get; set; }
+
+		[Display(Name = "Coordinator Notes")]
 		public string? CoordinatorNotes { get; set; }
 
-		public bool InterviewOccured { get; set; }
+		[Display(Name = "Date Interview Occured")]
 
-		public DateTime InterviewDate { get; set; }
+		[DataType(DataType.DateTime)]
+		public DateTime? InterviewDate { get; set; }
 	}
 }

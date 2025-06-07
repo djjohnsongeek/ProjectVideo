@@ -158,40 +158,11 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-coordinator" role="tabpanel" aria-labelledby="nav-coordinator-tab" tabindex="0">
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label" asp-for="CoordinatorFields.Status"></label>
-                            <select class="form-control" asp-for="CoordinatorFields.Status" name="Status" asp-items="Html.GetEnumSelectList<ProposalStatus>()">
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" asp-for="CoordinatorFields.CoordinatorNotes"></label>
-                            <textarea class="form-control" asp-for="CoordinatorFields.CoordinatorNotes" name="CoordinatorNotes"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="InterviewOccured" asp-for="CoordinatorFields.InterviewOccured">
-                                <label class="form-check-label" asp-for="CoordinatorFields.InterviewOccured"></label>
-                                <input type="hidden" name="InterviewDate" asp-for="CoordinatorFields.InterviewDate" />
-                                @if (Model.CoordinatorFields.InterviewDate.HasValue)
-                                {
-                                    <span class="form-text">@Model.CoordinatorFields.InterviewDate.Value.ToString("g")</span>   
-                                }
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="bi bi-floppy2-fill"></i>
-                                Save Changes
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_CoordinatorFields" model="Model.CoordinatorFields" />
             </div>
         </div>
     </div>
 </div>
 @section Scripts {
-    <script src="js/ViewScripts/Proposals/Details.js" asp-append-version="true"></script>
+    <script src="~/js/ViewScripts/Proposals/Details.js" asp-append-version="true"></script>
 }
