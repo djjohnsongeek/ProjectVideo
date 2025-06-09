@@ -1,8 +1,8 @@
 ﻿namespace ProjectVideo.Infrastructure.Data.Entities
 {
-	public class ProposalTeamMember
+	public class ProposalMember
 	{
-		public int Id { get; set; }
+		public int ProposalMemberId { get; set; }
 		public int ProposalId { get; set; }
 		public required string Name { get; set; }
 		public required string Role { get; set; }

@@ -64,12 +64,12 @@ namespace ProjectVideo.Tests
 					}
 				],
 				Members = [
-					new ProposalMemberItem
+					new ProposalMemberSummary
 					{
 						Name = "Daniel",
 						Role = "Lead Developer"
 					},
-					new ProposalMemberItem {
+					new ProposalMemberSummary {
 						Name = "Silas",
 						Role = "Lead Assistant"
 					}

@@ -2,7 +2,7 @@
 {
 	public class ProposalLink
 	{
-		public int Id { get; set; }
+		public int ProposalLinkId { get; set; }
 		public int ProposalId { get; set; }
 		public required string Url { get; set; }
 		public required string Name { get; set; }

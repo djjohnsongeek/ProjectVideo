@@ -12,8 +12,8 @@ namespace ProjectVideo.Infrastructure.Data
 
 		public DbSet<Proposal> Proposals { get; set; }
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
-		public DbSet<ProposalTeamMember> ProposalTeamMembers { get; set; }
-		public DbSet<EthnicTeamRole> EthnicTeamRoles { get; set; }
+		public DbSet<Entities.ProposalMember> ProposalMembers { get; set; }
+		public DbSet<Role> Roles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -32,7 +32,7 @@
         public required CoordinatorProperties CoordinatorProperties { get; init; }
 
         public List<VideoLink> Links = [];
-        public List<ProposalMember> Members = [];
+        public List<ProposalMemberSummary> Members = [];
 
 
 
@@ -58,12 +58,6 @@
     {
         public required string Name { get; init; }
         public required string Url { get; init; }
-    }
-
-    public class ProposalMember
-    {
-        public required string Name { get; init; }
-        public required string Role { get; init; }
     }
 
     public class CoordinatorProperties

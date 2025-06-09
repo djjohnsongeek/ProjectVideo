@@ -34,7 +34,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 			InteractorResult result = new InteractorResult();
 
 			Proposal? proposal = await _dbContext.Proposals
-				.Where(x => x.Id == inputData.ProposalId)
+				.Where(x => x.ProposalId == inputData.ProposalId)
 				.FirstOrDefaultAsync();
 
 			if (proposal == null)
@@ -82,7 +82,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 				HasComputer = inputData.HasComputer,
 				ComputerDescription = inputData.ComputerDescription,
 				EstimatedProjectCost = inputData.EstimatedProjectCost,
-				Members = inputData.Members.Select(m => new ProposalTeamMember
+				Members = inputData.Members.Select(m => new ProposalMember
 				{
 					Name = m.Name,
 					Role = m.Role,

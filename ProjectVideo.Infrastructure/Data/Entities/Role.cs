@@ -1,9 +1,11 @@
 ﻿namespace ProjectVideo.Infrastructure.Data.Entities
 {
-	public class EthnicTeamRole
+	public class Role
 	{
-		public int Id { get; set; }
+		public int RoleId { get; set; }
 		public required string Name { get; set; }
+
+		public required string RoleGroup { get; set; }
 		public string? Description { get; set; }
 	}
 }

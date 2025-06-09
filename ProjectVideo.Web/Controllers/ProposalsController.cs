@@ -99,7 +99,7 @@ namespace ProjectVideo.Web.Controllers
 					Url = vl.Url
 				}).ToList(),
 
-				Members = model.TeamMembers.Select(tm => new ProposalMemberItem
+				Members = model.TeamMembers.Select(tm => new ProposalMemberSummary
 				{
 					Name = tm.Name,
 					Role = tm.Role,

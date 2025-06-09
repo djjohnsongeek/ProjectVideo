@@ -1,37 +1,50 @@
-/****** Object:  Table [dbo].[EthicTeamRoles]    Script Date: 4/17/2025 5:23:33 AM ******/
-CREATE TABLE [dbo].[EthnicTeamRoles](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](32) NOT NULL,
-	[Description] [nvarchar](128) NULL,
- CONSTRAINT [PK_EthicTeamRoles] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ProposalLinks]    Script Date: 4/17/2025 5:23:34 AM ******/
+/****** Object:  Table [dbo].[ProposalLinks]    Script Date: 6/7/2025 11:49:30 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProposalLinks]') AND type in (N'U'))
+BEGIN
 CREATE TABLE [dbo].[ProposalLinks](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProposalLinkId] [int] IDENTITY(1,1) NOT NULL,
 	[ProposalId] [int] NOT NULL,
 	[Url] [nvarchar](1024) NOT NULL,
 	[Name] [nvarchar](32) NOT NULL,
  CONSTRAINT [PK_ProjectProposalLinks] PRIMARY KEY CLUSTERED 
 (
-	[Id] ASC
+	[ProposalLinkId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+END
 GO
-/****** Object:  Table [dbo].[Proposals]    Script Date: 4/17/2025 5:23:34 AM ******/
+/****** Object:  Table [dbo].[ProposalMembers]    Script Date: 6/7/2025 11:49:30 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProposalMembers]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ProposalMembers](
+	[ProposalMemberId] [int] IDENTITY(1,1) NOT NULL,
+	[ProposalId] [int] NOT NULL,
+	[Name] [nvarchar](64) NOT NULL,
+	[Role] [nvarchar](64) NOT NULL,
+ CONSTRAINT [PK_ProjectTeamMembers] PRIMARY KEY CLUSTERED 
+(
+	[ProposalMemberId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[Proposals]    Script Date: 6/7/2025 11:49:30 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Proposals]') AND type in (N'U'))
+BEGIN
 CREATE TABLE [dbo].[Proposals](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProposalId] [int] IDENTITY(1,1) NOT NULL,
 	[DateSubmitted] [datetime2](7) NOT NULL,
 	[ContactEmail] [nvarchar](128) NOT NULL,
 	[ContactPhoneNumber] [nvarchar](32) NOT NULL,
@@ -52,25 +65,42 @@ CREATE TABLE [dbo].[Proposals](
 	[HasComputer] [bit] NOT NULL,
 	[ComputerDescription] [nvarchar](512) NULL,
 	[EstimatedProjectCost] [int] NOT NULL,
+	[CoordinatorNotes] [nvarchar](1000) NULL,
+	[InterviewDate] [datetime2](7) NULL,
+	[Status] [nvarchar](16) NOT NULL,
  CONSTRAINT [PK_ProjectProposals] PRIMARY KEY CLUSTERED 
 (
-	[Id] ASC
+	[ProposalId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+END
 GO
-/****** Object:  Table [dbo].[ProposalTeamMembers]    Script Date: 4/17/2025 5:23:34 AM ******/
+/****** Object:  Table [dbo].[Roles]    Script Date: 6/7/2025 11:49:30 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[ProposalTeamMembers](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ProposalId] [int] NOT NULL,
-	[Name] [nvarchar](64) NOT NULL,
-	[Role] [nvarchar](64) NOT NULL,
- CONSTRAINT [PK_ProjectTeamMembers] PRIMARY KEY CLUSTERED 
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Roles]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Roles](
+	[RoleId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](32) NOT NULL,
+	[Description] [nvarchar](128) NULL,
+	[RoleGroup] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK_EthicTeamRoles] PRIMARY KEY CLUSTERED 
 (
-	[Id] ASC
+	[RoleId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+END
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DF_Proposals_Status]') AND type = 'D')
+BEGIN
+ALTER TABLE [dbo].[Proposals] ADD  CONSTRAINT [DF_Proposals_Status]  DEFAULT (N'PendingInterview') FOR [Status]
+END
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DF_EthnicTeamRoles_RoleGroup]') AND type = 'D')
+BEGIN
+ALTER TABLE [dbo].[Roles] ADD  CONSTRAINT [DF_EthnicTeamRoles_RoleGroup]  DEFAULT (N'EthnicTeam') FOR [RoleGroup]
+END
 GO

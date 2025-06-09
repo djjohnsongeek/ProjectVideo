@@ -4,7 +4,7 @@ namespace ProjectVideo.Infrastructure.Data.Entities
 {
 	public class Proposal
 	{
-		public int Id { get; set; }
+		public int ProposalId { get; set; }
 
 		public DateTime DateSubmitted { get; set; }
 		public required string ContactEmail { get; set; }
@@ -36,7 +36,7 @@ namespace ProjectVideo.Infrastructure.Data.Entities
 
 		// Navigation Props
 
-		public List<ProposalTeamMember> Members { get; set; } = [];
+		public List<ProposalMember> Members { get; set; } = [];
 		public List<ProposalLink> Links { get; set; } = [];
 
 	}

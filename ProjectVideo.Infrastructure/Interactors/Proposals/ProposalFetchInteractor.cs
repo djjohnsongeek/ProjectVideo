@@ -24,7 +24,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 		public async Task<ProposalDetailsResult> GetProposalDetails(int id)
 		{
 			Proposal? propsal = await _dbContext.Proposals
-				.Where(p => p.Id == id)
+				.Where(p => p.ProposalId == id)
 				.Include(p => p.Members)
 				.Include(p => p.Links)
 				.FirstOrDefaultAsync();
@@ -45,7 +45,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 
 		public async Task<ProposalFormResult> GetFormRequirements()
 		{
-			List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles.ToListAsync();
+			List<Role> roles = await _dbContext.Roles.ToListAsync();
 			ProposalFormResult result = new ProposalFormResult
 			{
 				EthinicTeamRoles = roles.Select(r => r.Name).ToList(),
@@ -58,7 +58,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 		{
 			return new ProposalListResult.ProposalSummary
 			{
-				ProposalId = p.Id,
+				ProposalId = p.ProposalId,
 				DateSubmitted = p.DateSubmitted,
 				ProjectTitle = p.ProjectTitle,
 				OrganizationName = p.OrganizationName,
@@ -74,7 +74,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 			{
                 return new ProposalDetails
                 {
-					ProposalId = entity.Id,
+					ProposalId = entity.ProposalId,
 					ProjectTitle = entity.ProjectTitle,
 					ContactName = entity.ContactName,
 					ContactPhoneNumber = entity.ContactPhoneNumber,
