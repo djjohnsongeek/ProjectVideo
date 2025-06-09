@@ -16,7 +16,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 		{
 			InteractorResult result = new InteractorResult();
 			// TODO Validate
-			//var errors = Validate(inputData);
+			var errors = Validate(inputData);
 
 			if (!result.HasErrors)
 			{
@@ -27,6 +27,13 @@ namespace ProjectVideo.Infrastructure.Interactors
 			}
 
 			return result;
+		}
+
+		private List<string> Validate(CreateProposalInput inputData)
+		{
+			// TODO create a validator
+			List<string> errors = [];
+			return errors;
 		}
 
 		public async Task<InteractorResult> UpdateProposal(UpdateProposalInput inputData)
@@ -87,10 +94,12 @@ namespace ProjectVideo.Infrastructure.Interactors
 					Name = m.Name,
 					Role = m.Role,
 				}).ToList(),
-				Links = inputData.Links.Select(l => new ProposalLink
-				{
-					Url = l.Url,
-					Name = l.Name
+				Links = inputData.Links
+					.Where(x => x.Name != null)
+					.Where(x => x.Url != null)
+					.Select(l => new ProposalLink {
+						Url = l.Url!,
+						Name = l.Name!
 				}).ToList()
 			};
 		}

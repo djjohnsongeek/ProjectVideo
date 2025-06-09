@@ -70,7 +70,7 @@ namespace ProjectVideo.Web.Controllers
 		
 		private CreateProposalInput BuildInput(ProposalFormViewModel model)
 		{
-			// TO
+			// TODO validate?
 			var inputData = new CreateProposalInput
 			{
 				ContactEmail = model.Email!,
@@ -93,13 +93,13 @@ namespace ProjectVideo.Web.Controllers
 				ComputerDescription = model.ComputerDescription,
 				EstimatedProjectCost = model.EstimatedProjectCost,
 
-				Links = model.VideoLinks.Select(vl => new ProposalLinkItem
+				Links = model.VideoLinks.Select(vl => new ProposalLinkDetails
 				{
 					Name = vl.Name,
 					Url = vl.Url
 				}).ToList(),
 
-				Members = model.TeamMembers.Select(tm => new ProposalMemberSummary
+				Members = model.TeamMembers.Select(tm => new ProposalMemberDetails
 				{
 					Name = tm.Name,
 					Role = tm.Role,

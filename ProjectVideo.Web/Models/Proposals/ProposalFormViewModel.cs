@@ -73,13 +73,13 @@ namespace ProjectVideo.Web.Models.Proposals
 
 	public class ProposalTeamMember
 	{
-		public string? Name { get; set; }
-		public string? Role { get; set; }
+		public required string Name { get; set; }
+		public required string Role { get; set; }
 	}
 
 	public class ProposalLink
 	{
-		public string? Name { get; set; }
-		public string? Url { get; set; }
+		public required string Name { get; set; }
+		public required string Url { get; set; }
 	}
 }

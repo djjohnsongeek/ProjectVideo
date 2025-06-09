@@ -50,7 +50,7 @@ namespace ProjectVideo.Web.Models.Proposals
 
         public required ProposalUpdateViewModel CoordinatorFields { get; set;}
 
-        public List<VideoLink> Links = [];
-        public List<ProposalMember> Members = [];
+        public List<ProposalLinkDetails> Links = [];
+        public List<ProposalMemberDetails> Members = [];
     }
 }

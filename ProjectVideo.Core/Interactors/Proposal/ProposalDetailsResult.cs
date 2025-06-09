@@ -31,9 +31,8 @@
 
         public required CoordinatorProperties CoordinatorProperties { get; init; }
 
-        public List<VideoLink> Links = [];
-        public List<ProposalMemberSummary> Members = [];
-
+        public List<ProposalLinkDetails> Links = [];
+        public List<ProposalMemberDetails> Members = [];
 
 
         public static ProposalDetails Empty => new ProposalDetails
@@ -52,12 +51,6 @@
             CurrentEquipment = string.Empty,
             CoordinatorProperties = new CoordinatorProperties()
         };
-    }
-
-    public class VideoLink
-    {
-        public required string Name { get; init; }
-        public required string Url { get; init; }
     }
 
     public class CoordinatorProperties

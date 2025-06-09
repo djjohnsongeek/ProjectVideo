@@ -13,8 +13,7 @@ namespace ProjectVideo.Web.Models.Proposals
 		public string? CoordinatorNotes { get; set; }
 
 		[Display(Name = "Date Interview Occured")]
-
-		[DataType(DataType.DateTime)]
+		[DataType(DataType.Date)]
 		public DateTime? InterviewDate { get; set; }
 	}
 }

@@ -95,12 +95,12 @@ namespace ProjectVideo.Infrastructure.Interactors
 					ComputerDescription = entity.ComputerDescription,
 					HasAudioSpace = entity.HasAudioSpace,
 					AudioSpaceDescription = entity.AudioSpaceDescription,
-					Links = entity.Links.Select(x => new VideoLink
+					Links = entity.Links.Select(x => new ProposalLinkDetails
 					{
 						Name = x.Name,
 						Url = x.Url
 					}).ToList(),
-					Members = entity.Members.Select(x => new ProposalMember
+					Members = entity.Members.Select(x => new ProposalMemberDetails
 					{
 						Name = x.Name,
 						Role = x.Role

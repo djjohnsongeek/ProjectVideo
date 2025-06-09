@@ -2,8 +2,8 @@
 {
 	public class CreateProposalInput : InteractorResult
 	{
-		public List<ProposalLinkItem> Links = [];
-		public List<ProposalMemberSummary> Members = [];
+		public List<ProposalLinkDetails> Links = [];
+		public List<ProposalMemberDetails> Members = [];
 
 		public required string ContactEmail;
 		public required string ContactName;
