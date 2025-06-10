@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data.Entities;
-using System.Data;
 
 namespace ProjectVideo.Infrastructure.Data
 {
@@ -10,15 +9,28 @@ namespace ProjectVideo.Infrastructure.Data
 	{
 		public ProjectVideoDbContext(DbContextOptions<ProjectVideoDbContext> options) : base(options) { }
 
+        // Proposals
 		public DbSet<Proposal> Proposals { get; set; }
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
-		public DbSet<Entities.ProposalMember> ProposalMembers { get; set; }
+		public DbSet<ProposalMember> ProposalMembers { get; set; }
+
+        // Users
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 		public DbSet<Role> Roles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Proposal>(Configure);
+            modelBuilder.Entity<User>(Configure);
+        }
+
+        private void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.HasMany(x => x.Roles)
+                .WithMany(x => x.Users)
+                .UsingEntity<UserRole>();
         }
 
         private void Configure(EntityTypeBuilder<Proposal> builder)

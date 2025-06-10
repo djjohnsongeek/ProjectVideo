@@ -4,8 +4,9 @@
 	{
 		public int RoleId { get; set; }
 		public required string Name { get; set; }
-
 		public required string RoleGroup { get; set; }
 		public string? Description { get; set; }
+
+		public List<User> Users { get; set; } = [];
 	}
 }
