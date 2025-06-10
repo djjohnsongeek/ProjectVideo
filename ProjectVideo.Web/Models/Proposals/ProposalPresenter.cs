@@ -86,6 +86,7 @@ namespace ProjectVideo.Web.Models.Proposals
                     Status = result.Details.CoordinatorProperties.Status,
                     InterviewDate = result.Details.CoordinatorProperties.InterviewDate,
                     ProposalId = result.Details.ProposalId,
+                    InterviewLink = result.Details.CoordinatorProperties.InterviewLink,
                 }
             };
         }

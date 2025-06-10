@@ -110,6 +110,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 						InterviewDate = entity.InterviewDate,
 						CoordinatorNotes = entity.CoordinatorNotes,
 						Status = entity.Status,
+						InterviewLink = entity.InterviewLink,
 					}
 					
                 };

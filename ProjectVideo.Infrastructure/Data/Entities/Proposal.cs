@@ -27,12 +27,14 @@ namespace ProjectVideo.Infrastructure.Data.Entities
 		public string? ComputerDescription { get; set; }
 		public int EstimatedProjectCost { get; set; }
 
-		// Coordinator Files
+		// Coordinator Properties
 		public string? CoordinatorNotes { get; set; }
 
 		public DateTime? InterviewDate { get; set; }
 
 		public ProposalStatus Status { get; set; }
+
+		public string? InterviewLink { get; set; }
 
 		// Navigation Props
 

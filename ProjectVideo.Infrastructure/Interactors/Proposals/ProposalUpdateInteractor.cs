@@ -50,6 +50,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 			}
 
 			// TODO Validate
+			// if interview date is null, then the status must be pending interview or denied
 
 			if (!result.HasErrors)
 			{
@@ -57,6 +58,7 @@ namespace ProjectVideo.Infrastructure.Interactors
 				proposal!.CoordinatorNotes = inputData.CoordinatorNotes;
 				proposal.Status = inputData.Status;
 				proposal.InterviewDate = inputData.InterviewDate;
+				proposal.InterviewLink = inputData.InterviewLink;
 
 				// Update the entity
 				await UpdateChanges(result, errorContext: "Failed to update tthe Proposal");

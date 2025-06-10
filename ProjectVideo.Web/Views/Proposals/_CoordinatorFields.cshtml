@@ -15,6 +15,19 @@
                 <input class="form-control" asp-for="InterviewDate" />
             </div>
             <div class="mb-3">
+                <label action="form-label" asp-for="InterviewLink"></label>
+                <div class="input-group mb-3">
+                    <input class="form-control" asp-for="InterviewLink" />
+                    @if (!string.IsNullOrWhiteSpace(Model.InterviewLink))
+                    {
+                        <a class="btn btn-primary" href="@Model.InterviewLink" target="_blank">
+                            <i class="bi bi-link"></i>
+                            Open Link
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="mb-3">
                 <label class="form-label" asp-for="CoordinatorNotes"></label>
                 <textarea class="form-control" asp-for="CoordinatorNotes"></textarea>
             </div>

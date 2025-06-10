@@ -7,5 +7,7 @@
 		public string? CoordinatorNotes { get; init; }
 		public ProposalStatus Status { get; init; }
 
+		public string? InterviewLink { get; init; }
+
 	}
 }

@@ -123,6 +123,7 @@ namespace ProjectVideo.Web.Controllers
 				CoordinatorNotes = model.CoordinatorNotes,
 				Status = model.Status,
 				ProposalId = model.ProposalId,
+				InterviewLink = model.InterviewLink
 			};
 
 			return inputData;

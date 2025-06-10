@@ -79,6 +79,10 @@
                                 </div>
                             </div>
                         }
+                        @if (Model.Members.Count == 0)
+                        {
+                            <div class="alert alert-info">No Members Found</div>
+                        }
                     </div>
                 </div>
 
@@ -152,6 +156,10 @@
                             @foreach (var link in Model.Links)
                             {
                                 <a class="btn btn-outline-primary" href="@link.Url">@link.Name</a>
+                            }
+                            @if (Model.Links.Count == 0)
+                            {
+                                <dib class="alert alert-info">No Links Found</dib>
                             }
                         </div>
                     </div>
