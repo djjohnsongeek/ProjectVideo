@@ -43,9 +43,17 @@
     }
     renderInputs() {
         const rows = [];
+
         for (let i = 0; i < this.inputGroups.length; i++) {
+
+            // Don't show a border on the last item
+            let borderClasses = "border-bottom border-2";
+            if (i == this.inputGroups.length - 1) {
+                borderClasses = "";
+            }
+
             const containerRow = document.createElement("div");
-            containerRow.className = "row mb-3 pt-1 pb-4 border-bottom border-2";
+            containerRow.className = `row mb-3 pt-1 pb-4 ${borderClasses}`;
             for (let j = 0; j < this.inputGroups[i].inputs.length; j++) {
                 const containerCol = document.createElement("div");
                 containerCol.className = "col-md-5";
