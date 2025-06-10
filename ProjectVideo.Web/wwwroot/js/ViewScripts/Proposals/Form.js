@@ -14,6 +14,19 @@
         this.membersInputAddBtn = document.getElementById("members-input-add-btn");
         this.linksInputAddBtn = document.getElementById("links-input-add-btn");
 
+        for (const input of document.getElementsByClassName("reveal-input")) {
+            input.addEventListener("click", (event) => {
+
+                const targetElement = document.getElementById(event.currentTarget.dataset.target);
+                if (event.currentTarget.checked) {
+                    targetElement.classList.remove("d-none");
+                }
+                else {
+                    targetElement.classList.add("d-none");
+                }
+            });
+        }
+
         // Members inputs
         this.membersComplexInputCollection = new ComplexInputCollection(this.membersInputContainerId);
         this.membersComplexInputCollection.addInputGroup(this.buildDefaultMemberInputGroup());

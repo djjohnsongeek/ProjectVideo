@@ -20,7 +20,7 @@ namespace ProjectVideo.Web.Models.Proposals
 		[Display(Name = "Organization History")]
 		public string? OrganizationHistory { get; set; }
 
-		[Display(Name = "Are Your Staff Paid?")]
+		[Display(Name = "Our Staff are Paid")]
 		public bool StaffArePaid { get; set; }
 
 		[Display(Name = "Project Title")]
@@ -50,7 +50,7 @@ namespace ProjectVideo.Web.Models.Proposals
 		public string? CurrentEquipment { get; set; }
 
 
-		[Display(Name = "Do you have an audio space for recording?")]
+		[Display(Name = "We have an audio space for recording")]
 		public bool HasAudioSpace { get; set; }
 
 
@@ -59,7 +59,7 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		// TODO: Audio Space image
 
-		[Display(Name = "Do you have a Computer?")]
+		[Display(Name = "We have a Computer")]
 		public bool HasComputer { get; set; }
 
 		[Display(Name = "Computer Description")]

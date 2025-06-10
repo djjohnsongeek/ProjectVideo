@@ -60,13 +60,10 @@
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="StaffArePaid"></label>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="StaffArePaid" />
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="StaffArePaid">
+                                    <label class="form-check-label" asp-for="StaffArePaid"></label>
                                 </div>
-                                <span class="form-text">
-                                    Justification for this question.
-                                </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
@@ -143,26 +140,26 @@
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="HasAudioSpace"></label>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="HasAudioSpace" />
+                                <div class="form-check">
+                                    <input class="form-check-input reveal-input" asp-for="HasAudioSpace" data-target="audioSpace-description-div">
+                                    <label class="form-check-label" asp-for="HasAudioSpace"></label>
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 d-none" id="audioSpace-description-div">
                                 <label class="form-label" asp-for="AudioSpaceDescription"></label>
                                 <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="HasComputer"></label>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" asp-for="HasComputer" />
+                                <div class="form-check">
+                                    <input class="form-check-input reveal-input" asp-for="HasComputer" data-target="computer-description-div">
+                                    <label class="form-check-label" asp-for="HasComputer"></label>
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            <div id="computer-description-div" class="mb-3 d-none">
                                 <label class="form-label" asp-for="ComputerDescription"></label>
                                 <textarea class="form-control" asp-for="ComputerDescription"></textarea>
                                 <span class="form-text">
-                                    Is your computer a Mac or PC and what are it's specifications?
+                                    Is your computer a Mac or PC? What are it's specifications?
                                 </span>
                             </div>
                         </fieldset>
