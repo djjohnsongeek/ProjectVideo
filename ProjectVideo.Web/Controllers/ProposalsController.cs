@@ -93,16 +93,22 @@ namespace ProjectVideo.Web.Controllers
 				ComputerDescription = model.ComputerDescription,
 				EstimatedProjectCost = model.EstimatedProjectCost,
 
-				Links = model.VideoLinks.Select(vl => new ProposalLinkDetails
+				Links = model.VideoLinks
+					.Where(x => !string.IsNullOrWhiteSpace(x.Name))
+					.Where(x => !string.IsNullOrWhiteSpace(x.Url))
+					.Select(vl => new ProposalLinkDetails
 				{
-					Name = vl.Name,
-					Url = vl.Url
+					Name = vl.Name!,
+					Url = vl.Url!
 				}).ToList(),
 
-				Members = model.TeamMembers.Select(tm => new ProposalMemberDetails
+				Members = model.TeamMembers
+					.Where(x => !string.IsNullOrWhiteSpace(x.Name))
+					.Where(x => !string.IsNullOrWhiteSpace(x.Role))
+					.Select(tm => new ProposalMemberDetails
 				{
-					Name = tm.Name,
-					Role = tm.Role,
+					Name = tm.Name!,
+					Role = tm.Role!,
 				}).ToList()
 			};
 
