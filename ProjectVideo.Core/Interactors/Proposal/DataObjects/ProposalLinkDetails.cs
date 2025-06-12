@@ -1,4 +1,4 @@
-﻿namespace ProjectVideo.Core.Interactors.Proposal
+﻿namespace ProjectVideo.Core.Interactors.DataObjects
 {
 	public class ProposalLinkDetails
 	{
@@ -7,7 +7,8 @@
 		public required string Url { get; init; }
 		public required string Name { get; init; }
 
-		public static ProposalLinkDetails Empty => new ProposalLinkDetails {
+		public static ProposalLinkDetails Empty => new ProposalLinkDetails
+		{
 			Name = string.Empty,
 			Url = string.Empty
 		};

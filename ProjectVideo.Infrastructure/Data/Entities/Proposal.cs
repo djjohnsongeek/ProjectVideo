@@ -1,4 +1,4 @@
-﻿using ProjectVideo.Core.Interactors.Proposal;
+﻿using ProjectVideo.Core.Interactors.DataObjects;
 
 namespace ProjectVideo.Infrastructure.Data.Entities
 {

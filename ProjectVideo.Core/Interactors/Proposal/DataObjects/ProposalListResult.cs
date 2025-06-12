@@ -1,6 +1,4 @@
-﻿using ProjectVideo.Core.Interactors.Proposal;
-
-namespace ProjectVideo.Core.Interactors
+﻿namespace ProjectVideo.Core.Interactors.DataObjects
 {
 	public class ProposalListResult : InteractorResult
 	{

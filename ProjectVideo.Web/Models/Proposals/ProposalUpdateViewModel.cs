@@ -1,4 +1,4 @@
-﻿using ProjectVideo.Core.Interactors.Proposal;
+﻿using ProjectVideo.Core.Interactors.DataObjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectVideo.Web.Models.Proposals

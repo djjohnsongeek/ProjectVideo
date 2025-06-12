@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectVideo.Core.Interactors.Proposal;
+using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data.Entities;
 
 namespace ProjectVideo.Infrastructure.Data

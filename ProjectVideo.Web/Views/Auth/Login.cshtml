@@ -1,0 +1,26 @@
+﻿@model ProjectVideo.Web.Models.Auth.LoginViewModel
+
+<div class="card mt-3 mx-auto" style="max-width: 600px;">
+    <div class="card-header">
+        <h1 class="card-title h3">Login</h1>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label" asp-for="UserName"></label>
+                <input class="form-control" asp-for="UserName" />
+                <span class="form-text text-danger"asp-validation-for="UserName"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Password"></label>
+                <input class="form-control" asp-for="Password" type="password" />
+                <span class="form-text text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3 d-grid gap-2">
+                <button class="btn btn-primary">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

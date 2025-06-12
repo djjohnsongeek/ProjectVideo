@@ -8,4 +8,5 @@ VALUES
 ('Video Editor', 'EthnicTeam', 'Edits the videos.'),
 ('Audio Engineer', 'EthinicTeam', 'Music and Sound Effects'),
 ('Staff', 'ProjectVideoTeam', 'Staff things'),
-('Coordinator', 'ProjectVideoTeam', 'Staff things')
+('Coordinator', 'ProjectVideoTeam', 'Staff things'),
+('Admin', 'ProjectVideoTeam', 'Admin functionality')

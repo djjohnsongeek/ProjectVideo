@@ -1,4 +1,4 @@
-﻿namespace ProjectVideo.Core.Interactors.Proposal
+﻿namespace ProjectVideo.Core.Interactors.DataObjects
 {
 	public class ProposalMemberDetails
 	{

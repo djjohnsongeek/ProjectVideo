@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data;
@@ -21,7 +22,11 @@ namespace ProjectVideo.Web
                     .EnableDetailedErrors();
             });
 
-            builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
+			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie();
+
+			// Application Services
+			builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
             builder.Services.AddScoped<IProposalFetchInteractor, ProposalFetchInteractor>();
 
             var app = builder.Build();
@@ -39,6 +44,7 @@ namespace ProjectVideo.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

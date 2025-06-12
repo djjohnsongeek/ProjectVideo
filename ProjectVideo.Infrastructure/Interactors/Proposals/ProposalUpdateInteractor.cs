@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.Proposal;
+using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Data.Entities;
 

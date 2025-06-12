@@ -1,4 +1,6 @@
-﻿namespace ProjectVideo.Core.Interactors.Proposal
+﻿using ProjectVideo.Core.Interactors.DataObjects;
+
+namespace ProjectVideo.Core.Interactors.Proposal
 {
 	public interface IProposalUpdateInteractor
 	{
