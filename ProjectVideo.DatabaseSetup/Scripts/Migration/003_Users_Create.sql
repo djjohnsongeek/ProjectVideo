@@ -2,7 +2,7 @@ CREATE TABLE dbo.Users
 	(
 	UserId int NOT NULL IDENTITY (1, 1),
 	Email nvarchar(128) NOT NULL,
-	HashedPassword nvarchar(256) NOT NULL,
+	HashedPassword nvarchar(MAX) NOT NULL,
 	FirstName nvarchar(64) NOT NULL,
 	LastName nvarchar(64) NOT NULL
 	)  ON [PRIMARY]
