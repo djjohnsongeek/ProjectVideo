@@ -5,10 +5,11 @@ namespace ProjectVideo.DatabaseSetup
 	internal class Program
 	{
         private const string SEED_ACTION = "seed";
+        private const string DB_INIT = "init";
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
 		{
-            (bool seed, string connStr) = ParseArgs(args);
+            (bool seed, bool init, string connStr) = ParseArgs(args);
             if (string.IsNullOrEmpty(connStr))
             {
                 WriteLine("No SQL connection string argument found.", ConsoleColor.Yellow);
@@ -22,6 +23,11 @@ namespace ProjectVideo.DatabaseSetup
                 DatabaseUpgradeResult result = dbTools.RunMigrations(seed);
                 if (result.Successful)
                 {
+                    if (init)
+                    {
+                        await dbTools.InitDatabseForProduction();
+                    }
+
                     WriteLine("Database migration successful!", ConsoleColor.Green);
                     Environment.ExitCode = 0;
                 }
@@ -34,8 +40,13 @@ namespace ProjectVideo.DatabaseSetup
             catch (Exception e)
             {
                 WriteLine($"An unexpected error occured: {e.Message}");
+                if (e.InnerException != null)
+                {
+                    WriteLine($"Inner Exception: {e.InnerException}", ConsoleColor.Yellow);
+                }
                 WriteLine("--- Stack Trace ---");
                 WriteLine(e.StackTrace);
+
                 Environment.ExitCode = 1;
             }
         }
@@ -51,11 +62,17 @@ namespace ProjectVideo.DatabaseSetup
             Console.ResetColor();
         }
 
-        private static (bool seed, string connectionString) ParseArgs(string[] args)
+        private static (bool seed, bool init, string connectionString) ParseArgs(string[] args)
         {
-            (bool seed, string connStr) result = (false, "");
+            (bool seed, bool init, string connStr) result = (false, false, "");
 
-            if (args.Length == 1 || args.Length == 2)
+            foreach (string s in args)
+            {
+                Console.Write(s + ",");
+            }
+            Console.WriteLine();
+
+            if (args.Length < 4 && args.Length > 1)
             {
                 foreach (string arg in args)
                 {
@@ -63,12 +80,19 @@ namespace ProjectVideo.DatabaseSetup
                     {
                         result.seed = true;
                     }
-                    else if (arg.Contains("Server=") || arg.Contains("Data Source="))
+
+                    if (arg == DB_INIT)
+                    {
+                        result.init = true;
+                    }
+
+                    if (arg.Contains("Server=") || arg.Contains("Data Source="))
                     {
                         result.connStr = arg;
                     }
                 }
             }
+            Console.WriteLine(result);
 
             return result;
         }

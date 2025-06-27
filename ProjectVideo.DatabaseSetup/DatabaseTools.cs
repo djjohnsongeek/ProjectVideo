@@ -2,6 +2,10 @@
 using DbUp.Engine;
 using DbUp.Support;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using ProjectVideo.Infrastructure;
+using ProjectVideo.Infrastructure.Data;
+using ProjectVideo.Infrastructure.Data.Entities;
 using System.Reflection;
 
 namespace ProjectVideo.DatabaseSetup
@@ -55,6 +59,37 @@ namespace ProjectVideo.DatabaseSetup
             var result = upgradeEngine.PerformUpgrade();
             var executedScripts = upgradeEngine.GetExecutedScripts();
             return result;
+        }
+
+        public async Task InitDatabseForProduction()
+        {
+            var options = new DbContextOptionsBuilder<ProjectVideoDbContext>();
+            options.UseSqlServer(ConnectionString)
+                .EnableDetailedErrors()
+                .EnableSensitiveDataLogging();
+
+            var dbContext = new ProjectVideoDbContext(options.Options);
+            var pwHasher = new PasswordHasher();
+
+
+            var adminRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "admin").FirstOrDefaultAsync();
+
+            if (adminRole != null)
+            {
+                var adminUser = new User
+                {
+                    Email = "danieleejohnson@gmail.com",
+                    FirstName = "Daniel",
+                    LastName = "Johnson",
+                    HashedPassword = pwHasher.HashPassword("password"),
+                    UserName = "daniel-johnson",
+                };
+
+                adminUser.Roles.Add(adminRole);
+
+                dbContext.Users.Add(adminUser);
+                await dbContext.SaveChangesAsync();
+            }
         }
 
 

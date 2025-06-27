@@ -9,6 +9,6 @@
         public required string HashedPassword { get; set; }
         public required string Email { get; set; }
 
-        public List<Role> Roles { get; set; } = [];
+        public List<Role> Roles { get; } = [];
     }
 }

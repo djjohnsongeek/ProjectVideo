@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.IdentityModel.Abstractions;
+using Microsoft.IdentityModel.Tokens;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data.Entities;
 
@@ -18,17 +21,37 @@ namespace ProjectVideo.Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 		public DbSet<Role> Roles { get; set; }
+        public DbSet<EthnicTeamRole> EthnicTeamRoles { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Proposal>(Configure);
             modelBuilder.Entity<User>(Configure);
+            modelBuilder.Entity<UserRole>(Configure);
+            modelBuilder.Entity<Role>(Configure);
+        }
+
+        private void Configure(EntityTypeBuilder<Role> builder)
+        {
+            builder.ToTable("Roles");
+        }
+
+        private void Configure(EntityTypeBuilder<UserRole> builder)
+        {
+            builder.ToTable("UserRoles");
+
+            builder.HasOne(x => x.User)
+                .WithMany();
+
+            builder.HasOne(x => x.Role)
+                .WithMany();
         }
 
         private void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasMany(x => x.Roles)
+            builder.ToTable("Users")
+                .HasMany(x => x.Roles)
                 .WithMany(x => x.Users)
                 .UsingEntity<UserRole>();
         }

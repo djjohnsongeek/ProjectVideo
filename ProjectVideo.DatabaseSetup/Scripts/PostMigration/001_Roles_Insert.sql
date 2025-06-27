@@ -1,12 +1,13 @@
 TRUNCATE TABLE dbo.Roles;
 
-INSERT INTO dbo.Roles (Name, RoleGroup, Description)
-VALUES 
-('Ministry Director', 'EthnicTeam', 'The person organized everyone and leads the project.'),
-('Studio / TeamManager', 'EthnicTeam', 'Responsible for taking still photos.'),
-('Camera Operator', 'EthnicTeam', 'Takes raw footage and organizes it, adds sound, graphics, and more.'),
-('Video Editor', 'EthnicTeam', 'Edits the videos.'),
-('Audio Engineer', 'EthinicTeam', 'Music and Sound Effects'),
-('Staff', 'ProjectVideoTeam', 'Staff things'),
-('Coordinator', 'ProjectVideoTeam', 'Staff things'),
-('Admin', 'ProjectVideoTeam', 'Admin functionality')
+
+SET IDENTITY_INSERT dbo.Roles ON;
+
+INSERT INTO dbo.Roles ([RoleId], [Name], [Description])
+VALUES
+( 1, N'Staff', N'Staff things' ),
+( 2, N'Coordinator', N'Staff things' ),
+( 3, N'Admin', N'Admin functionality' )
+
+
+SET IDENTITY_INSERT dbo.Roles OFF;

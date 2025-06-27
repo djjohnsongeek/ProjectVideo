@@ -85,8 +85,7 @@ BEGIN
 CREATE TABLE [dbo].[Roles](
 	[RoleId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](32) NOT NULL,
-	[Description] [nvarchar](128) NULL,
-	[RoleGroup] [nvarchar](32) NOT NULL,
+	[Description] [nvarchar](256) NULL,
  CONSTRAINT [PK_EthicTeamRoles] PRIMARY KEY CLUSTERED 
 (
 	[RoleId] ASC
@@ -97,10 +96,5 @@ GO
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DF_Proposals_Status]') AND type = 'D')
 BEGIN
 ALTER TABLE [dbo].[Proposals] ADD  CONSTRAINT [DF_Proposals_Status]  DEFAULT (N'PendingInterview') FOR [Status]
-END
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DF_EthnicTeamRoles_RoleGroup]') AND type = 'D')
-BEGIN
-ALTER TABLE [dbo].[Roles] ADD  CONSTRAINT [DF_EthnicTeamRoles_RoleGroup]  DEFAULT (N'EthnicTeam') FOR [RoleGroup]
 END
 GO

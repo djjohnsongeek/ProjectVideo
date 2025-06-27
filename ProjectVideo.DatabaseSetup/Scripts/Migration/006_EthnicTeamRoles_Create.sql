@@ -1,0 +1,15 @@
+CREATE TABLE dbo.EthnicTeamRoles
+	(
+	EthnicTeamRoleId int NOT NULL IDENTITY (1, 1),
+	Name nvarchar(50) NOT NULL,
+	Description nvarchar(256) NULL
+	)  ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.EthnicTeamRoles ADD CONSTRAINT
+	PK_EthnicTeamRoles PRIMARY KEY CLUSTERED 
+	(
+	EthnicTeamRoleId
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO

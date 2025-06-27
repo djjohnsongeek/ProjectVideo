@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectVideo.Core.Interactors;
+using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Core.Interactors.Proposal;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Data.Entities;
@@ -9,13 +10,13 @@ using ProjectVideo.Tests.Setup;
 namespace ProjectVideo.Tests
 {
 	[Collection(nameof(RepoCollection))]
-	public class ProposalUpdateInteractorShould : IAsyncLifetime
+	public class ProposalUpdateInteractor_Should : IAsyncLifetime
 	{
         private readonly RepoCollectionFixture _fixture;
         private readonly IProposalUpdateInteractor _updateInteractor;
 		private readonly ProjectVideoDbContext _dbContext;
 
-		public ProposalUpdateInteractorShould(RepoCollectionFixture repofixture)
+		public ProposalUpdateInteractor_Should(RepoCollectionFixture repofixture)
         {
             _fixture = repofixture;
             _dbContext = new ProjectVideoDbContext(_fixture.GetDbContextOptions());
@@ -55,9 +56,10 @@ namespace ProjectVideo.Tests
 				HasComputer = true,
 				ComputerDescription = "Lenovo Loq Laptop. 8 cores, 16 processors and a RTX 4050 GPU.",
 				EstimatedProjectCost = 5000,
+				ContactPhoneNumber = "123-456-7890",
 
-				Links = [
-					new ProposalLinkItem
+                Links = [
+					new ProposalLinkDetails
 					{
 						Name = "Google Link",
 						Url = "https://www.google.com"

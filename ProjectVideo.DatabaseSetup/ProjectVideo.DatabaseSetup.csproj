@@ -21,5 +21,9 @@
     <EmbeddedResource Include="Scripts/**/*.sql" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectVideo.Infrastructure\ProjectVideo.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
