@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using ProjectVideo.Core.Interactors.Proposal;
+using ProjectVideo.Core.Interactors;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Interactors;
 
@@ -26,6 +26,7 @@ namespace ProjectVideo.Web
 				.AddCookie();
 
 			// Application Services
+            builder.Services.AddScoped<IAuthFetchInteractor, AuthFetchInteractor>();
 			builder.Services.AddScoped<IProposalUpdateInteractor, ProposalUpdateInteractor>();
             builder.Services.AddScoped<IProposalFetchInteractor, ProposalFetchInteractor>();
 

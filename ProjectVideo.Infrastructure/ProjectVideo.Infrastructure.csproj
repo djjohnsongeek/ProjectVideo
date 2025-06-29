@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ProjectVideo.Core\ProjectVideo.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Auth\" />
+  </ItemGroup>
+
 </Project>

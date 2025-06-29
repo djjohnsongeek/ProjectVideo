@@ -1,10 +1,6 @@
-﻿using ProjectVideo.Core.Interactors.Auth.DataObjects;
+﻿namespace ProjectVideo.Core.Interactors.DataObjects;
 
-namespace ProjectVideo.Core.Interactors.DataObjects
+public class AuthenticateUserResult : InteractorResult
 {
-	public class AuthenticateUserResult : InteractorResult
-	{
-		public UserDetails? UserDetails { get; set; }
-		public bool IsAuthenticated { get; set; }
-	}
+	public required UserDetails UserDetails { get; set; }
 }

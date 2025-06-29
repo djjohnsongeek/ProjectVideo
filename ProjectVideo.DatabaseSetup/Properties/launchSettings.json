@@ -6,7 +6,7 @@
     },
     "Apply Migrations & Seed": {
       "commandName": "Project",
-      "commandLineArgs": "seed init \"Data Source=(localdb)\\MSSQLLocalDB;Database=ProjectVideo;Integrated Security=True;\""
+      "commandLineArgs": "seed \"Data Source=(localdb)\\MSSQLLocalDB;Database=ProjectVideo;Integrated Security=True;\""
     }
   }
 }

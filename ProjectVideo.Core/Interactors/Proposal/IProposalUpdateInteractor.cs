@@ -1,11 +1,10 @@
 ﻿using ProjectVideo.Core.Interactors.DataObjects;
 
-namespace ProjectVideo.Core.Interactors.Proposal
-{
-	public interface IProposalUpdateInteractor
-	{
-		Task<InteractorResult> CreateProposal(CreateProposalInput inputData);
+namespace ProjectVideo.Core.Interactors;
 
-		Task<InteractorResult> UpdateProposal(UpdateProposalInput inputData);
-	}
+public interface IProposalUpdateInteractor
+{
+	Task<InteractorResult> CreateProposal(CreateProposalInput inputData);
+
+	Task<InteractorResult> UpdateProposal(UpdateProposalInput inputData);
 }

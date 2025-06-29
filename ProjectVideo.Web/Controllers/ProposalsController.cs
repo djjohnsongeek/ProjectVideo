@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectVideo.Core.Interactors.Proposal;
+using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Web.Models.Proposals;
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectVideo.Core.Interactors;
 
 namespace ProjectVideo.Web.Controllers
 {
@@ -9,6 +10,14 @@ namespace ProjectVideo.Web.Controllers
 		public BaseController(ILogger<BaseController> logger)
 		{
 			_logger = logger;
+		}
+
+		public void AddInteractorErrors(InteractorResult result)
+		{
+			foreach (var interactorError in result.Errors)
+			{
+				ModelState.AddModelError(string.Empty, interactorError.Message);
+			}
 		}
 	}
 }

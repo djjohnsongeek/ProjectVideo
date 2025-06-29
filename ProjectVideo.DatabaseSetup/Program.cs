@@ -5,11 +5,10 @@ namespace ProjectVideo.DatabaseSetup
 	internal class Program
 	{
         private const string SEED_ACTION = "seed";
-        private const string DB_INIT = "init";
 
         static async Task Main(string[] args)
 		{
-            (bool seed, bool init, string connStr) = ParseArgs(args);
+            (bool seed, string connStr) = ParseArgs(args);
             if (string.IsNullOrEmpty(connStr))
             {
                 WriteLine("No SQL connection string argument found.", ConsoleColor.Yellow);
@@ -21,14 +20,10 @@ namespace ProjectVideo.DatabaseSetup
             try
             {
                 DatabaseUpgradeResult result = dbTools.RunMigrations(seed);
-                if (result.Successful)
+                WriteLine("Database migration successful!", ConsoleColor.Green);
+                if (result.Successful && seed)
                 {
-                    if (init)
-                    {
-                        await dbTools.InitDatabseForProduction();
-                    }
-
-                    WriteLine("Database migration successful!", ConsoleColor.Green);
+                    await dbTools.SeedWithEF();
                     Environment.ExitCode = 0;
                 }
                 else
@@ -62,37 +57,22 @@ namespace ProjectVideo.DatabaseSetup
             Console.ResetColor();
         }
 
-        private static (bool seed, bool init, string connectionString) ParseArgs(string[] args)
+        private static (bool seed, string connectionString) ParseArgs(string[] args)
         {
-            (bool seed, bool init, string connStr) result = (false, false, "");
+            (bool seed, string connStr) result = (false, "");
 
-            foreach (string s in args)
+            foreach (string arg in args)
             {
-                Console.Write(s + ",");
-            }
-            Console.WriteLine();
-
-            if (args.Length < 4 && args.Length > 1)
-            {
-                foreach (string arg in args)
+                if (arg == SEED_ACTION)
                 {
-                    if (arg == SEED_ACTION)
-                    {
-                        result.seed = true;
-                    }
+                    result.seed = true;
+                }
 
-                    if (arg == DB_INIT)
-                    {
-                        result.init = true;
-                    }
-
-                    if (arg.Contains("Server=") || arg.Contains("Data Source="))
-                    {
-                        result.connStr = arg;
-                    }
+                if (arg.Contains("Server=") || arg.Contains("Data Source="))
+                {
+                    result.connStr = arg;
                 }
             }
-            Console.WriteLine(result);
 
             return result;
         }

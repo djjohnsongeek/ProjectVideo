@@ -61,7 +61,7 @@ namespace ProjectVideo.DatabaseSetup
             return result;
         }
 
-        public async Task InitDatabseForProduction()
+        public async Task SeedWithEF()
         {
             var options = new DbContextOptionsBuilder<ProjectVideoDbContext>();
             options.UseSqlServer(ConnectionString)
@@ -70,7 +70,6 @@ namespace ProjectVideo.DatabaseSetup
 
             var dbContext = new ProjectVideoDbContext(options.Options);
             var pwHasher = new PasswordHasher();
-
 
             var adminRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "admin").FirstOrDefaultAsync();
 
