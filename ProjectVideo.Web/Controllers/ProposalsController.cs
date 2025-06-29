@@ -23,6 +23,7 @@ namespace ProjectVideo.Web.Controllers
 		public async Task<IActionResult> Index()
 		{
 			ProposalListResult result = await _fetchInteractor.GetProposals();
+			AddInteractorErrors(result);
 			ProposalsIndexViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);
 		}
@@ -30,8 +31,9 @@ namespace ProjectVideo.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Form()
 		{
-			ProposalFormResult interactorResult = await _fetchInteractor.GetFormRequirements();
-			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(interactorResult);
+			ProposalFormResult result = await _fetchInteractor.GetFormRequirements();
+			AddInteractorErrors(result);
+			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);
 		}
 
@@ -39,6 +41,7 @@ namespace ProjectVideo.Web.Controllers
 		public async Task<IActionResult> Details(int id)
 		{
 			ProposalDetailsResult result = await _fetchInteractor.GetProposalDetails(id);
+			AddInteractorErrors(result);
 			ProposalDetailsViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);
 		}
@@ -50,6 +53,7 @@ namespace ProjectVideo.Web.Controllers
 			{
 				CreateProposalInput inputData = BuildInput(model);
 				var result = await _updateInteractor.CreateProposal(inputData);
+				AddInteractorErrors(result);
 				if (!result.HasErrors)
 				{
 					return View("Views/Forms/Submitted.cshtml");
@@ -64,6 +68,7 @@ namespace ProjectVideo.Web.Controllers
 		{
 			UpdateProposalInput inputData = BuildInput(updateModel);
 			var result = await _updateInteractor.UpdateProposal(inputData);
+			AddInteractorErrors(result);
 			return RedirectToAction("Details", new { id = updateModel.ProposalId });
 		}
 
