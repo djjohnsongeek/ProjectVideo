@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using ProjectVideo.Core.Interactors;
+using ProjectVideo.Infrastructure.Auth;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Interactors;
 
@@ -24,6 +27,9 @@ namespace ProjectVideo.Web
 
 			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie();
+            builder.Services.AddAuthorization();
+            builder.Services.AddSingleton<IAuthorizationPolicyProvider, AppPolicyProvider>();
+            builder.Services.AddScoped<IClaimsTransformation, AppClaimsTransformer>();
 
 			// Application Services
             builder.Services.AddScoped<IAuthFetchInteractor, AuthFetchInteractor>();
