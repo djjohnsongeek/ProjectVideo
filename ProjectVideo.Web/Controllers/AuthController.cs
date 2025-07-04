@@ -23,6 +23,13 @@ public class AuthController : BaseController
 		return View(LoginViewModel.Empty);
 	}
 
+	[HttpGet]
+	public IActionResult Logout()
+	{
+		HttpContext.SignOutAsync();
+		return RedirectToAction("Index", "Home");
+	}
+
 	[HttpPost]
 	public async Task<IActionResult> Login(LoginViewModel loginModel)
 	{
@@ -55,6 +62,7 @@ public class AuthController : BaseController
 				ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
 
 				await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
 				return RedirectToAction("Index", "Home");
 			}
 		}

@@ -33,7 +33,7 @@
                                 Project Proposals
                             </a>
                         </li>
-                        <li>
+@*                         <li>
                             <a class="nav-link" href="#">
                                 <i class="bi bi-people-fill"></i>
                                 Ethnic Teams
@@ -44,8 +44,14 @@
                                 <i class="bi bi-person-vcard"></i>
                                 Trainers
                             </a>
-                        </li>
+                        </li> *@
                     </ul>
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Auth" asp-action="Logout" class="btn btn-warning">
+                            Logout
+                        </a>
+                    }
                 </div>
             </div>
         </nav>

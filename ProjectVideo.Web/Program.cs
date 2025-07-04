@@ -25,8 +25,12 @@ namespace ProjectVideo.Web
                     .EnableDetailedErrors();
             });
 
-			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-				.AddCookie();
+			builder.Services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Auth/Login";
+                });
             builder.Services.AddAuthorization();
             builder.Services.AddSingleton<IAuthorizationPolicyProvider, AppPolicyProvider>();
             builder.Services.AddScoped<IClaimsTransformation, AppClaimsTransformer>();
