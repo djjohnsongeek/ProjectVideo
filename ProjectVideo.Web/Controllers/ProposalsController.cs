@@ -39,6 +39,7 @@ namespace ProjectVideo.Web.Controllers
 			return View(viewModel);
 		}
 
+		[Authorize]
 		[HttpGet]
 		public async Task<IActionResult> Details(int id)
 		{
@@ -65,6 +66,7 @@ namespace ProjectVideo.Web.Controllers
 			return View(model);
 		}
 
+		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> Details(ProposalUpdateViewModel updateModel)
 		{

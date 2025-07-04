@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
+using ProjectVideo.Web.Models;
 using ProjectVideo.Web.Models.Auth;
 using System.Security.Claims;
 
@@ -27,6 +28,7 @@ public class AuthController : BaseController
 	public IActionResult Logout()
 	{
 		HttpContext.SignOutAsync();
+		AddServerMessage("Logged out", ServerMessageType.Success);
 		return RedirectToAction("Index", "Home");
 	}
 
@@ -63,9 +65,13 @@ public class AuthController : BaseController
 
 				await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+				AddServerMessage("Logged in", ServerMessageType.Success);
 				return RedirectToAction("Index", "Home");
 			}
 		}
+
+		AddServerMessage("Invalid Login", ServerMessageType.Error);
+
 		return View(loginModel);
 	}
 }

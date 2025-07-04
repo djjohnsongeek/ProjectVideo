@@ -1,0 +1,15 @@
+﻿@using System.Text.Json
+
+<div id="server-messages" class="p-4 mt-3">
+    @if (TempData["ServerMessages"] is string serializedMessages)
+    {
+        List<ServerMessage> serverMessages = JsonSerializer.Deserialize<List<ServerMessage>>(serializedMessages) ?? new List<ServerMessage>();
+        foreach (ServerMessage message in serverMessages)
+        {
+            <div class="alert @message.GetAlertClassName()">
+                <i class="@message.GetIconClassName()"></i>
+                @message.Text
+            </div>
+        }
+    }
+</div>

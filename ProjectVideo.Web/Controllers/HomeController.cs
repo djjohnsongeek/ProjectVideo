@@ -1,6 +1,7 @@
-using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectVideo.Web.Models;
+using System.Diagnostics;
 
 namespace ProjectVideo.Web.Controllers
 {
@@ -8,7 +9,8 @@ namespace ProjectVideo.Web.Controllers
     {
         public HomeController(ILogger<HomeController> logger) : base(logger) { }
 
-        public IActionResult Index()
+		[Authorize]
+		public IActionResult Index()
         {
             return View();
         }
