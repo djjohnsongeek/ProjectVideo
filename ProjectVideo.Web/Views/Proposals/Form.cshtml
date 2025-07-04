@@ -127,7 +127,13 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" asp-for="EstimatedProjectCost"></label>
-                                <input class="form-control" asp-for="EstimatedProjectCost" />
+                                <div class="input-group">
+                                    <span class="input-group-text">USD Per year $</span>
+                                    <input class="form-control" asp-for="EstimatedProjectCost" />
+                                </div>
+                                <span class="form-text">
+                                    Project Video does not pay for production costs or salaries but simply wishes to see that there is a budget plan.
+                                </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
@@ -165,16 +171,15 @@
                         </fieldset>
                         <fieldset class="mb-4">
                             <legend>
-                                Current Experience
+                                Porfolio
                                 <button class="btn btn-secondary float-end" type="button" id="links-input-add-btn">
                                     <i class="bi bi-plus"></i>
                                     Add Link
                                 </button>
                             </legend>
-                            <span class="form-text">Please include links to any previous videos made.</span>
+                            <span class="form-text">Please add links to videos your team have created or to your social media channels if you have uploaded multiple videos.</span>
                             <div id="links-input-container">
                             </div>
-                            <span class="Please include links to any previous videos made."></span>
                         </fieldset>
                         <div class="alert alert-info">
                             <h4 class="alert-heading">
