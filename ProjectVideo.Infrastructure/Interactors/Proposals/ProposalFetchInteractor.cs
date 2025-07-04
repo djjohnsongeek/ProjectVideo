@@ -45,7 +45,7 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 
 	public async Task<ProposalFormResult> GetFormRequirements()
 	{
-		List<Role> roles = await _dbContext.Roles.ToListAsync();
+		List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles.ToListAsync();
 		ProposalFormResult result = new ProposalFormResult
 		{
 			EthinicTeamRoles = roles.Select(r => r.Name).ToList(),
