@@ -48,6 +48,9 @@ namespace ProjectVideo.Infrastructure.Auth
                 {
                     identity.AddClaim(new Claim(ClaimTypes.Role, role.Name));
                 }
+
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserId.ToString()));
+                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
             }
         }
     }

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
+using ProjectVideo.Infrastructure.Auth;
 using ProjectVideo.Web.Models;
 using ProjectVideo.Web.Models.Auth;
 using System.Security.Claims;
@@ -29,6 +31,28 @@ public class AuthController : BaseController
 	{
 		HttpContext.SignOutAsync();
 		AddServerMessage("Logged out", ServerMessageType.Success);
+		return RedirectToAction("Index", "Home");
+	}
+
+	[HttpGet]
+	[Authorize(Policy = AppPolicies.AdminRequired)]
+	public IActionResult Register()
+	{
+		return View(new RegisterViewModel());
+	}
+
+	[HttpGet]
+	[Authorize(Policy = AppPolicies.UserRequired)]
+	public IActionResult UpdatePassword()
+	{
+		return View(new UpdatePasswordViewModel());
+	}
+
+	[HttpPost]
+	[Authorize(Policy = AppPolicies.AdminRequired)]
+	public IActionResult Register(RegisterViewModel registerModel)
+	{
+		AddServerMessage("User Registered Successfully. An invitation email has been sent.", ServerMessageType.Success);;
 		return RedirectToAction("Index", "Home");
 	}
 

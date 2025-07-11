@@ -6,5 +6,7 @@
         public const string Coordinator = "Coordinator";
         public const string Staff = "Staff";
         public const string User = "User";
+        public const string EthincTeamMember = "EthnicTeamMember";
+        public const string Mentor = "Mentor";
     }
 }

@@ -72,8 +72,9 @@ namespace ProjectVideo.DatabaseSetup
             var pwHasher = new PasswordHasher();
 
             var adminRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "admin").FirstOrDefaultAsync();
+            var userRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "user").FirstOrDefaultAsync();
 
-            if (adminRole != null)
+			if (adminRole != null)
             {
                 var adminUser = new User
                 {
@@ -85,8 +86,9 @@ namespace ProjectVideo.DatabaseSetup
                 };
 
                 adminUser.Roles.Add(adminRole);
+                adminUser.Roles.Add(userRole);
 
-                dbContext.Users.Add(adminUser);
+				dbContext.Users.Add(adminUser);
                 await dbContext.SaveChangesAsync();
             }
         }
