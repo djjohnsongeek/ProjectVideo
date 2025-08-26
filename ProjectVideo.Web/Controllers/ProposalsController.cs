@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
+using ProjectVideo.Web.Models;
 using ProjectVideo.Web.Models.Proposals;
 
 namespace ProjectVideo.Web.Controllers
@@ -73,6 +74,10 @@ namespace ProjectVideo.Web.Controllers
 			UpdateProposalInput inputData = BuildInput(updateModel);
 			var result = await _updateInteractor.UpdateProposal(inputData);
 			AddInteractorErrors(result);
+			if (!result.HasErrors)
+			{
+				AddServerMessage("Proposal Details updated succesfully!", ServerMessageType.Success);
+			}
 			return RedirectToAction("Details", new { id = updateModel.ProposalId });
 		}
 

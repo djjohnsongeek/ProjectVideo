@@ -10,8 +10,11 @@ using System.Reflection;
 
 namespace ProjectVideo.DatabaseSetup
 {
-    public class DatabaseTools
+	public class DatabaseTools
     {
+
+        private const string LocalizationFileName = "Project Proposal Form Localization.csv";
+        private const string LocalizationDirectoryName = "Localization";
 
         private readonly string ConnectionString;
         private readonly string DatabaseName;
@@ -58,6 +61,10 @@ namespace ProjectVideo.DatabaseSetup
             var scriptsToExecute = upgradeEngine.GetScriptsToExecute();
             var result = upgradeEngine.PerformUpgrade();
             var executedScripts = upgradeEngine.GetExecutedScripts();
+
+            // test
+            ParseProposalFormLocalization();
+
             return result;
         }
 
@@ -93,6 +100,18 @@ namespace ProjectVideo.DatabaseSetup
             }
         }
 
+        private void ParseProposalFormLocalization()
+        {
+            string path = Directory.GetCurrentDirectory();
+
+            string localizationFilePath = Path.Join(
+                Directory.GetCurrentDirectory(),
+                LocalizationDirectoryName,
+                LocalizationFileName
+            );
+
+            Console.Write(localizationFilePath);
+        }
 
         private async Task<bool> DatabaseExists(SqlConnection conn, string dbname)
         {
