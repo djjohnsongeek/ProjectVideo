@@ -21,10 +21,15 @@ namespace ProjectVideo.DatabaseSetup
             {
                 DatabaseUpgradeResult result = dbTools.RunMigrations(seed);
                 WriteLine("Database migration successful!", ConsoleColor.Green);
-                if (result.Successful && seed)
+                if (result.Successful)
                 {
-                    await dbTools.SeedWithEF();
-                    Environment.ExitCode = 0;
+                    await dbTools.UpdateProposalFormLocalization();
+
+                    if (seed)
+                    {
+                        await dbTools.SeedWithEF();
+                        Environment.ExitCode = 0;
+                    }
                 }
                 else
                 {

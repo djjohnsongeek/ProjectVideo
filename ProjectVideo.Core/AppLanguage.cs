@@ -1,6 +1,6 @@
 ﻿namespace ProjectVideo.Core
 {
-	public enum AppLanguages
+	public enum AppLanguage
 	{
 		English = 0,
 		Thai = 1,

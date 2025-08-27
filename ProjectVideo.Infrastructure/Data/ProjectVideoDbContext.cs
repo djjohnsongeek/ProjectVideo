@@ -12,10 +12,12 @@ namespace ProjectVideo.Infrastructure.Data
 	{
 		public ProjectVideoDbContext(DbContextOptions<ProjectVideoDbContext> options) : base(options) { }
 
+
         // Proposals
 		public DbSet<Proposal> Proposals { get; set; }
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
 		public DbSet<ProposalMember> ProposalMembers { get; set; }
+        public DbSet<ProjectProposalFormLocalization> ProjectProposalFormLocalizations { get; set; }
 
         // Users
         public DbSet<User> Users { get; set; }
