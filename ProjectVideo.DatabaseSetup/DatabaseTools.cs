@@ -116,15 +116,8 @@ namespace ProjectVideo.DatabaseSetup
 			// test
 			List<ProjectProposalCSVRecord> proposalFormRecords = ParseProposalFormRecords();
 
-            var englishForm = new ProjectProposalFormLocalization
-            {
-                Language = Core.AppLanguage.English
-            };
-
-            var thaiForm = new ProjectProposalFormLocalization
-            {
-                Language = Core.AppLanguage.Thai
-            };
+            var englishForm = new ProjectProposalFormLocalization(Core.AppLanguage.English);
+            var thaiForm = new ProjectProposalFormLocalization(Core.AppLanguage.Thai);
 
             foreach (var record in proposalFormRecords)
             {

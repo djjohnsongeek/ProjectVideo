@@ -1,4 +1,5 @@
 ﻿@model ProjectVideo.Web.Models.Proposals.ProposalFormViewModel
+@using ProjectVideo.Core;
 @{
     ViewData["Title"] = "Project Proposal";
 }
@@ -14,55 +15,65 @@
             <form method="post">
                 <div class="row">
                     <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Select a Language</label>
+                            <select
+                                id="lang-select"
+                                class="form-control"
+                                asp-for="Localization.Language"
+                                asp-items="Html.GetEnumSelectList<AppLanguage>()">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="alert alert-info">
                             <h4 class="alert-heading">
-                                About Us
+                                @Model.Localization.AboutUsHeader
                             </h4>
                             <span>
-                                Thank you for reaching out to us, we would love to partner and help you out.
-                                Our ministry focuses on the development of Christian media in local languages by providing equipment loans and media training.
-                                We would like to know more about your vision and what you would like to accomplish with this partnership.
-                                Please fill out this form to be submitted to the Board for approval of the project.
+                                @Model.Localization.AboutUsText
                             </span>
                         </div>
                         <fieldset class="mb-4">
-                            <legend>Organization Info</legend>
+                            <legend>@Model.Localization.OrganizationSectionTitle</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="MainContact"></label>
+                                <label class="form-label" asp-for="MainContact">@Model.Localization.MainContactFieldLabel</label>
                                 <input class="form-control" asp-for="MainContact" />
                                 <span class="form-text">
-                                    Name of your organization's primary point of contact.
+                                    @Model.Localization.MainContactFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="Email"></label>
+                                <label class="form-label" asp-for="Email">@Model.Localization.EmailFieldLabel</label>
                                 <input class="form-control" asp-for="Email" />
                                 <span class="form-text">
-                                    The email for your organization's primary point of contact.
+                                    @Model.Localization.EmailFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="PhoneNumber"></label>
+                                <label class="form-label" asp-for="PhoneNumber">@Model.Localization.PhoneNumberFieldLabel</label>
                                 <input class="form-control" asp-for="PhoneNumber" />
                                 <span class="form-text">
-                                    The phone number for your organization's primary point of contact.
+                                    @Model.Localization.PhoneNumberFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="OrganizationName"></label>
+                                <label class="form-label" asp-for="OrganizationName">@Model.Localization.OrganizationFieldLabel</label>
                                 <input class="form-control" asp-for="OrganizationName" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="OrganizationHistory"></label>
+                                <label class="form-label" asp-for="OrganizationHistory">@Model.Localization.OrganizationHistoryFieldLabel</label>
                                 <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
                                 <span class="form-text">
-                                    A brief history of your Organization.
+                                    @Model.Localization.OrganizationHistoryText
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" asp-for="StaffArePaid">
-                                    <label class="form-check-label" asp-for="StaffArePaid"></label>
+                                    <label class="form-check-label" asp-for="StaffArePaid">@Model.Localization.StaftArePaidCheckboxLabel</label>
                                 </div>
                             </div>
                         </fieldset>
@@ -74,10 +85,10 @@
                                 }
                             </datalist>
                             <legend>
-                                Team Members
+                                @Model.Localization.TeamMembersSectionTitle
                                 <button class="btn btn-secondary float-end" id="members-input-add-btn" type="button">
                                     <i class="bi bi-plus"></i>
-                                    Add Member
+                                    @Model.Localization.TeamMemberAddButtonText
                                 </button>
                             </legend>
 
@@ -85,21 +96,21 @@
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
-                            <legend>Project Info</legend>
+                            <legend>@Model.Localization.ProjectInfoSectionTitle</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="ProjectTitle"></label>
+                                <label class="form-label" asp-for="ProjectTitle">@Model.Localization.ProjectTitleFieldLabel</label>
                                 <input class="form-control" asp-for="ProjectTitle" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="TargetAudience"></label>
+                                <label class="form-label" asp-for="TargetAudience">@Model.Localization.TargetAudienceFieldLabel</label>
                                 <input class="form-control" asp-for="TargetAudience" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="KeyObjectives"></label>
+                                <label class="form-label" asp-for="KeyObjectives">@Model.Localization.KeyObjectivesFieldLabel</label>
                                 <textarea class="form-control" asp-for="KeyObjectives"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Project Time Frame</label>
+                                <label class="form-label">@Model.Localization.ProjectTimeFrameFieldLabel</label>
                                 <div class="input-group">
                                     <input class="form-control" asp-for="ProjectTimeFrameNumber" />
                                     <select class="form-control" asp-for="ProjectTimeFrameInterval">
@@ -111,87 +122,89 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="MainMethods"></label>
+                                <label class="form-label" asp-for="MainMethods">@Model.Localization.MainMethodsFieldLabel</label>
                                 <textarea class="form-control" asp-for="MainMethods"></textarea>
                                 <span class="form-text">
-                                    What are the main methods you intend to use to reach your goals?
+                                    @Model.Localization.MainMethodsFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="PlannedVideos"></label>
+                                <label class="form-label" asp-for="PlannedVideos">@Model.Localization.PlannedVideosFieldLabel</label>
                                 <textarea class="form-control" asp-for="PlannedVideos"></textarea>
                                 <span class="form-text">
-                                    Please be as specific as possible about the content / genre and approximate release dates.<br/>
-                                    For example: "January - short film about a family coming to Christ, February - testimony from a new believer"
+                                    @Model.Localization.PlannedVideosFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="EstimatedProjectCost"></label>
+                                <label class="form-label" asp-for="EstimatedProjectCost">@Model.Localization.ProjectCostEstimateFieldLabel</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">USD Per year $</span>
+                                    <span class="input-group-text">@Model.Localization.ProjectCostEsitmateCurrencyLabel</span>
                                     <input class="form-control" asp-for="EstimatedProjectCost" />
                                 </div>
                                 <span class="form-text">
-                                    Project Video does not pay for production costs or salaries but simply wishes to see that there is a budget plan.
+                                    @Model.Localization.ProjectCostFieldText
+                                    <!-- Project Video does not pay for production costs or salaries but simply wishes to see that there is a budget plan. -->
                                 </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
-                            <legend>Current Resources</legend>
+                            <legend>@Model.Localization.CurrentResourcesSectionTitle</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="CurrentEquipment"></label>
+                                <label class="form-label" asp-for="CurrentEquipment">@Model.Localization.CurrentEquipmentFieldLabel</label>
                                 <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
                                 <span class="form-text">
-                                    What video and audio equipment do you currently have?
+                                    @Model.Localization.CurrentEquipmentFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input reveal-input" asp-for="HasAudioSpace" data-target="audioSpace-description-div">
-                                    <label class="form-check-label" asp-for="HasAudioSpace"></label>
+                                    <label class="form-check-label" asp-for="HasAudioSpace">@Model.Localization.AudioSpaceCheckboxLabel</label>
                                 </div>
                             </div>
                             <div class="mb-3 d-none" id="audioSpace-description-div">
-                                <label class="form-label" asp-for="AudioSpaceDescription"></label>
+                                <label class="form-label" asp-for="AudioSpaceDescription">@Model.Localization.AudioSpaceDescriptionFieldLabel</label>
                                 <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input reveal-input" asp-for="HasComputer" data-target="computer-description-div">
-                                    <label class="form-check-label" asp-for="HasComputer"></label>
+                                    <label class="form-check-label" asp-for="HasComputer">@Model.Localization.HaveComputerCheckboxLabel</label>
                                 </div>
                             </div>
                             <div id="computer-description-div" class="mb-3 d-none">
-                                <label class="form-label" asp-for="ComputerDescription"></label>
+                                <label class="form-label" asp-for="ComputerDescription">@Model.Localization.ComputerDescriptionFieldLabel</label>
                                 <textarea class="form-control" asp-for="ComputerDescription"></textarea>
                                 <span class="form-text">
-                                    Is your computer a Mac or PC? What are it's specifications?
+                                    @Model.Localization.ComputerDescriptionFieldText
                                 </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
                             <legend>
-                                Porfolio
+                                @Model.Localization.PortfolioSectionTitle
                                 <button class="btn btn-secondary float-end" type="button" id="links-input-add-btn">
                                     <i class="bi bi-plus"></i>
-                                    Add Link
+                                    @Model.Localization.AddLinkButtonText
                                 </button>
                             </legend>
-                            <span class="form-text">Please add links to videos your team have created or to your social media channels if you have uploaded multiple videos.</span>
+                            <span class="form-text">
+                                @Model.Localization.PortfolioSectionDescription
+                            </span>
                             <div id="links-input-container">
                             </div>
                         </fieldset>
                         <div class="alert alert-info">
                             <h4 class="alert-heading">
-                                Note
+                                @Model.Localization.EndingNoteHeader
                             </h4>
-                            Once we have the received your application it will be reviewed for approval by the board. Additional information might be required to further process the application. You should have a response within a month.
+                            @Model.Localization.EndingNoteText
                         </div>
                         <div class="float-end">
-                                <button class="btn btn-primary">
-                                    <i class="bi bi-send-fill"></i>
-                                    Send Proposal
-                                </button>
+                            <button class="btn btn-primary">
+                                <i class="bi bi-send-fill"></i>
+                                @Model.Localization.SubmitButtonText
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -8,5 +8,5 @@ public interface IProposalFetchInteractor
 
 	Task<ProposalDetailsResult> GetProposalDetails(int id);
 
-        Task<ProposalFormResult> GetFormRequirements();
+    Task<ProposalFormResult> GetFormRequirements(AppLanguage lang);
 }

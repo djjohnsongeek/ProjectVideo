@@ -16,7 +16,8 @@ namespace ProjectVideo.Web.Models.Proposals
 		{
 			return new ProposalFormViewModel
 			{
-				TeamMemberRoles = interactorResult.EthinicTeamRoles
+				TeamMemberRoles = interactorResult.EthinicTeamRoles,
+                Localization = interactorResult.Localization
 			};
 		}
 

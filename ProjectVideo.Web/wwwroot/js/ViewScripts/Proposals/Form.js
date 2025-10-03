@@ -5,6 +5,9 @@
     linksInputAddBtn;
     linksComplexInputCollection;
 
+    langageSelect;
+
+    languageSelectId = "lang-select";
     roleNameDatalistId = "rolename-options";
     membersInputContainerId = "members-input-container";
     videoLinksInputContainerId = "links-input-container";
@@ -13,6 +16,7 @@
     constructor() {
         this.membersInputAddBtn = document.getElementById("members-input-add-btn");
         this.linksInputAddBtn = document.getElementById("links-input-add-btn");
+        this.langageSelect = document.getElementById(this.languageSelectId);
 
         for (const input of document.getElementsByClassName("reveal-input")) {
             input.addEventListener("click", (event) => {
@@ -40,6 +44,14 @@
         this.linksInputAddBtn.addEventListener("click", (event) => {
             this.videoLinkComplexInputCollection.addInputGroup(this.buildDefaultLinkInputGroup());
         });
+
+        // Langauge Select
+        this.langageSelect.addEventListener("change", (event) => {
+            let url = new URL(window.location.href);
+            url.searchParams.set("lang", event.currentTarget.value);
+            window.location.assign(url);
+        })
+
     }
 
     buildDefaultMemberInputGroup() {

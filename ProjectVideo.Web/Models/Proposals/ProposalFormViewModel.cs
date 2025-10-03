@@ -1,10 +1,13 @@
-﻿using System.ComponentModel;
+﻿using ProjectVideo.Core.Interactors.Proposal.DataObjects;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalFormViewModel
 	{
+		public required ProposalFormLocalization Localization { get; set; }
+
 		[Display(Name = "Email")]
 		public string? Email { get; set; }
 

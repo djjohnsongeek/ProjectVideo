@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProjectVideo.Core;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Web.Models;
@@ -32,9 +33,14 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Form()
+		public async Task<IActionResult> Form(AppLanguage? lang)
 		{
-			ProposalFormResult result = await _fetchInteractor.GetFormRequirements();
+			if (!lang.HasValue)
+			{
+				lang = AppLanguage.English;
+			}
+
+			ProposalFormResult result = await _fetchInteractor.GetFormRequirements(lang.Value);
 			AddInteractorErrors(result);
 			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);

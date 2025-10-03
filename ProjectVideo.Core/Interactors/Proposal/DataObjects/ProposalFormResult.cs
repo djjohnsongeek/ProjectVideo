@@ -1,7 +1,19 @@
-﻿namespace ProjectVideo.Core.Interactors.DataObjects
+﻿
+using ProjectVideo.Core.Interactors.Proposal.DataObjects;
+using System.Diagnostics.CodeAnalysis;
+
+namespace ProjectVideo.Core.Interactors.DataObjects
 {
 	public class ProposalFormResult : InteractorResult
 	{
-		public List<string> EthinicTeamRoles = [];
+		public required List<string> EthinicTeamRoles;
+		public required ProposalFormLocalization Localization;
+
+		[SetsRequiredMembers]
+		public ProposalFormResult()
+		{
+			EthinicTeamRoles = [];
+			Localization = ProposalFormLocalization.Empty;
+		}
 	}
 }
