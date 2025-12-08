@@ -1,0 +1,57 @@
+ControlName,Page,English,Thai
+PageTitle,Proposals/Form,Project Proposal Form,แบบฟอร์มเสนอโครงการ
+AboutUsHeader,Proposals/Form,About Us,เกี่ยวกับเรา
+AboutUsText,Proposals/Form,"Thank you for reaching out to us, we would love to partner and help you out. Our ministry focuses on the development of Christian media in local languages by providing equipment loans and media training. We would like to know more about your vision and what you would like to accomplish with this partnership. Please fill out this form to be submitted to the Board for approval of the project. ",ขอบคุณที่ติดต่อเรา เรามีความยินดีที่จะเป็นพันธมิตรและช่วยเหลือคุณ พันธกิจของเรามุ่งเน้นในการพัฒนาสื่อคริสเตียนในภาษาท้องถิ่น โดยการให้ยืมอุปกรณ์และการฝึกอบรมด้านสื่อ เราอยากทราบข้อมูลเพิ่มเติมเกี่ยวกับวิสัยทัศน์ของคุณ และสิ่งที่คุณต้องการทำให้สำเร็จผ่านความร่วมมือนี้ กรุณากรอกแบบฟอร์มนี้เพื่อนำเสนอต่อคณะกรรมการเพื่อพิจารณาอนุมัติโครงการ
+OrganizationSectionTitle,Proposals/Form,Organization Info,ข้อมูลองค์กร
+MainContactFieldLabel,Proposals/Form,Main Contact,ผู้ประสานงานหลัก
+MainContactFieldText,Proposals/Form,Name of your organization's primary point of contact. ,ชื่อผู้ประสานงานหลักในองค์กรของคุณ
+EmailFieldLabel,Proposals/Form,Email,อีเมล
+EmailFieldText,Proposals/Form,The email for your organization's primary point of contact. ,อีเมล์ของผู้ประสานงานหลักในองค์กรของคุณ
+PhoneNumberFieldLabel,Proposals/Form,Phone Number,หมายเลขโทรศัพท์
+PhoneNumberFieldText,Proposals/Form,The phone number for your organization's primary point of contact. ,หมายเลขโทรศัพท์ของผู้ประสานงานหลัก
+OrganizationFieldLabel,Proposals/Form,Organization Name,ชื่อองค์กร
+OrganizationHistoryFieldLabel,Proposals/Form,Organization History,ประวัติองค์กร
+OrganizationHistoryText,Proposals/Form,A brief history of your Organization. ,ประวัติโดยย่อขององค์กรของคุณ
+StaftArePaidCheckboxLabel,Proposals/Form,Our Staff are Paid,พนักงานของเราได้รับค่าจ้าง
+TeamMembersSectionTitle,Proposals/Form,Team Members,สมาชิกในทีม 
+TeamMemberAddButtonText,Proposals/Form,Add Member,เพิ่มสมาชิก
+TeamMemberNameFieldLabel,Proposals/Form,Name,ชื่อ
+TeamMemberRoleFieldLabel,Proposals/Form,Role,บทบาทหน้าที่
+RemoveTeamMemberButtonText,Proposals/Form,Remove,ลบออก
+ProjectInfoSectionTitle,Proposals/Form,Project Info,ข้อมูลโครงการ
+ProjectTitleFieldLabel,Proposals/Form,Project Title,ชื่อโครงการ
+TargetAudienceFieldLabel,Proposals/Form,Target Audience,กลุ่มเป้าหมาย
+KeyObjectivesFieldLabel,Proposals/Form,Key Objectives,วัตถุประสงค์หลัก
+ProjectTimeFrameFieldLabel,Proposals/Form,Project Time Frame,กรอบเวลาของโครงการ
+MainMethodsFieldLabel,Proposals/Form,Main Methods,วิธีการหลัก
+MainMethodsFieldText,Proposals/Form,What are the main methods you intend to use to reach your goals? ,คุณตั้งใจจะใช้หลักการและวิธีการอย่างไรเพื่อให้บรรลุเป้าหมาย
+PlannedVideosFieldLabel,Proposals/Form,Planned,แผนงาน
+PlannedVideosFieldText,Proposals/Form,"Please be as specific as possible about the content / genre and approximate release dates. For example: ""January - short film about a family coming to Christ, February - testimony from a new believer""","โปรดระบุให้ชัดเจนที่สุดเกี่ยวกับเนื้อหา / ประเภท และกำหนดการเผยแพร่ เช่น ""มกราคม - หนังสั้น เกี่ยวกับครอบครัวที่มารู้จักพระคริสต์, กุมภาพันธ์ - พยานชีวิตจากผู้เชื่อใหม่"""
+ProjectCostEstimateFieldLabel,Proposals/Form,Project Cost Estimate,ประมาณค่าใช้ของโครงการ
+ProjectCostEsitmateCurrencyLabel,Proposals/Form,USD Per year $,เป็นเงิน ดอลลาร์สหรัฐต่อปี
+ProjectCostFieldText,Proposals/Form,Project Video does not pay for production costs or salaries but simply wishes to see that there is a budget plan. ,โปรเจค วิดีโอ ไม่จ่ายค่าผลิตหรือเงินเดือน เพียงต้องการให้มีแผนงบประมาณในโครงการเท่านั้น
+CurrentResourcesSectionTitle,Proposals/Form,Current Resources,ทรัพยากรปัจจุบัน
+CurrentEquipmentFieldLabel,Proposals/Form,Current Equipment,เครื่องมือ/อุปกรณ์ที่มีอยู่ปัจจุบัน
+CurrentEquipmentFieldText,Proposals/Form,What video and audio equipment do you currently have? ,เครื่องมือ/อุปกรณ์ที่เกี่ยวกับงานวิดีโอ และ ออดีโอ(เสียง) ปัจจุบันคุณมีอะไรบ้าง?
+AudioSpaceCheckboxLabel,Proposals/Form,We have an audio space for recording,เรามีพื้นที่(ห้อง)สำหรับการบันทึกเสียง
+AudioSpaceDescriptionFieldLabel,Proposals/Form,Audio space Description,คำอธิบายห้องบันทึกเสียง 
+HaveComputerCheckboxLabel,Proposals/Form,We have a Computer,เรามีคอมพิวเตอร์
+ComputerDescriptionFieldLabel,Proposals/Form,Computer Description,คำอธิบายเกี่ยวกับคอมพิวเตอร์ 
+ComputerDescriptionFieldText,Proposals/Form,Is your computer a Mac or PC? What are it's specifications? ,คอมพิวเตอร์ของคุณเป็น Mac หรือ PC?  มีสเปกเครื่องอย่างไรบ้าง?
+PortfolioSectionTitle,Proposals/Form,Porfolio ,ผลงาน
+AddLinkButtonText,Proposals/Form,Add Link,ใส่ลิ้งก์
+PortfolioSectionDescription,Proposals/Form,Please add links to videos your team have created or to your social media channels if you have uploaded multiple videos.,โปรดใส่ลิ้งก์งานวิดีโอที่ทีมของคุณสร้างขึ้น หรือ ลิ้งก์ไปยังสื่อ/ช่องทางโซเชียลมีเดีย หากคุณอัปโหลดวิดีโอหลายรายการ 
+PortfolioLinkNameFieldLabel,Proposals/Form,Name,ชื่อ
+PortfolioLinkUrlFieldLabel,Proposals/Form,Url,URL
+EndingNoteHeader,Proposals/Form,Note,บันทึกข้อความ
+EndingNoteText,Proposals/Form,Once we have the received your application it will be reviewed for approval by the board. Additional information might be required to further process the application. You should have a response within a month. ,เมื่อเราได้รับใบสมัครของคุณแล้ว คณะกรรมการจะตรวจสอบเพื่อพิจารณาอนุมัติ อาจมีการขอข้อมูลเพิ่มเติมเพื่อดำเนินการพิจารณาใบสมัครต่อไป คุณจะได้รับคำตอบภายในหนึ่งเดือน
+SubmitButtonText,Proposals/Form,Send Proposal,ส่ง
+TeamMemberRoleOption1,Proposals/Form,Ministry Director,ผู้อำนวยการกระทรวง
+TeamMemberRoleOption2,Proposals/Form,Studio / Team Manager,ผู้จัดการสตูดิโอ / ทีม
+TeamMemberRoleOption3,Proposals/Form,Camera Operator,ช่างกล้อง
+TeamMemberRoleOption4,Proposals/Form,Video Editor,ผู้ตัดต่อวิดีโอ
+TeamMemberRoleOption5,Proposals/Form,Audio Engineer,วิศวกรเสียง
+ProjectTimeFrameIntervalOption1,Proposals/Form,Days,วัน
+ProjectTimeFrameIntervalOption2,Proposals/Form,Weeks,สัปดาห์
+ProjectTimeFrameIntervalOption3,Proposals/Form,Months,เดือน
+ProjectTimeFrameIntervalOption4,Proposals/Form,Years,ปี

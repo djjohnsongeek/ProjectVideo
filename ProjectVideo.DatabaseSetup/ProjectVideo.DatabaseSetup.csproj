@@ -26,11 +26,5 @@
     <ProjectReference Include="..\ProjectVideo.Infrastructure\ProjectVideo.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Localization\Project Proposal Form Localization.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 
 </Project>

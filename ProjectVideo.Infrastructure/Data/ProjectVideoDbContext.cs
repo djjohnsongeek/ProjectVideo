@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.IdentityModel.Abstractions;
 using Microsoft.IdentityModel.Tokens;
@@ -17,7 +18,7 @@ namespace ProjectVideo.Infrastructure.Data
 		public DbSet<Proposal> Proposals { get; set; }
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
 		public DbSet<ProposalMember> ProposalMembers { get; set; }
-        public DbSet<ProjectProposalFormLocalization> ProjectProposalFormLocalizations { get; set; }
+        public DbSet<Localization> Localizations { get; set; }
 
         // Users
         public DbSet<User> Users { get; set; }

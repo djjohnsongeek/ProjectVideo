@@ -23,7 +23,7 @@ namespace ProjectVideo.DatabaseSetup
                 WriteLine("Database migration successful!", ConsoleColor.Green);
                 if (result.Successful)
                 {
-                    await dbTools.UpdateProposalFormLocalization();
+                    await dbTools.UpdateLocalizationRecords();
 
                     if (seed)
                     {

@@ -4,6 +4,7 @@ using DbUp.Engine;
 using DbUp.Support;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProjectVideo.DatabaseSetup.Localization;
 using ProjectVideo.Infrastructure;
 using ProjectVideo.Infrastructure.Data;
@@ -18,7 +19,7 @@ namespace ProjectVideo.DatabaseSetup
 	public class DatabaseTools
     {
 
-        private const string LocalizationFileName = "Project Proposal Form Localization.csv";
+        private const string LocalizationFileName = "Localizations.csv";
         private const string LocalizationDirectoryName = "Localization";
 
         private readonly string ConnectionString;
@@ -104,7 +105,7 @@ namespace ProjectVideo.DatabaseSetup
             }
         }
 
-        public async Task UpdateProposalFormLocalization()
+        public async Task UpdateLocalizationRecords()
         {
 			var options = new DbContextOptionsBuilder<ProjectVideoDbContext>();
 			options.UseSqlServer(ConnectionString)
@@ -114,41 +115,14 @@ namespace ProjectVideo.DatabaseSetup
 			var dbContext = new ProjectVideoDbContext(options.Options);
 
 			// test
-			List<ProjectProposalCSVRecord> proposalFormRecords = ParseProposalFormRecords();
+			List<LocaliationCSVRecord> proposalFormRecords = ParseLocalizationRecords();
 
-            var englishForm = new ProjectProposalFormLocalization(Core.AppLanguage.English);
-            var thaiForm = new ProjectProposalFormLocalization(Core.AppLanguage.Thai);
-
-            foreach (var record in proposalFormRecords)
-            {
-                // English
-                PropertyInfo? englishProperty = englishForm.GetType().GetProperty(record.ControlName);
-                if (englishProperty != null)
-                {
-                    englishProperty.SetValue(englishForm, record.English);
-                }
-
-                // thai
-				PropertyInfo? thaiProperty = thaiForm.GetType().GetProperty(record.ControlName);
-				if (thaiProperty != null)
-				{
-					thaiProperty.SetValue(thaiForm, record.Thai);
-				}
-			}
-
-            string? tableName = dbContext.Model.FindEntityType(typeof(ProjectProposalFormLocalization))?.GetTableName();
-            if (tableName != null)
-            {
-                await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE {tableName}");
-                dbContext.ProjectProposalFormLocalizations.Add(englishForm);   
-                dbContext.ProjectProposalFormLocalizations.Add(thaiForm);
-                await dbContext.SaveChangesAsync();
-            }
+			await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE [Localizations]");
 		}
 
-        private List<ProjectProposalCSVRecord> ParseProposalFormRecords()
+        private List<LocaliationCSVRecord> ParseLocalizationRecords()
         {
-            List<ProjectProposalCSVRecord> records = [];
+            List<LocaliationCSVRecord> records = [];
 
             string localizationFilePath = Path.Join(
                 Directory.GetCurrentDirectory(),
@@ -160,7 +134,7 @@ namespace ProjectVideo.DatabaseSetup
             {
                 using var reader = new StreamReader(localizationFilePath);
                 using var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
-                records = csvReader.GetRecords<ProjectProposalCSVRecord>().ToList();
+                records = csvReader.GetRecords<LocaliationCSVRecord>().ToList();
 			}
             catch (FileNotFoundException e)
             {
