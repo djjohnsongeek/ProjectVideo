@@ -1,0 +1,7 @@
+BEGIN TRANSACTION
+ALTER TABLE dbo.EthnicTeamRoles ADD
+	LocalizationId int NOT NULL DEFAULT(0)
+ALTER TABLE dbo.EthnicTeamRoles
+	DROP COLUMN Name, Description
+ALTER TABLE dbo.EthnicTeamRoles SET (LOCK_ESCALATION = TABLE)
+COMMIT

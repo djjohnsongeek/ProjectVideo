@@ -1,9 +1,5 @@
-﻿using Azure.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.IdentityModel.Abstractions;
-using Microsoft.IdentityModel.Tokens;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data.Entities;
 
@@ -18,7 +14,6 @@ namespace ProjectVideo.Infrastructure.Data
 		public DbSet<Proposal> Proposals { get; set; }
 		public DbSet<ProposalLink> ProposalLinks { get; set; }
 		public DbSet<ProposalMember> ProposalMembers { get; set; }
-        public DbSet<Localization> Localizations { get; set; }
 
         // Users
         public DbSet<User> Users { get; set; }
@@ -26,6 +21,7 @@ namespace ProjectVideo.Infrastructure.Data
 		public DbSet<Role> Roles { get; set; }
         public DbSet<EthnicTeamRole> EthnicTeamRoles { get; set; }
 
+        public DbSet<Localization> Localizations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

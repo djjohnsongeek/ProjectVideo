@@ -49,14 +49,15 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 	{
 		ProposalFormResult result = new ProposalFormResult();
 
-		List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles.ToListAsync();
-		ProjectProposalFormLocalization? localization = await _dbContext
-			.ProjectProposalFormLocalizations
-			.Where(l => l.Language == lang)
-			.FirstOrDefaultAsync();
+		List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles
+			.Include(x => x.Localization)
+			.ToListAsync();
 
-		// validation
-		if (localization == null)
+		List<Localization> localizations = await _dbContext.Localizations
+			.Where(l => l.Page == "Proposals/Form")
+			.ToListAsync();
+
+		if (localizations.Count == 0)
 		{
 			result.AddError("Form localization not found.");
 		}
@@ -68,63 +69,94 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 
 		if (!result.HasErrors)
 		{
-			result.EthinicTeamRoles = roles.Select(r => r.Name).ToList();
-			result.Localization = new ProposalFormLocalization
+			result.EthinicTeamRoles = roles.Select(r => GetRoleName(r, lang)).ToList();
+            result.Localization = new ProposalFormLocalization
 			{
-				Language = localization!.Language,
-				AboutUsHeader = localization.AboutUsHeader,
-				AboutUsText = localization.AboutUsText,
-				OrganizationSectionTitle = localization.OrganizationSectionTitle,
-				MainContactFieldLabel = localization.MainContactFieldLabel,
-				MainContactFieldText = localization.MainContactFieldText,
-				EmailFieldLabel = localization.EmailFieldLabel,
-				EmailFieldText = localization.EmailFieldText,
-				PhoneNumberFieldLabel = localization.PhoneNumberFieldLabel,
-				PhoneNumberFieldText = localization.PhoneNumberFieldText,
-				OrganizationFieldLabel = localization.OrganizationFieldLabel,
-				OrganizationHistoryFieldLabel = localization.OrganizationHistoryFieldLabel,
-				OrganizationHistoryText = localization.OrganizationHistoryText,
-				StaftArePaidCheckboxLabel = localization.StaftArePaidCheckboxLabel,
-				TeamMembersSectionTitle = localization.TeamMembersSectionTitle,
-				TeamMemberAddButtonText = localization.TeamMemberAddButtonText,
-				TeamMemberNameFieldLabel = localization.TeamMemberNameFieldLabel,
-				TeamMemberRoleFieldLabel = localization.TeamMemberRoleFieldLabel,
-				RemoveTeamMemberButtonText = localization.RemoveTeamMemberButtonText,
-				ProjectInfoSectionTitle = localization.ProjectInfoSectionTitle,
-				ProjectTitleFieldLabel = localization.ProjectTitleFieldLabel,
-				ProjectCostEstimateFieldLabel = localization.ProjectCostEstimateFieldLabel,
-				ProjectCostEsitmateCurrencyLabel = localization.ProjectCostEsitmateCurrencyLabel,
-				ProjectCostFieldText = localization.ProjectCostFieldText,
-				TargetAudienceFieldLabel = localization.TargetAudienceFieldLabel,
-				KeyObjectivesFieldLabel = localization.KeyObjectivesFieldLabel,
-				ProjectTimeFrameFieldLabel = localization.ProjectTimeFrameFieldLabel,
-				MainMethodsFieldLabel = localization.MainMethodsFieldLabel,
-				MainMethodsFieldText = localization.MainMethodsFieldText,
-				PlannedVideosFieldLabel = localization.PlannedVideosFieldLabel,
-				PlannedVideosFieldText = localization.PlannedVideosFieldText,
-				CurrentEquipmentFieldLabel = localization.CurrentEquipmentFieldLabel,
-				CurrentEquipmentFieldText = localization.CurrentEquipmentFieldText,
-				ComputerDescriptionFieldLabel = localization.ComputerDescriptionFieldLabel,
-				ComputerDescriptionFieldText = localization.ComputerDescriptionFieldText,
-				HaveComputerCheckboxLabel = localization.HaveComputerCheckboxLabel,
-				AudioSpaceDescriptionFieldLabel = localization.AudioSpaceDescriptionFieldLabel,
-				AudioSpaceCheckboxLabel = localization.AudioSpaceCheckboxLabel,
-				CurrentResourcesSectionTitle = localization.CurrentResourcesSectionTitle,
-				PortfolioSectionTitle = localization.PortfolioSectionTitle,
-				AddLinkButtonText = localization.AddLinkButtonText,
-				PortfolioSectionDescription = localization.PortfolioSectionDescription,
-				PortfolioLinkNameFieldLabel = localization.PortfolioLinkNameFieldLabel,
-				PortfolioLinkUrlFieldLabel = localization.PortfolioLinkUrlFieldLabel,
-				EndingNoteHeader = localization.EndingNoteHeader,
-				EndingNoteText = localization.EndingNoteText,
-				SubmitButtonText = localization.SubmitButtonText,
+				Language = lang,
+				AboutUsHeader = GetLocalizedText(localizations, "AboutUsHeader", lang),
+				AboutUsText = GetLocalizedText(localizations, "AboutUsText", lang),
+				OrganizationSectionTitle = GetLocalizedText(localizations, "OrganizationSectionTitle", lang),
+				MainContactFieldLabel = GetLocalizedText(localizations, "MainContactFieldLabel", lang),
+				MainContactFieldText = GetLocalizedText(localizations, "MainContactFieldText", lang),
+				EmailFieldLabel = GetLocalizedText(localizations, "EmailFieldLabel", lang),
+				EmailFieldText = GetLocalizedText(localizations, "EmailFieldText", lang),
+				PhoneNumberFieldLabel = GetLocalizedText(localizations, "PhoneNumberFieldLabel", lang),
+				PhoneNumberFieldText = GetLocalizedText(localizations, "PhoneNumberFieldText", lang),
+				OrganizationFieldLabel = GetLocalizedText(localizations, "OrganizationFieldLabel", lang),
+				OrganizationHistoryFieldLabel = GetLocalizedText(localizations, "OrganizationHistoryFieldLabel", lang),
+				OrganizationHistoryText = GetLocalizedText(localizations, "OrganizationHistoryText", lang),
+				StaftArePaidCheckboxLabel = GetLocalizedText(localizations, "StaftArePaidCheckboxLabel", lang),
+				TeamMembersSectionTitle = GetLocalizedText(localizations, "TeamMembersSectionTitle", lang),
+				TeamMemberAddButtonText = GetLocalizedText(localizations, "TeamMemberAddButtonText", lang),
+				TeamMemberNameFieldLabel = GetLocalizedText(localizations, "TeamMemberNameFieldLabel", lang),
+				TeamMemberRoleFieldLabel = GetLocalizedText(localizations, "TeamMemberRoleFieldLabel", lang),
+				RemoveTeamMemberButtonText = GetLocalizedText(localizations, "RemoveTeamMemberButtonText", lang),
+				ProjectInfoSectionTitle = GetLocalizedText(localizations, "ProjectInfoSectionTitle", lang),
+				ProjectTitleFieldLabel = GetLocalizedText(localizations, "ProjectTitleFieldLabel", lang),
+				ProjectCostEstimateFieldLabel = GetLocalizedText(localizations, "ProjectCostEstimateFieldLabel", lang),
+				ProjectCostEsitmateCurrencyLabel = GetLocalizedText(localizations, "ProjectCostEsitmateCurrencyLabel", lang),
+				ProjectCostFieldText = GetLocalizedText(localizations, "ProjectCostFieldText", lang),
+				TargetAudienceFieldLabel = GetLocalizedText(localizations, "TargetAudienceFieldLabel", lang),
+				KeyObjectivesFieldLabel = GetLocalizedText(localizations, "KeyObjectivesFieldLabel", lang),
+				ProjectTimeFrameFieldLabel = GetLocalizedText(localizations, "ProjectTimeFrameFieldLabel", lang),
+				MainMethodsFieldLabel = GetLocalizedText(localizations, "MainMethodsFieldLabel", lang),
+				MainMethodsFieldText = GetLocalizedText(localizations, "MainMethodsFieldText", lang),
+				PlannedVideosFieldLabel = GetLocalizedText(localizations, "PlannedVideosFieldLabel", lang),
+				PlannedVideosFieldText = GetLocalizedText(localizations, "PlannedVideosFieldText", lang),
+				CurrentEquipmentFieldLabel = GetLocalizedText(localizations, "CurrentEquipmentFieldLabel", lang),
+				CurrentEquipmentFieldText = GetLocalizedText(localizations, "CurrentEquipmentFieldText", lang),
+				ComputerDescriptionFieldLabel = GetLocalizedText(localizations, "ComputerDescriptionFieldLabel", lang),
+				ComputerDescriptionFieldText = GetLocalizedText(localizations, "ComputerDescriptionFieldText", lang),
+				HaveComputerCheckboxLabel = GetLocalizedText(localizations, "HaveComputerCheckboxLabel", lang),
+				AudioSpaceDescriptionFieldLabel = GetLocalizedText(localizations, "AudioSpaceDescriptionFieldLabel", lang),
+				AudioSpaceCheckboxLabel = GetLocalizedText(localizations, "AudioSpaceCheckboxLabel", lang),
+				CurrentResourcesSectionTitle = GetLocalizedText(localizations, "CurrentResourcesSectionTitle", lang),
+				PortfolioSectionTitle = GetLocalizedText(localizations, "PortfolioSectionTitle", lang),
+				AddLinkButtonText = GetLocalizedText(localizations, "AddLinkButtonText", lang),
+				PortfolioSectionDescription = GetLocalizedText(localizations, "PortfolioSectionDescription", lang),
+				PortfolioLinkNameFieldLabel = GetLocalizedText(localizations, "PortfolioLinkNameFieldLabel", lang),
+				PortfolioLinkUrlFieldLabel = GetLocalizedText(localizations, "PortfolioLinkUrlFieldLabel", lang),
+				EndingNoteHeader = GetLocalizedText(localizations, "EndingNoteHeader", lang),
+				EndingNoteText = GetLocalizedText(localizations, "EndingNoteText", lang),
+				SubmitButtonText = GetLocalizedText(localizations, "SubmitButtonText", lang),
 			};
 		}
 
 		return result;
 	}
 
-	private ProposalListResult.ProposalSummary ExtractSummary(Proposal p)
+	private string GetRoleName(EthnicTeamRole teamRole, AppLanguage lang)
+	{
+		return lang switch
+		{
+			AppLanguage.English => teamRole.Localization.English,
+			AppLanguage.Thai => teamRole.Localization.Thai,
+			_ => "Translation Missing",
+		};
+	}
+
+	private string GetLocalizedText(List<Localization> localizations, string controlName, AppLanguage lang)
+	{
+		Localization? loc = localizations.Where(l => l.ControlName == controlName).FirstOrDefault();
+		return GetText(loc, lang);
+    }
+
+    private string GetText(Localization? loc, AppLanguage lang)
+	{
+		if (loc == null)
+		{
+			return "Translation Missing";
+        }
+
+        return lang switch
+		{
+			AppLanguage.English => loc.English,
+			AppLanguage.Thai => loc.Thai,
+			_ => "Translation Missing",
+		};
+    }
+
+    private ProposalListResult.ProposalSummary ExtractSummary(Proposal p)
 	{
 		return new ProposalListResult.ProposalSummary
 		{

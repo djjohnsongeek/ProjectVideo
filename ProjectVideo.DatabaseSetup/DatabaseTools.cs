@@ -4,15 +4,12 @@ using DbUp.Engine;
 using DbUp.Support;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using ProjectVideo.DatabaseSetup.Localization;
+using ProjectVideo.Infrastructure.Data.Entities;
 using ProjectVideo.Infrastructure;
 using ProjectVideo.Infrastructure.Data;
-using ProjectVideo.Infrastructure.Data.Entities;
-using System.Collections;
 using System.Globalization;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
+using System.Data.Common;
 
 namespace ProjectVideo.DatabaseSetup
 {
@@ -84,7 +81,6 @@ namespace ProjectVideo.DatabaseSetup
             var pwHasher = new PasswordHasher();
 
             var adminRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "admin").FirstOrDefaultAsync();
-            var userRole = await dbContext.Roles.Where(x => x.Name.ToLower() == "user").FirstOrDefaultAsync();
 
 			if (adminRole != null)
             {
@@ -94,11 +90,10 @@ namespace ProjectVideo.DatabaseSetup
                     FirstName = "Daniel",
                     LastName = "Johnson",
                     HashedPassword = pwHasher.HashPassword("password"),
-                    UserName = "daniel-johnson",
+                    UserName = "admin",
                 };
 
                 adminUser.Roles.Add(adminRole);
-                adminUser.Roles.Add(userRole);
 
 				dbContext.Users.Add(adminUser);
                 await dbContext.SaveChangesAsync();
@@ -114,15 +109,29 @@ namespace ProjectVideo.DatabaseSetup
 
 			var dbContext = new ProjectVideoDbContext(options.Options);
 
-			// test
-			List<LocaliationCSVRecord> proposalFormRecords = ParseLocalizationRecords();
+			// Truncate
+            await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE [Localizations]");
 
-			await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE [Localizations]");
+            // Seed
+			List<LocalizationRow> localizationRows = ParseLocalizationRows();
+            foreach (var row in localizationRows)
+            {
+                var newLocalization = new Localization
+                {
+                    ControlName = row.ControlName,
+                    Page = row.Page,
+                    English = row.English,
+                    Thai = row.Thai
+                };
+                dbContext.Localizations.Add(newLocalization);
+            }
+
+            await dbContext.SaveChangesAsync();
 		}
 
-        private List<LocaliationCSVRecord> ParseLocalizationRecords()
+        private List<LocalizationRow> ParseLocalizationRows()
         {
-            List<LocaliationCSVRecord> records = [];
+            List<LocalizationRow> rows = [];
 
             string localizationFilePath = Path.Join(
                 Directory.GetCurrentDirectory(),
@@ -134,7 +143,7 @@ namespace ProjectVideo.DatabaseSetup
             {
                 using var reader = new StreamReader(localizationFilePath);
                 using var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
-                records = csvReader.GetRecords<LocaliationCSVRecord>().ToList();
+                rows = csvReader.GetRecords<LocalizationRow>().ToList();
 			}
             catch (FileNotFoundException e)
             {
@@ -149,7 +158,7 @@ namespace ProjectVideo.DatabaseSetup
 				Console.Error.WriteLine(e.Message);
 			}
 
-            return records;
+            return rows;
         }
 
         private async Task<bool> DatabaseExists(SqlConnection conn, string dbname)

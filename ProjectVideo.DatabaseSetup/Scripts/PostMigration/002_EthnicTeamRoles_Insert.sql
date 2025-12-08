@@ -3,13 +3,12 @@ TRUNCATE TABLE dbo.EthnicTeamRoles;
 
 SET IDENTITY_INSERT dbo.EthnicTeamRoles ON;
 
-INSERT INTO dbo.EthnicTeamRoles ([EthnicTeamRoleId], [Name], [Description])
+INSERT INTO dbo.EthnicTeamRoles ([EthnicTeamRoleId], [LocalizationId])
 VALUES
-( 1, N'Ministry Director', N'Director of the ministry.' ),
-( 2, N'Studio / Team Manager', N'Manages the team.' ),
-( 3, N'Camera Operator', N'Takes raw footage and organizes it, adds sound, graphics, and more.' ),
-( 4, N'Video Editor', N'Edits the videos.' ),
-( 5, N'Audio Engineer', N'Music and Sound Effects' )
-
+( 1, 48 ),
+( 2, 49 ),
+( 3, 50 ),
+( 4, 51 ),
+( 5, 52 )
 
 SET IDENTITY_INSERT dbo.EthnicTeamRoles OFF;

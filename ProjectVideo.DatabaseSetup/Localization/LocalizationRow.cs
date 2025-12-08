@@ -1,6 +1,6 @@
-﻿namespace ProjectVideo.DatabaseSetup.Localization
+﻿namespace ProjectVideo.DatabaseSetup
 {
-	internal class LocaliationCSVRecord
+	internal class LocalizationRow
 	{
 		public required string ControlName { get; set; }
 		public required string Page { get; set; }
