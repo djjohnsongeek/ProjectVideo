@@ -6,6 +6,9 @@
                 topEnd: null,
                 bottomStart: 'info',
                 bottomEnd: 'paging'
+            },
+            language: {
+                emptyTable: "No Proposals Found."
             }
         });
 

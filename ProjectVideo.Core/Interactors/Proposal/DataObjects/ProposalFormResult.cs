@@ -6,13 +6,15 @@ namespace ProjectVideo.Core.Interactors.DataObjects
 {
 	public class ProposalFormResult : InteractorResult
 	{
-		public required List<string> EthinicTeamRoles;
 		public required ProposalFormLocalization Localization;
+		public required List<DropdownItem> EthnicTeamRoleOptions;
+		public required List<DropdownItem> ProjectTimeframeIntervalOptions;
 
 		[SetsRequiredMembers]
 		public ProposalFormResult()
 		{
-			EthinicTeamRoles = [];
+			EthnicTeamRoleOptions = [];
+			ProjectTimeframeIntervalOptions = [];
 			Localization = ProposalFormLocalization.Empty;
 		}
 	}

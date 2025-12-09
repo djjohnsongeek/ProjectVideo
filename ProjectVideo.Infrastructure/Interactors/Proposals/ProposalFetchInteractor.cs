@@ -31,7 +31,6 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 			.Include(p => p.Links)
 			.FirstOrDefaultAsync();
 
-
 		ProposalDetailsResult result = new ProposalDetailsResult
 		{
 			Details = ExtractDetails(propsal),
@@ -49,7 +48,13 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 	{
 		ProposalFormResult result = new ProposalFormResult();
 
-		List<EthnicTeamRole> roles = await _dbContext.EthnicTeamRoles
+		List<DropdownOption> rolesOptions = await _dbContext.DropdownOptions
+			.Where(x => x.DropdownId == DropdownId.EthnicTeamRole)
+			.Include(x => x.Localization)
+			.ToListAsync();
+
+		List<DropdownOption> timeFrameOptions = await _dbContext.DropdownOptions
+			.Where(x => x.DropdownId == DropdownId.TimeInterval)
 			.Include(x => x.Localization)
 			.ToListAsync();
 
@@ -62,14 +67,23 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 			result.AddError("Form localization not found.");
 		}
 
-		if (roles.Count == 0)
+		if (rolesOptions.Count == 0)
 		{
 			result.AddError("Team roles not found.");
 		}
 
 		if (!result.HasErrors)
 		{
-			result.EthinicTeamRoles = roles.Select(r => GetRoleName(r, lang)).ToList();
+			result.EthnicTeamRoleOptions = rolesOptions.Select(o => new DropdownItem
+			{
+				Text = GetText(o.Localization, lang),
+				Value = o.DropdownOptionId.ToString(),
+			}).ToList();
+			result.ProjectTimeframeIntervalOptions = timeFrameOptions.Select(o => new DropdownItem
+			{
+				Text = GetText(o.Localization, lang),
+				Value = o.DropdownOptionId.ToString(),
+			}).ToList();
             result.Localization = new ProposalFormLocalization
 			{
 				Language = lang,
@@ -125,16 +139,6 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 		return result;
 	}
 
-	private string GetRoleName(EthnicTeamRole teamRole, AppLanguage lang)
-	{
-		return lang switch
-		{
-			AppLanguage.English => teamRole.Localization.English,
-			AppLanguage.Thai => teamRole.Localization.Thai,
-			_ => "Translation Missing",
-		};
-	}
-
 	private string GetLocalizedText(List<Localization> localizations, string controlName, AppLanguage lang)
 	{
 		Localization? loc = localizations.Where(l => l.ControlName == controlName).FirstOrDefault();
@@ -170,7 +174,7 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 		};
 	}
 
-        private ProposalDetails ExtractDetails(Proposal? entity)
+    private ProposalDetails ExtractDetails(Proposal? entity)
 	{
 		if (entity != null)
 		{

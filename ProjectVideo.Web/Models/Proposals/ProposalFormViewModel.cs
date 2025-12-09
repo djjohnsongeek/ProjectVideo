@@ -1,4 +1,5 @@
-﻿using ProjectVideo.Core.Interactors.Proposal.DataObjects;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ProjectVideo.Core.Interactors.Proposal.DataObjects;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -37,6 +38,8 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public int ProjectTimeFrameNumber { get; set; }
 
+		public int ProjectTimeFrameIntervalOptionId { get; set; }
+
 		public string? ProjectTimeFrameInterval { get; set; }
 
 		[Display(Name = "Main Methods")]
@@ -48,6 +51,8 @@ namespace ProjectVideo.Web.Models.Proposals
 		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
 
 		public List<string> TeamMemberRoles { get; set; } = [];
+		public List<SelectListItem> TeamMemberItems { get; set; } = [];
+		public List<SelectListItem> TimeFrameItems { get; set; } = [];
 
 		[Display(Name = "Current Equipment")]
 		public string? CurrentEquipment { get; set; }
@@ -78,6 +83,7 @@ namespace ProjectVideo.Web.Models.Proposals
 	{
 		public string? Name { get; set; }
 		public string? Role { get; set; }
+		public int EthnicTeamRoleOptionId { get; set; }
 	}
 
 	public class ProposalLink

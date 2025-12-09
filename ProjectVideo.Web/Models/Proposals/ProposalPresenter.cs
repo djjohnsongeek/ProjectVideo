@@ -1,4 +1,5 @@
-﻿using ProjectVideo.Core.Interactors.DataObjects;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ProjectVideo.Core.Interactors.DataObjects;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
@@ -14,11 +15,20 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
 		{
-			return new ProposalFormViewModel
-			{
-				TeamMemberRoles = interactorResult.EthinicTeamRoles,
-                Localization = interactorResult.Localization
-			};
+            return new ProposalFormViewModel
+            {
+                TeamMemberItems = interactorResult.EthnicTeamRoleOptions.Select(o => new SelectListItem
+                {
+                    Text = o.Text,
+                    Value = o.Value
+                }).ToList(),
+                TimeFrameItems = interactorResult.ProjectTimeframeIntervalOptions.Select(o => new SelectListItem
+                {
+                    Text = o.Text,
+                    Value = o.Value
+                }).ToList(),
+				Localization = interactorResult.Localization
+            };
 		}
 
         private ProposalsIndexViewModel.ProposalSummary BuildProposalSummary(ProposalListResult.ProposalSummary interactorSummary)
