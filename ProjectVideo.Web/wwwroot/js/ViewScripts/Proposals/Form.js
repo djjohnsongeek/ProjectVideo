@@ -29,8 +29,6 @@ class ProposalFormPage {
         this.langageSelect = document.getElementById(this.languageSelectId);
         this.localizations = JSON.parse(document.getElementById(this.localizationsInputId).value);
 
-        console.log(this.localizations);
-
         for (const input of document.getElementsByClassName("reveal-input")) {
             input.addEventListener("click", (event) => {
 
