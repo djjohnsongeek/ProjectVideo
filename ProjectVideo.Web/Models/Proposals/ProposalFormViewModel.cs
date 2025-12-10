@@ -7,7 +7,14 @@ namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalFormViewModel
 	{
+		// Data to render the form
 		public required ProposalFormLocalization Localization { get; set; }
+		public List<string> TeamMemberRoles { get; set; } = [];
+		public List<SelectListItem> TimeFrameItems { get; set; } = [];
+
+		public string LocalizationJson { get; set; } = "{}";
+
+		// For Fields
 
 		[Display(Name = "Email")]
 		public string? Email { get; set; }
@@ -38,8 +45,6 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public int ProjectTimeFrameNumber { get; set; }
 
-		public int ProjectTimeFrameIntervalOptionId { get; set; }
-
 		public string? ProjectTimeFrameInterval { get; set; }
 
 		[Display(Name = "Main Methods")]
@@ -49,10 +54,6 @@ namespace ProjectVideo.Web.Models.Proposals
 		public string? PlannedVideos { get; set; }
 
 		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
-
-		public List<string> TeamMemberRoles { get; set; } = [];
-		public List<SelectListItem> TeamMemberItems { get; set; } = [];
-		public List<SelectListItem> TimeFrameItems { get; set; } = [];
 
 		[Display(Name = "Current Equipment")]
 		public string? CurrentEquipment { get; set; }

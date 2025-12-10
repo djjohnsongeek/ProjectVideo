@@ -12,6 +12,7 @@
             </h1>
         </div>
         <div class="card-body">
+            <input id="localizations-input" type="hidden" value="@Model.LocalizationJson" />
             <form method="post">
                 <div class="row">
                     <div class="col">
@@ -113,11 +114,7 @@
                                 <label class="form-label">@Model.Localization.ProjectTimeFrameFieldLabel</label>
                                 <div class="input-group">
                                     <input class="form-control" asp-for="ProjectTimeFrameNumber" />
-                                    <select class="form-control" asp-for="ProjectTimeFrameInterval">
-                                        <option value="Days">Days</option>
-                                        <option value="Weeks">Weeks</option>
-                                        <option value="Months">Months</option>
-                                        <option value="Years">Years</option>
+                                    <select class="form-control" asp-for="ProjectTimeFrameInterval" asp-items="Model.TimeFrameItems">
                                     </select>
                                 </div>
                             </div>

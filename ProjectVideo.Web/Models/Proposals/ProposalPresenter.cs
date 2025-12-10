@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectVideo.Core.Interactors.DataObjects;
+using System.Text.Json;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
@@ -15,19 +16,25 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
 		{
+            // These values are used by JS on the frontend
+            Dictionary<string, string> localizationDict = new Dictionary<string, string> {
+                ["TeamMemberRoleFieldLabel"] = interactorResult.Localization.TeamMemberRoleFieldLabel,
+                ["TeamMemberNameFieldLabel"] = interactorResult.Localization.TeamMemberNameFieldLabel,
+                ["RemoveBtnText"] = interactorResult.Localization.RemoveTeamMemberButtonText,
+                ["PortfolioLinkNameFieldLabel"] = interactorResult.Localization.PortfolioLinkNameFieldLabel,
+                ["PortfolioLinkUrlFieldLabel"] = interactorResult.Localization.PortfolioLinkUrlFieldLabel,
+            };
+
             return new ProposalFormViewModel
             {
-                TeamMemberItems = interactorResult.EthnicTeamRoleOptions.Select(o => new SelectListItem
-                {
-                    Text = o.Text,
-                    Value = o.Value
-                }).ToList(),
+                TeamMemberRoles = interactorResult.EthnicTeamRoleOptions.Select(o => o.Text).ToList(),
                 TimeFrameItems = interactorResult.ProjectTimeframeIntervalOptions.Select(o => new SelectListItem
                 {
                     Text = o.Text,
                     Value = o.Value
                 }).ToList(),
-				Localization = interactorResult.Localization
+                Localization = interactorResult.Localization,
+                LocalizationJson = JsonSerializer.Serialize(localizationDict)
             };
 		}
 

@@ -1,4 +1,12 @@
-﻿class ProposalFormPage {
+﻿class Localizations {
+    TeamMemberRoleFieldLabel;
+    TeamMemberNameFieldLabel;
+    RemoveBtnText;
+    PortfolioLinkNameFieldLabel;
+    PortfolioLinkUrlFieldLabel;
+}
+
+class ProposalFormPage {
     membersInputAddBtn;
     membersComplexInputCollection;
 
@@ -11,12 +19,17 @@
     roleNameDatalistId = "rolename-options";
     membersInputContainerId = "members-input-container";
     videoLinksInputContainerId = "links-input-container";
+    localizationsInputId = "localizations-input";
     linksInputContainerId = "";
+    localizations;
 
     constructor() {
         this.membersInputAddBtn = document.getElementById("members-input-add-btn");
         this.linksInputAddBtn = document.getElementById("links-input-add-btn");
         this.langageSelect = document.getElementById(this.languageSelectId);
+        this.localizations = JSON.parse(document.getElementById(this.localizationsInputId).value);
+
+        console.log(this.localizations);
 
         for (const input of document.getElementsByClassName("reveal-input")) {
             input.addEventListener("click", (event) => {
@@ -32,14 +45,14 @@
         }
 
         // Members inputs
-        this.membersComplexInputCollection = new ComplexInputCollection(this.membersInputContainerId);
+        this.membersComplexInputCollection = new ComplexInputCollection(this.membersInputContainerId, this.localizations.RemoveBtnText);
         this.membersComplexInputCollection.addInputGroup(this.buildDefaultMemberInputGroup());
         this.membersInputAddBtn.addEventListener("click", (event) => {
             this.membersComplexInputCollection.addInputGroup(this.buildDefaultMemberInputGroup());
         });
 
         // Video Links inputs
-        this.videoLinkComplexInputCollection = new ComplexInputCollection(this.videoLinksInputContainerId);
+        this.videoLinkComplexInputCollection = new ComplexInputCollection(this.videoLinksInputContainerId, this.localizations.RemoveBtnText);
         this.videoLinkComplexInputCollection.addInputGroup(this.buildDefaultLinkInputGroup());
         this.linksInputAddBtn.addEventListener("click", (event) => {
             this.videoLinkComplexInputCollection.addInputGroup(this.buildDefaultLinkInputGroup());
@@ -57,8 +70,8 @@
     buildDefaultMemberInputGroup() {
         const inputGroup = new ComplexObjectInputGroup("TeamMembers", crypto.randomUUID());
         const complexInputs = [
-            new ComplexInput("Name", "Name", crypto.randomUUID(), ""),
-            new ComplexInput("Role", "Role", crypto.randomUUID(), "", this.roleNameDatalistId)
+            new ComplexInput(this.localizations.TeamMemberNameFieldLabel, "Name", crypto.randomUUID(), ""),
+            new ComplexInput(this.localizations.TeamMemberRoleFieldLabel, "Role", crypto.randomUUID(), "", this.roleNameDatalistId)
         ]
         for (let input of complexInputs) {
             inputGroup.addInput(input);
@@ -70,8 +83,8 @@
     buildDefaultLinkInputGroup() {
         const inputGroup = new ComplexObjectInputGroup("VideoLinks", crypto.randomUUID());
         const complexInputs = [
-            new ComplexInput("Name", "Name", crypto.randomUUID(), ""),
-            new ComplexInput("Url", "Url", crypto.randomUUID(), "")
+            new ComplexInput(this.localizations.PortfolioLinkNameFieldLabel, "Name", crypto.randomUUID(), ""),
+            new ComplexInput(this.localizations.PortfolioLinkUrlFieldLabel, "Url", crypto.randomUUID(), "")
         ]
         for (let input of complexInputs) {
             inputGroup.addInput(input);

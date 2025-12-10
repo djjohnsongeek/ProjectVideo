@@ -1,8 +1,10 @@
 ﻿class ComplexInputCollection {
     collectionContainer;
     inputGroups;
-    constructor(containerId) {
+    removeBtnText;
+    constructor(containerId, removeBtnText) {
         this.collectionContainer = document.getElementById(containerId);
+        this.removeBtnText = removeBtnText;
         this.inputGroups = [];
     }
     addInputGroup(inputGroup) {
@@ -79,11 +81,11 @@
             const deleteInput = document.createElement("input");
             deleteInput.className = "btn btn-outline-danger form-control";
             deleteInput.type = "button";
-            deleteInput.value = "Remove";
+            deleteInput.value = this.removeBtnText;
             deleteInput.dataset.deleteTarget = this.inputGroups[i].guidId;
             deleteInput.addEventListener("click", (event) => this.handleInputRemoveBtn(event));
             const deleteBtnLabel = document.createElement("label");
-            deleteBtnLabel.appendChild(document.createTextNode("Remove Url"));
+            deleteBtnLabel.appendChild(document.createTextNode("Hidden Label"));
             deleteBtnLabel.className = "form-label";
             deleteBtnLabel.style.visibility = "hidden";
             deleteCol.appendChild(deleteBtnLabel);
