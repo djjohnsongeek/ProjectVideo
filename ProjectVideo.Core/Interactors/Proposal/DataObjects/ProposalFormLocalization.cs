@@ -1,12 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace ProjectVideo.Core.Interactors.Proposal.DataObjects
+﻿namespace ProjectVideo.Core.Interactors.Proposal.DataObjects
 {
 	public class ProposalFormLocalization
 	{
 		public static ProposalFormLocalization Empty => new ProposalFormLocalization
 		{
 			Language = AppLanguage.English,
+			PageTitle = string.Empty,
 			AboutUsHeader = string.Empty,
 			AboutUsText = string.Empty,
 			OrganizationSectionTitle = string.Empty,
@@ -56,6 +55,8 @@ namespace ProjectVideo.Core.Interactors.Proposal.DataObjects
 		};
 
 		public AppLanguage Language { get; set; }
+
+		public required string PageTitle { get; set; }
 
 		public required string AboutUsHeader { get; set; }
 

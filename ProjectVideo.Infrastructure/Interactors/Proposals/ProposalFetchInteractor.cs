@@ -87,6 +87,7 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
             result.Localization = new ProposalFormLocalization
 			{
 				Language = lang,
+				PageTitle = GetLocalizedText(localizations, "PageTitle", lang),
 				AboutUsHeader = GetLocalizedText(localizations, "AboutUsHeader", lang),
 				AboutUsText = GetLocalizedText(localizations, "AboutUsText", lang),
 				OrganizationSectionTitle = GetLocalizedText(localizations, "OrganizationSectionTitle", lang),

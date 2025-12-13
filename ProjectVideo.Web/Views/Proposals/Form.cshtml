@@ -1,14 +1,14 @@
 ﻿@model ProjectVideo.Web.Models.Proposals.ProposalFormViewModel
 @using ProjectVideo.Core;
 @{
-    ViewData["Title"] = "Project Proposal";
+    ViewData["Title"] = @Model.Localization.PageTitle;
 }
 
 <div class="card-container" >
     <div class="card mt-3 mx-auto" style="max-width: 800px;">
         <div class="card-header">
             <h1 class="card-title h3">
-                Project Proposal Form
+                @Model.Localization.PageTitle
             </h1>
         </div>
         <div class="card-body">
@@ -17,12 +17,10 @@
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Select a Language</label>
-                            <select
-                                id="lang-select"
-                                class="form-control"
-                                asp-for="Localization.Language"
-                                asp-items="Html.GetEnumSelectList<AppLanguage>()">
+                            <label class="form-label">Language / ภาษา</label>
+                            <select id="lang-select"  class="form-control" asp-for="Localization.Language">
+                                <option value="Thai">ภาษาไทย</option>
+                                <option value="English">English</option>
                             </select>
                         </div>
                     </div>

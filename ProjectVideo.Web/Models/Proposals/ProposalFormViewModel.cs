@@ -1,80 +1,66 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectVideo.Core.Interactors.Proposal.DataObjects;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalFormViewModel
 	{
 		// Data to render the form
+		[BindNever]
+		[ValidateNever]
 		public required ProposalFormLocalization Localization { get; set; }
+
+		[BindNever]
 		public List<string> TeamMemberRoles { get; set; } = [];
+
+		[BindNever]
 		public List<SelectListItem> TimeFrameItems { get; set; } = [];
 
+		[BindNever]
 		public string LocalizationJson { get; set; } = "{}";
 
 		// For Fields
-
-		[Display(Name = "Email")]
 		public string? Email { get; set; }
 
-		[Display(Name = "Phone Number")]
 		public string? PhoneNumber { get; set; }
 
-		[Display(Name = "Main Contact")]
 		public string? MainContact { get; set; }
 
-		[Display(Name = "Organization Name")]
 		public string? OrganizationName { get; set; }
 
-		[Display(Name = "Organization History")]
 		public string? OrganizationHistory { get; set; }
 
-		[Display(Name = "Our Staff are Paid")]
 		public bool StaffArePaid { get; set; }
 
-		[Display(Name = "Project Title")]
 		public string? ProjectTitle { get; set; }
 
-		[DisplayName("Target Audience")]
 		public string? TargetAudience { get; set; }
 
-		[Display(Name = "Key Objectives")]
 		public string? KeyObjectives { get; set; }
 
 		public int ProjectTimeFrameNumber { get; set; }
 
 		public string? ProjectTimeFrameInterval { get; set; }
 
-		[Display(Name = "Main Methods")]
 		public string? MainMethods { get; set; }
 
-		[Display(Name = "Planned Videos")]
 		public string? PlannedVideos { get; set; }
 
 		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
 
-		[Display(Name = "Current Equipment")]
 		public string? CurrentEquipment { get; set; }
 
-
-		[Display(Name = "We have an audio space for recording")]
 		public bool HasAudioSpace { get; set; }
-
-
-		[Display(Name = "Audio space Description")]
 		public string? AudioSpaceDescription { get; set; }
 
 		// TODO: Audio Space image
 
-		[Display(Name = "We have a Computer")]
 		public bool HasComputer { get; set; }
 
-		[Display(Name = "Computer Description")]
 		public string? ComputerDescription { get; set; }
 
-		[Display(Name = "Project Cost Estimate")]
 		public int EstimatedProjectCost { get; set; }
 
 		public List<ProposalLink> VideoLinks { get; set; } = [];
