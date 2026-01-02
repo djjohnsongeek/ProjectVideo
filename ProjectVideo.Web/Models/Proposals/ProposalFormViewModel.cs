@@ -9,6 +9,9 @@ namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalFormViewModel
 	{
+        // match required fields
+        // https://docs.google.com/forms/d/e/1FAIpQLSc_AcUdBIYJDnDOA7TTDlw8oXuCb3D2CPwMxHq7__ZFVWXFtw/viewform
+
 		// Data to render the form
 		[BindNever]
 		[ValidateNever]
