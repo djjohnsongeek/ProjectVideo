@@ -16,6 +16,20 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
 		{
+            ProposalFormViewModel viewModel = new ProposalFormViewModel();
+            AddLocalization(viewModel, interactorResult);
+            return viewModel;
+		}
+
+        public void AddLocalization(ProposalFormViewModel viewModel, ProposalFormResult interactorResult)
+        {
+            viewModel.TeamMemberRoles = interactorResult.EthnicTeamRoleOptions.Select(o => o.Text).ToList();
+            viewModel.TimeFrameItems = interactorResult.ProjectTimeframeIntervalOptions.Select(o => new SelectListItem
+            {
+                Text = o.Text,
+                Value = o.Value
+            }).ToList();
+
             // These values are used by JS on the frontend
             Dictionary<string, string> localizationDict = new Dictionary<string, string> {
                 ["TeamMemberRoleFieldLabel"] = interactorResult.Localization.TeamMemberRoleFieldLabel,
@@ -24,19 +38,9 @@ namespace ProjectVideo.Web.Models.Proposals
                 ["PortfolioLinkNameFieldLabel"] = interactorResult.Localization.PortfolioLinkNameFieldLabel,
                 ["PortfolioLinkUrlFieldLabel"] = interactorResult.Localization.PortfolioLinkUrlFieldLabel,
             };
-
-            return new ProposalFormViewModel
-            {
-                TeamMemberRoles = interactorResult.EthnicTeamRoleOptions.Select(o => o.Text).ToList(),
-                TimeFrameItems = interactorResult.ProjectTimeframeIntervalOptions.Select(o => new SelectListItem
-                {
-                    Text = o.Text,
-                    Value = o.Value
-                }).ToList(),
-                Localization = interactorResult.Localization,
-                LocalizationJson = JsonSerializer.Serialize(localizationDict)
-            };
-		}
+            viewModel.Localization = interactorResult.Localization;
+            viewModel.LocalizationJson = JsonSerializer.Serialize(localizationDict);
+        }
 
         private ProposalsIndexViewModel.ProposalSummary BuildProposalSummary(ProposalListResult.ProposalSummary interactorSummary)
         {
