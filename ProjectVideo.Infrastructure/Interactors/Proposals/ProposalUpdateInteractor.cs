@@ -31,8 +31,14 @@ public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 
 	private List<string> Validate(CreateProposalInput inputData)
 	{
-		// TODO create a validator
 		List<string> errors = [];
+		
+		
+		// TODO create a validator
+		
+		
+		
+		
 		return errors;
 	}
 
