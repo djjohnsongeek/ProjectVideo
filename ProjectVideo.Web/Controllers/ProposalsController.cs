@@ -66,7 +66,13 @@ namespace ProjectVideo.Web.Controllers
 				}
 			}
 
-			return View(model);
+			// Load Localization
+			string? langStr = Request.Query["lang"];
+			AppLanguage lang = Enum.Parse<AppLanguage>(langStr ?? "English");
+            ProposalFormResult formResult = await _fetchInteractor.GetFormRequirements(lang);
+			new ProposalPresenter().AddLocalization(model, formResult);
+
+            return View(model);
 		}
 
 		[Authorize]

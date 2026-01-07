@@ -12,6 +12,10 @@
             </h1>
         </div>
         <div class="card-body">
+            @if(!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger" asp-validation-summary="All"></div> 
+            }
             <input id="localizations-input" type="hidden" value="@Model.LocalizationJson" />
             <form method="post">
                 <div class="row">
