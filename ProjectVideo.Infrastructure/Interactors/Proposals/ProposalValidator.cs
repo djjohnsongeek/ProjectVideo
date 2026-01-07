@@ -1,26 +1,28 @@
-﻿using ProjectVideo.Core.Interactors.DataObjects;
+﻿using ProjectVideo.Core.Interactors;
+using ProjectVideo.Core.Interactors.DataObjects;
 
 namespace ProjectVideo.Infrastructure.Interactors;
 
 public class ProposalValidator
 {
-    List<string> Validate(CreateProposalInput inputData)
+    public List<InteractorError> Validate(CreateProposalInput inputData)
     {
-        List<string> errors = [];
+        // TODO: grab localizations
+        List<InteractorError> errors = [];
 
         if (string.IsNullOrWhiteSpace(inputData.ContactEmail))
         {
-            errors.Add("ContactEmail is required.");
+            errors.Add(new InteractorError("ContactEmail is required", "Email"));
         }
 
         if (string.IsNullOrWhiteSpace(inputData.ContactPhoneNumber))
         {
-            errors.Add("ContactPhoneNumber is required.");
+            errors.Add(new InteractorError("ContactPhoneNumber is required", "PhoneNumber"));
         }
 
         if (string.IsNullOrWhiteSpace((inputData.OrganizationName)))
         {
-            errors.Add("OrganizationName is required.");
+            errors.Add(new InteractorError("OrganizationName is required", "OrganizationName"));
         }
         
         return errors;

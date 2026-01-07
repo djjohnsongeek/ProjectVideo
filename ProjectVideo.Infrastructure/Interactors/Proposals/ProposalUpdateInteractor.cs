@@ -15,8 +15,9 @@ public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 	public async Task<InteractorResult> CreateProposal(CreateProposalInput inputData)
 	{
 		InteractorResult result = new InteractorResult();
-		// TODO Validate
-		var errors = Validate(inputData);
+		// pass in localization to the validator for localized error messages
+		ProposalValidator validator = new ProposalValidator();
+		List<InteractorError> errors = validator.Validate(inputData);
 
 		if (!result.HasErrors)
 		{
@@ -27,19 +28,6 @@ public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 		}
 
 		return result;
-	}
-
-	private List<string> Validate(CreateProposalInput inputData)
-	{
-		List<string> errors = [];
-		
-		
-		// TODO create a validator
-		
-		
-		
-		
-		return errors;
 	}
 
 	public async Task<InteractorResult> UpdateProposal(UpdateProposalInput inputData)
@@ -67,7 +55,7 @@ public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 			proposal.InterviewLink = inputData.InterviewLink;
 
 			// Update the entity
-			await UpdateChanges(result, errorContext: "Failed to update tthe Proposal");
+			await UpdateChanges(result, errorContext: "Failed to update the Proposal");
 		}
 
 		return result;
