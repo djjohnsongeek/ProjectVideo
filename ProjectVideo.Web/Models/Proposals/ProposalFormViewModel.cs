@@ -28,13 +28,13 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		// For Fields
 		[Required]
-		public string? Email { get; init; }
+		public string? ContactEmail { get; init; }
 
 		[Required]
-		public string? PhoneNumber { get; init; }
+		public string? ContactPhoneNumber { get; init; }
 
 		[Required]
-		public string? MainContact { get; init; }
+		public string? ContactName { get; init; }
 
 		[Required]
 		public string? OrganizationName { get; init; }
@@ -61,7 +61,7 @@ namespace ProjectVideo.Web.Models.Proposals
 		public string? ProjectTimeFrameInterval { get; init; }
 
 		[Required]
-		public string? MainMethods { get; init; }
+		public string? Methods { get; init; }
 
 		[Required]
 		public string? PlannedVideos { get; init; }

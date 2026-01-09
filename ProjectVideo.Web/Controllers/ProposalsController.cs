@@ -95,18 +95,18 @@ namespace ProjectVideo.Web.Controllers
 			// TODO validate?
 			var inputData = new CreateProposalInput
 			{
-				ContactEmail = model.Email!,
-				ContactPhoneNumber = model.PhoneNumber!,
-				ContactName = model.MainContact!,
+				ContactEmail = model.ContactEmail!,
+				ContactPhoneNumber = model.ContactPhoneNumber!,
+				ContactName = model.ContactName!,
 				OrganizationName = model.OrganizationName!,
 				ProjectTitle = model.ProjectTitle!,
 				OrganizationHistory = model.OrganizationHistory!,
 				StaffArePaid = model.StaffArePaid,
 				TargetAudience = model.TargetAudience!,
 				KeyObjectives = model.KeyObjectives!,
-				ProjectTimeFrameTotal = model.ProjectTimeFrameNumber,
+				ProjectTimeFrameNumber = model.ProjectTimeFrameNumber,
 				ProjectTimeFrameInterval = model.ProjectTimeFrameInterval!,
-				Methods = model.MainMethods!,
+				Methods = model.Methods!,
 				PlannedVideos = model.PlannedVideos!,
 				CurrentEquipment = model.CurrentEquipment!,
 				HasAudioSpace = model.HasAudioSpace,

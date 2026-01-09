@@ -1,4 +1,5 @@
-﻿using ProjectVideo.Core.Interactors;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data.Entities;
 using ProjectVideo.Infrastructure.Services;
@@ -9,6 +10,24 @@ public class ProposalValidator
 {
     private readonly LocalizationService _localizationService;
 
+    private List<PropertyToValidate> _createProperties =
+    [
+        new PropertyToValidate("Email", "ErrorMsgContactMailRequired"),
+        new PropertyToValidate("ContactPhoneNumber", "ErrorMsgContactPhoneNumberRequired"),
+        new PropertyToValidate("ContactName", "ErrorMsgContactNameRequired"),
+        new PropertyToValidate("OrganizationName", "ErrorMsgOrganizationNameRequired"),
+        new PropertyToValidate("OrganizationHistory", "ErrorMsgOrganizationHistoryRequired"),
+        new PropertyToValidate("ProjectTitle", "ErrorMsgProjectTitleRequired"),
+        new PropertyToValidate("TargetAudience", "ErrorMsgTargetAudienceRequired"),
+        new PropertyToValidate("KeyObjectives", "ErrorMsgKeyObjectivesRequired"),
+        new PropertyToValidate("ProjectTimeFrameInterval", "ErrorMsgProjectTimeFrameIntervalRequired"),
+        new PropertyToValidate("ProjectTimeFrameNumber", "ErrorMsgProjectTimeFrameNumberRequired"),
+        new PropertyToValidate("MainMethods", "ErrorMsgMainMethodsRequired"),
+        new PropertyToValidate("PlannedVideos", "ErrorMsgPlannedVideosRequired"),
+        new PropertyToValidate("CurrentEquipment", "ErrorMsgCurrentEquipmentRequired"),
+        new PropertyToValidate("EstimatedProjectCost", "ErrorMsgEstimatedProjectCostRequired")
+    ];
+
     public ProposalValidator(LocalizationService localizationService)
     {
         _localizationService = localizationService;
@@ -18,6 +37,8 @@ public class ProposalValidator
     {
         List<InteractorError> errors = [];
 
+
+        // Email
         if (string.IsNullOrWhiteSpace(inputData.ContactEmail))
         {
             string errorMessage = _localizationService.GetLocalizedText(
@@ -28,6 +49,7 @@ public class ProposalValidator
             errors.Add(new InteractorError( errorMessage, "Email"));
         }
 
+        // PhoneNumber
         if (string.IsNullOrWhiteSpace(inputData.ContactPhoneNumber))
         {
             
@@ -38,8 +60,15 @@ public class ProposalValidator
             
             errors.Add(new InteractorError(errorMessage, "PhoneNumber"));
         }
+        
+        // ContactName
+        if (string.IsNullOrEmpty(inputData.ContactName))
+        {
+            
+        }
 
-        if (string.IsNullOrWhiteSpace((inputData.OrganizationName)))
+        // OrganizationName
+        if (string.IsNullOrWhiteSpace(inputData.OrganizationName))
         {
             string errorMessage = _localizationService.GetLocalizedText(
                 "ErrorMsgOrganizationNameIsRequired",
@@ -48,6 +77,27 @@ public class ProposalValidator
             
             errors.Add(new InteractorError(errorMessage, "OrganizationName"));
         }
+        
+        // OrganizationHistory
+        if (string.IsNullOrWhiteSpace(inputData.OrganizationHistory))
+        {
+            
+        }
+
+        // ProjectTitle
+        if (string.IsNullOrWhiteSpace(inputData.ProjectTitle))
+        {
+            
+        }
+        
+        // TargetAudience
+        // KeyObjectives
+        // ProjectTimeFrameNumber
+        // ProjectTimeFrameInterval
+        // MainMethods
+        // PlannedVideos
+        // CurrentEquipment
+        // EstimatedProjectCost
         
         return errors;
     }

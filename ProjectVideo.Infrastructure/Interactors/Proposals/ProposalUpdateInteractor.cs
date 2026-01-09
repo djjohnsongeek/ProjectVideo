@@ -79,7 +79,7 @@ public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 			TargetAudience = inputData.TargetAudience,
 			KeyObjectives = inputData.KeyObjectives,
 			ProjectTimeFrameInterval = inputData.ProjectTimeFrameInterval,
-			ProjectTimeFrameTotal = inputData.ProjectTimeFrameTotal,
+			ProjectTimeFrameTotal = inputData.ProjectTimeFrameNumber,
 			Methods = inputData.Methods,
 			PlannedVideos = inputData.PlannedVideos,
 			CurrentEquipment = inputData.CurrentEquipment,

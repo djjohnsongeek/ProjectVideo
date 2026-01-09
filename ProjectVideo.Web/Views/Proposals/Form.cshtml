@@ -42,22 +42,22 @@
                         <fieldset class="mb-4">
                             <legend>@Model.Localization.OrganizationSectionTitle</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="MainContact">@Model.Localization.MainContactFieldLabel</label>
-                                <input class="form-control" asp-for="MainContact" />
+                                <label class="form-label" asp-for="ContactName">@Model.Localization.MainContactFieldLabel</label>
+                                <input class="form-control" asp-for="ContactName" />
                                 <span class="form-text">
                                     @Model.Localization.MainContactFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="Email">@Model.Localization.EmailFieldLabel</label>
-                                <input class="form-control" asp-for="Email" />
+                                <label class="form-label" asp-for="ContactEmail">@Model.Localization.EmailFieldLabel</label>
+                                <input class="form-control" asp-for="ContactEmail" />
                                 <span class="form-text">
                                     @Model.Localization.EmailFieldText
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="PhoneNumber">@Model.Localization.PhoneNumberFieldLabel</label>
-                                <input class="form-control" asp-for="PhoneNumber" />
+                                <label class="form-label" asp-for="ContactPhoneNumber">@Model.Localization.PhoneNumberFieldLabel</label>
+                                <input class="form-control" asp-for="ContactPhoneNumber" />
                                 <span class="form-text">
                                     @Model.Localization.PhoneNumberFieldText
                                 </span>
@@ -121,8 +121,8 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="MainMethods">@Model.Localization.MainMethodsFieldLabel</label>
-                                <textarea class="form-control" asp-for="MainMethods"></textarea>
+                                <label class="form-label" asp-for="Methods">@Model.Localization.MainMethodsFieldLabel</label>
+                                <textarea class="form-control" asp-for="Methods"></textarea>
                                 <span class="form-text">
                                     @Model.Localization.MainMethodsFieldText
                                 </span>

@@ -45,7 +45,7 @@ namespace ProjectVideo.Tests
 				StaffArePaid = false,
 				TargetAudience = "Missionay Organizations",
 				KeyObjectives = "Support Gospel Ministries with Software.",
-				ProjectTimeFrameTotal = 2,
+				ProjectTimeFrameNumber = 2,
 				ProjectTimeFrameInterval = "Years",
 				Methods = "Custom Coded Applications",
 				PlannedVideos = "None so far.",
