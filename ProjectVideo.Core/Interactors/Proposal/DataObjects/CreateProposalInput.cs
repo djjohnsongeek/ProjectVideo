@@ -5,6 +5,8 @@
 		public List<ProposalLinkDetails> Links = [];
 		public List<ProposalMemberDetails> Members = [];
 
+		public AppLanguage Language;
+
 		public required string ContactEmail;
 		public required string ContactName;
 		public required string ContactPhoneNumber;

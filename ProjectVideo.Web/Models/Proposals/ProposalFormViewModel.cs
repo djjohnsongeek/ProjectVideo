@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -28,63 +28,63 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		// For Fields
 		[Required]
-		public string? Email { get; set; }
+		public string? Email { get; init; }
 
 		[Required]
-		public string? PhoneNumber { get; set; }
+		public string? PhoneNumber { get; init; }
 
 		[Required]
-		public string? MainContact { get; set; }
+		public string? MainContact { get; init; }
 
 		[Required]
-		public string? OrganizationName { get; set; }
+		public string? OrganizationName { get; init; }
 
 		[Required]
-		public string? OrganizationHistory { get; set; }
+		public string? OrganizationHistory { get; init; }
 
 		[Required]
-		public bool StaffArePaid { get; set; }
+		public bool StaffArePaid { get; init; }
 
 		[Required]
-		public string? ProjectTitle { get; set; }
+		public string? ProjectTitle { get; init; }
 
 		[Required]
-		public string? TargetAudience { get; set; }
+		public string? TargetAudience { get; init; }
 
 		[Required]
-		public string? KeyObjectives { get; set; }
+		public string? KeyObjectives { get; init; }
 
 		[Required]
-		public int ProjectTimeFrameNumber { get; set; }
+		public int ProjectTimeFrameNumber { get; init; }
 
 		[Required]
-		public string? ProjectTimeFrameInterval { get; set; }
+		public string? ProjectTimeFrameInterval { get; init; }
 
 		[Required]
-		public string? MainMethods { get; set; }
+		public string? MainMethods { get; init; }
 
 		[Required]
-		public string? PlannedVideos { get; set; }
+		public string? PlannedVideos { get; init; }
 
-		public List<ProposalTeamMember> TeamMembers { get; set; } = [];
+		public List<ProposalTeamMember> TeamMembers { get; init; } = [];
 
 		[Required]
-		public string? CurrentEquipment { get; set; }
+		public string? CurrentEquipment { get; init; }
 
-		public bool HasAudioSpace { get; set; }
+		public bool HasAudioSpace { get; init; }
 
-		public string? AudioSpaceDescription { get; set; }
+		public string? AudioSpaceDescription { get; init; }
 
 		// TODO: Audio Space image
 
-		public bool HasComputer { get; set; }
+		public bool HasComputer { get; init; }
 
-		public string? ComputerDescription { get; set; }
+		public string? ComputerDescription { get; init; }
 
 		[Required]
-		public int EstimatedProjectCost { get; set; }
+		public int EstimatedProjectCost { get; init; }
 
-		public List<ProposalLink> VideoLinks { get; set; } = [];
+		public List<ProposalLink> VideoLinks { get; init; } = [];
 	}
 
 	public class ProposalTeamMember

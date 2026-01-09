@@ -3,20 +3,23 @@ using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Infrastructure.Data.Entities;
+using ProjectVideo.Infrastructure.Services;
 
 namespace ProjectVideo.Infrastructure.Interactors;
 
 public class ProposalUpdateInteractor : Interactor, IProposalUpdateInteractor
 {
+	private readonly LocalizationService _localizationService;
+	
 	public ProposalUpdateInteractor(ProjectVideoDbContext dbContext) : base (dbContext)
 	{
+		_localizationService = new LocalizationService(dbContext);
 	}
 
 	public async Task<InteractorResult> CreateProposal(CreateProposalInput inputData)
 	{
-		InteractorResult result = new InteractorResult();
-		// pass in localization to the validator for localized error messages
-		ProposalValidator validator = new ProposalValidator();
+		var result = new InteractorResult();
+		var validator = new ProposalValidator(_localizationService);
 		List<InteractorError> errors = validator.Validate(inputData);
 
 		if (!result.HasErrors)
