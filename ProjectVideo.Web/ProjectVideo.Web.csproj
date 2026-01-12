@@ -11,6 +11,24 @@
     <Content Remove="wwwroot\lib\bootstrap\icons\fonts\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\icons\fonts\**" />
     <None Remove="wwwroot\lib\bootstrap\icons\fonts\**" />
+    <EmbeddedResource Update="Resources\Views\Proposals\Form.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Form.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Resources\Views\Proposals\Form.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Form.en.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Resources\Views\Proposals\Form.th-TH.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Form.th-TH.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Resources\Views\Proposals\Form.th-TH.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Form.th-TH.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +39,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectVideo.Infrastructure\ProjectVideo.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,7 @@
 ﻿@model ProjectVideo.Web.Models.Proposals.ProposalFormViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
 @using ProjectVideo.Core;
+@inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = @Model.Localization.PageTitle;
 }
@@ -8,7 +10,7 @@
     <div class="card mt-3 mx-auto" style="max-width: 800px;">
         <div class="card-header">
             <h1 class="card-title h3">
-                @Model.Localization.PageTitle
+                @Model.Localization.PageTitle - @Localizer["test"]
             </h1>
         </div>
         <div class="card-body">

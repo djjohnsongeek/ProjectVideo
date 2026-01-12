@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Infrastructure.Auth;
@@ -24,7 +25,21 @@ namespace ProjectVideo.Web
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors();
             });
-
+            
+            // Localization
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+            builder.Services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                string[] supportedCultures = [ "en", "th-TH" ];
+                options.SetDefaultCulture(supportedCultures[1])
+                    .AddSupportedCultures(supportedCultures)
+                    .AddSupportedUICultures(supportedCultures);
+            });
+            
+            // Authorization & Authentication
 			builder.Services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -49,7 +64,7 @@ namespace ProjectVideo.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
