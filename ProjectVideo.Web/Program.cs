@@ -68,6 +68,8 @@ namespace ProjectVideo.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseRequestLocalization();
+
             app.UseRouting();
 
             app.UseAuthentication();
