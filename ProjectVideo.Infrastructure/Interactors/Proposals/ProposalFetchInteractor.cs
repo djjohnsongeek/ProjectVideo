@@ -13,7 +13,7 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 {
 	private LocalizationService _localizationService;
 
-	public ProposalFetchInteractor(ProjectVideoDbContext dbContext, IStringLocalizer<>) : base(dbContext)
+	public ProposalFetchInteractor(ProjectVideoDbContext dbContext) : base(dbContext)
 	{
 		_localizationService = new LocalizationService(dbContext);
 	}
