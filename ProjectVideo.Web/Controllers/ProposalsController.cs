@@ -33,10 +33,9 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Form(AppLanguage? lang)
+		public async Task<IActionResult> Form(string? culture)
 		{
-			lang ??= AppLanguage.English;
-			ProposalFormResult result = await _fetchInteractor.GetFormRequirements(lang.Value);
+			ProposalFormResult result = await _fetchInteractor.GetFormRequirements(AppLanguage.English);
 			AddInteractorErrors(result);
 			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
 			return View(viewModel);

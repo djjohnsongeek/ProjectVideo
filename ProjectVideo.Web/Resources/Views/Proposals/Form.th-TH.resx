@@ -120,4 +120,172 @@
   <data name="test" xml:space="preserve">
     <value>ทดสอบค่าภาษาไทย</value>
   </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>แบบฟอร์มเสนอโครงการ</value>
+  </data>
+  <data name="AboutUsHeader" xml:space="preserve">
+    <value>เกี่ยวกับเรา</value>
+  </data>
+  <data name="AboutUsText" xml:space="preserve">
+    <value>ขอบคุณที่ติดต่อเรา เรามีความยินดีที่จะเป็นพันธมิตรและช่วยเหลือคุณ พันธกิจของเรามุ่งเน้นในการพัฒนาสื่อคริสเตียนในภาษาท้องถิ่น โดยการให้ยืมอุปกรณ์และการฝึกอบรมด้านสื่อ เราอยากทราบข้อมูลเพิ่มเติมเกี่ยวกับวิสัยทัศน์ของคุณ และสิ่งที่คุณต้องการทำให้สำเร็จผ่านความร่วมมือนี้ กรุณากรอกแบบฟอร์มนี้เพื่อนำเสนอต่อคณะกรรมการเพื่อพิจารณาอนุมัติโครงการ</value>
+  </data>
+  <data name="OrganizationSectionTitle" xml:space="preserve">
+    <value>ข้อมูลองค์กร</value>
+  </data>
+  <data name="MainContactFieldLabel" xml:space="preserve">
+    <value>ผู้ประสานงานหลัก</value>
+  </data>
+  <data name="MainContactFieldText" xml:space="preserve">
+    <value>ชื่อผู้ประสานงานหลักในองค์กรของคุณ</value>
+  </data>
+  <data name="EmailFieldLabel" xml:space="preserve">
+    <value>อีเมล</value>
+  </data>
+  <data name="EmailFieldText" xml:space="preserve">
+    <value>อีเมล์ของผู้ประสานงานหลักในองค์กรของคุณ</value>
+  </data>
+  <data name="PhoneNumberFieldLabel" xml:space="preserve">
+    <value>หมายเลขโทรศัพท์</value>
+  </data>
+  <data name="PhoneNumberFieldText" xml:space="preserve">
+    <value>หมายเลขโทรศัพท์ของผู้ประสานงานหลัก</value>
+  </data>
+  <data name="OrganizationFieldLabel" xml:space="preserve">
+    <value>ชื่อองค์กร</value>
+  </data>
+  <data name="OrganizationHistoryFieldLabel" xml:space="preserve">
+    <value>ประวัติองค์กร</value>
+  </data>
+  <data name="OrganizationHistoryText" xml:space="preserve">
+    <value>ประวัติโดยย่อขององค์กรของคุณ</value>
+  </data>
+  <data name="StaftArePaidCheckboxLabel" xml:space="preserve">
+    <value>พนักงานของเราได้รับค่าจ้าง</value>
+  </data>
+  <data name="TeamMembersSectionTitle" xml:space="preserve">
+    <value>สมาชิกในทีม</value>
+  </data>
+  <data name="TeamMemberAddButtonText" xml:space="preserve">
+    <value>เพิ่มสมาชิก</value>
+  </data>
+  <data name="TeamMemberNameFieldLabel" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="TeamMemberRoleFieldLabel" xml:space="preserve">
+    <value>บทบาทหน้าที่</value>
+  </data>
+  <data name="RemoveTeamMemberButtonText" xml:space="preserve">
+    <value>ลบออก</value>
+  </data>
+  <data name="ProjectInfoSectionTitle" xml:space="preserve">
+    <value>ข้อมูลโครงการ</value>
+  </data>
+  <data name="ProjectTitleFieldLabel" xml:space="preserve">
+    <value>ชื่อโครงการ</value>
+  </data>
+  <data name="TargetAudienceFieldLabel" xml:space="preserve">
+    <value>กลุ่มเป้าหมาย</value>
+  </data>
+  <data name="KeyObjectivesFieldLabel" xml:space="preserve">
+    <value>วัตถุประสงค์หลัก</value>
+  </data>
+  <data name="ProjectTimeFrameFieldLabel" xml:space="preserve">
+    <value>กรอบเวลาของโครงการ</value>
+  </data>
+  <data name="MainMethodsFieldLabel" xml:space="preserve">
+    <value>วิธีการหลัก</value>
+  </data>
+  <data name="MainMethodsFieldText" xml:space="preserve">
+    <value>คุณตั้งใจจะใช้หลักการและวิธีการอย่างไรเพื่อให้บรรลุเป้าหมาย</value>
+  </data>
+  <data name="PlannedVideosFieldLabel" xml:space="preserve">
+    <value>วิดีโอที่วางแผนไว้</value>
+  </data>
+  <data name="PlannedVideosFieldText" xml:space="preserve">
+    <value>โปรดระบุให้ชัดเจนที่สุดเกี่ยวกับเนื้อหา / ประเภท และกำหนดการเผยแพร่ เช่น "มกราคม - หนังสั้น เกี่ยวกับครอบครัวที่มารู้จักพระคริสต์, กุมภาพันธ์ - พยานชีวิตจากผู้เชื่อใหม่"</value>
+  </data>
+  <data name="ProjectCostEstimateFieldLabel" xml:space="preserve">
+    <value>ประมาณค่าใช้ของโครงการ</value>
+  </data>
+  <data name="ProjectCostEsitmateCurrencyLabel" xml:space="preserve">
+    <value>เป็นเงิน ดอลลาร์สหรัฐต่อปี</value>
+  </data>
+  <data name="ProjectCostFieldText" xml:space="preserve">
+    <value>โปรเจค วิดีโอ ไม่จ่ายค่าผลิตหรือเงินเดือน เพียงต้องการให้มีแผนงบประมาณในโครงการเท่านั้น</value>
+  </data>
+  <data name="CurrentResourcesSectionTitle" xml:space="preserve">
+    <value>ทรัพยากรปัจจุบัน</value>
+  </data>
+  <data name="CurrentEquipmentFieldLabel" xml:space="preserve">
+    <value>เครื่องมือ/อุปกรณ์ที่มีอยู่ปัจจุบัน</value>
+  </data>
+  <data name="CurrentEquipmentFieldText" xml:space="preserve">
+    <value>เครื่องมือ/อุปกรณ์ที่เกี่ยวกับงานวิดีโอ และ ออดีโอ(เสียง) ปัจจุบันคุณมีอะไรบ้าง?</value>
+  </data>
+  <data name="AudioSpaceCheckboxLabel" xml:space="preserve">
+    <value>เรามีพื้นที่(ห้อง)สำหรับการบันทึกเสียง</value>
+  </data>
+  <data name="AudioSpaceDescriptionFieldLabel" xml:space="preserve">
+    <value>คำอธิบายห้องบันทึกเสียง </value>
+  </data>
+  <data name="HaveComputerCheckboxLabel" xml:space="preserve">
+    <value>เรามีคอมพิวเตอร์</value>
+  </data>
+  <data name="ComputerDescriptionFieldLabel" xml:space="preserve">
+    <value>คำอธิบายเกี่ยวกับคอมพิวเตอร์ </value>
+  </data>
+  <data name="ComputerDescriptionFieldText" xml:space="preserve">
+    <value>คอมพิวเตอร์ของคุณเป็น Mac หรือ PC?  มีสเปกเครื่องอย่างไรบ้าง?</value>
+  </data>
+  <data name="PortfolioSectionTitle" xml:space="preserve">
+    <value>ผลงาน</value>
+  </data>
+  <data name="AddLinkButtonText" xml:space="preserve">
+    <value>ใส่ลิ้งก์</value>
+  </data>
+  <data name="PortfolioSectionDescription" xml:space="preserve">
+    <value>โปรดใส่ลิ้งก์งานวิดีโอที่ทีมของคุณสร้างขึ้น หรือ ลิ้งก์ไปยังสื่อ/ช่องทางโซเชียลมีเดีย หากคุณอัปโหลดวิดีโอหลายรายการ </value>
+  </data>
+  <data name="PortfolioLinkNameFieldLabel" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="PortfolioLinkUrlFieldLabel" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="EndingNoteHeader" xml:space="preserve">
+    <value>บันทึกข้อความ</value>
+  </data>
+  <data name="EndingNoteText" xml:space="preserve">
+    <value>เมื่อเราได้รับใบสมัครของคุณแล้ว คณะกรรมการจะตรวจสอบเพื่อพิจารณาอนุมัติ อาจมีการขอข้อมูลเพิ่มเติมเพื่อดำเนินการพิจารณาใบสมัครต่อไป คุณจะได้รับคำตอบภายในหนึ่งเดือน</value>
+  </data>
+  <data name="SubmitButtonText" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
+  <data name="TeamMemberRoleOption1" xml:space="preserve">
+    <value>ผู้อำนวยการกระทรวง</value>
+  </data>
+  <data name="TeamMemberRoleOption2" xml:space="preserve">
+    <value>ผู้จัดการสตูดิโอ / ทีม</value>
+  </data>
+  <data name="TeamMemberRoleOption3" xml:space="preserve">
+    <value>ช่างกล้อง</value>
+  </data>
+  <data name="TeamMemberRoleOption4" xml:space="preserve">
+    <value>ผู้ตัดต่อวิดีโอ</value>
+  </data>
+  <data name="TeamMemberRoleOption5" xml:space="preserve">
+    <value>วิศวกรเสียง</value>
+  </data>
+  <data name="ProjectTimeFrameIntervalOption1" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="ProjectTimeFrameIntervalOption2" xml:space="preserve">
+    <value>สัปดาห์</value>
+  </data>
+  <data name="ProjectTimeFrameIntervalOption3" xml:space="preserve">
+    <value>เดือน</value>
+  </data>
+  <data name="ProjectTimeFrameIntervalOption4" xml:space="preserve">
+    <value>ปี</value>
+  </data>
 </root>

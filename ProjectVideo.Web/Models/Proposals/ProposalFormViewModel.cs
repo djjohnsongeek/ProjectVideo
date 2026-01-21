@@ -1,8 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using ProjectVideo.Core.Interactors.Proposal.DataObjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectVideo.Web.Models.Proposals
@@ -11,17 +8,6 @@ namespace ProjectVideo.Web.Models.Proposals
 	{
         // match required fields
         // https://docs.google.com/forms/d/e/1FAIpQLSc_AcUdBIYJDnDOA7TTDlw8oXuCb3D2CPwMxHq7__ZFVWXFtw/viewform
-
-		// Data to render the form
-		[BindNever]
-		[ValidateNever]
-		public ProposalFormLocalization? Localization { get; set; }
-
-		[BindNever]
-		public List<string> TeamMemberRoles { get; set; } = [];
-
-		[BindNever]
-		public List<SelectListItem> TimeFrameItems { get; set; } = [];
 
 		[BindNever]
 		public string LocalizationJson { get; set; } = "{}";

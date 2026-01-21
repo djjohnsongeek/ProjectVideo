@@ -23,13 +23,6 @@ namespace ProjectVideo.Web.Models.Proposals
 
         public void AddLocalization(ProposalFormViewModel viewModel, ProposalFormResult interactorResult)
         {
-            viewModel.TeamMemberRoles = interactorResult.EthnicTeamRoleOptions.Select(o => o.Text).ToList();
-            viewModel.TimeFrameItems = interactorResult.ProjectTimeframeIntervalOptions.Select(o => new SelectListItem
-            {
-                Text = o.Text,
-                Value = o.Value
-            }).ToList();
-
             // These values are used by JS on the frontend
             Dictionary<string, string> localizationDict = new Dictionary<string, string> {
                 ["TeamMemberRoleFieldLabel"] = interactorResult.Localization.TeamMemberRoleFieldLabel,
@@ -38,7 +31,6 @@ namespace ProjectVideo.Web.Models.Proposals
                 ["PortfolioLinkNameFieldLabel"] = interactorResult.Localization.PortfolioLinkNameFieldLabel,
                 ["PortfolioLinkUrlFieldLabel"] = interactorResult.Localization.PortfolioLinkUrlFieldLabel,
             };
-            viewModel.Localization = interactorResult.Localization;
             viewModel.LocalizationJson = JsonSerializer.Serialize(localizationDict);
         }
 

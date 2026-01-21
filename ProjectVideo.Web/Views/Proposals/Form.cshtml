@@ -2,14 +2,14 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = @Model.Localization.PageTitle;
+    ViewData["Title"] = @Localizer["PageTitle"];
 }
 
 <div class="card-container" >
     <div class="card mt-3 mx-auto" style="max-width: 800px;">
         <div class="card-header">
             <h1 class="card-title h3">
-                @Model.Localization.PageTitle - @Localizer["test"]
+                @Localizer["PageTitle"]
             </h1>
         </div>
         <div class="card-body">
@@ -23,7 +23,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Language / ภาษา</label>
-                            <select id="lang-select"  class="form-control" asp-for="Localization.Language">
+                            <select id="lang-select"  class="form-control">
                                 <option value="Thai">ภาษาไทย</option>
                                 <option value="English">English</option>
                             </select>
@@ -34,65 +34,66 @@
                     <div class="col">
                         <div class="alert alert-info">
                             <h4 class="alert-heading">
-                                @Model.Localization.AboutUsHeader
+                                @Localizer["AboutUsHeader"]
                             </h4>
                             <span>
-                                @Model.Localization.AboutUsText
+                               @Localizer["AboutUsText"]
                             </span>
                         </div>
                         <fieldset class="mb-4">
-                            <legend>@Model.Localization.OrganizationSectionTitle</legend>
+                            <legend>@Localizer["OrganizationSectionTitle"]</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="ContactName">@Model.Localization.MainContactFieldLabel</label>
+                                <label class="form-label" asp-for="ContactName">@Localizer["MainContactFieldLabel"]</label>
                                 <input class="form-control" asp-for="ContactName" />
                                 <span class="form-text">
-                                    @Model.Localization.MainContactFieldText
+                                    @Localizer["MainContactFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="ContactEmail">@Model.Localization.EmailFieldLabel</label>
+                                <label class="form-label" asp-for="ContactEmail">@Localizer["EmailFieldLabel"]</label>
                                 <input class="form-control" asp-for="ContactEmail" />
                                 <span class="form-text">
-                                    @Model.Localization.EmailFieldText
+                                    @Localizer["EmailFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="ContactPhoneNumber">@Model.Localization.PhoneNumberFieldLabel</label>
+                                <label class="form-label" asp-for="ContactPhoneNumber">@Localizer["PhoneNumberFieldLabel"]</label>
                                 <input class="form-control" asp-for="ContactPhoneNumber" />
                                 <span class="form-text">
-                                    @Model.Localization.PhoneNumberFieldText
+                                    @Localizer["PhoneNumberFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="OrganizationName">@Model.Localization.OrganizationFieldLabel</label>
+                                <label class="form-label" asp-for="OrganizationName">@Localizer["OrganizationFieldLabel"]</label>
                                 <input class="form-control" asp-for="OrganizationName" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="OrganizationHistory">@Model.Localization.OrganizationHistoryFieldLabel</label>
+                                <label class="form-label" asp-for="OrganizationHistory">@Localizer["OrganizationHistoryFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="OrganizationHistory"></textarea>
                                 <span class="form-text">
-                                    @Model.Localization.OrganizationHistoryText
+                                    @Localizer["OrganizationHistoryText"]
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" asp-for="StaffArePaid">
-                                    <label class="form-check-label" asp-for="StaffArePaid">@Model.Localization.StaftArePaidCheckboxLabel</label>
+                                    <label class="form-check-label" asp-for="StaffArePaid">@Localizer["StaftArePaidCheckboxLabel"]</label>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
                             <datalist id="rolename-options">
-                                @foreach(string roleName in Model.TeamMemberRoles)
-                                {
-                                    <option value="@roleName"></option>
-                                }
+                                <option value="@Localizer["TeamMemberRoleOption1"]"></option>
+                                <option value="@Localizer["TeamMemberRoleOption2"]"></option>
+                                <option value="@Localizer["TeamMemberRoleOption3"]"></option>
+                                <option value="@Localizer["TeamMemberRoleOption4"]"></option>
+                                <option value="@Localizer["TeamMemberRoleOption5"]"></option>
                             </datalist>
                             <legend>
-                                @Model.Localization.TeamMembersSectionTitle
+                                @Localizer["TeamMembersSectionTitle"]
                                 <button class="btn btn-secondary float-end" id="members-input-add-btn" type="button">
                                     <i class="bi bi-plus"></i>
-                                    @Model.Localization.TeamMemberAddButtonText
+                                    @Localizer["TeamMemberAddButtonText"]
                                 </button>
                             </legend>
 
@@ -100,110 +101,114 @@
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
-                            <legend>@Model.Localization.ProjectInfoSectionTitle</legend>
+                            <legend>@Localizer["ProjectInfoSectionTitle"]</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="ProjectTitle">@Model.Localization.ProjectTitleFieldLabel</label>
+                                <label class="form-label" asp-for="ProjectTitle">@Localizer["ProjectTitleFieldLabel"]</label>
                                 <input class="form-control" asp-for="ProjectTitle" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="TargetAudience">@Model.Localization.TargetAudienceFieldLabel</label>
+                                <label class="form-label" asp-for="TargetAudience">@Localizer["TargetAudienceFieldLabel"]</label>
                                 <input class="form-control" asp-for="TargetAudience" />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="KeyObjectives">@Model.Localization.KeyObjectivesFieldLabel</label>
+                                <label class="form-label" asp-for="KeyObjectives">@Localizer["KeyObjectivesFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="KeyObjectives"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">@Model.Localization.ProjectTimeFrameFieldLabel</label>
+                                <label class="form-label">@Localizer["ProjectTimeFrameFieldLabel"]</label>
                                 <div class="input-group">
                                     <input class="form-control" asp-for="ProjectTimeFrameNumber" />
-                                    <select class="form-control" asp-for="ProjectTimeFrameInterval" asp-items="Model.TimeFrameItems">
+                                    <select class="form-control" asp-for="ProjectTimeFrameInterval">
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption1"]">@Localizer["ProjectTimeFrameIntervalOption1"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption2"]">@Localizer["ProjectTimeFrameIntervalOption2"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption3"]">@Localizer["ProjectTimeFrameIntervalOption3"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption4"]">@Localizer["ProjectTimeFrameIntervalOption4"]</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="Methods">@Model.Localization.MainMethodsFieldLabel</label>
+                                <label class="form-label" asp-for="Methods">@Localizer["MainMethodsFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="Methods"></textarea>
                                 <span class="form-text">
-                                    @Model.Localization.MainMethodsFieldText
+                                    @Localizer["MainMethodsFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="PlannedVideos">@Model.Localization.PlannedVideosFieldLabel</label>
+                                <label class="form-label" asp-for="PlannedVideos">@Localizer["PlannedVideosFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="PlannedVideos"></textarea>
                                 <span class="form-text">
-                                    @Model.Localization.PlannedVideosFieldText
+                                    @Localizer["PlannedVideosFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="EstimatedProjectCost">@Model.Localization.ProjectCostEstimateFieldLabel</label>
+                                <label class="form-label" asp-for="EstimatedProjectCost">@Localizer["ProjectCostEstimateFieldLabel"]</label>
                                 <div class="input-group">
-                                    <span class="input-group-text">@Model.Localization.ProjectCostEsitmateCurrencyLabel</span>
+                                    <span class="input-group-text">@Localizer["ProjectCostEsitmateCurrencyLabel"]</span>
                                     <input class="form-control" asp-for="EstimatedProjectCost" />
                                 </div>
                                 <span class="form-text">
-                                    @Model.Localization.ProjectCostFieldText
+                                    @Localizer["ProjectCostFieldText"]
                                     <!-- Project Video does not pay for production costs or salaries but simply wishes to see that there is a budget plan. -->
                                 </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
-                            <legend>@Model.Localization.CurrentResourcesSectionTitle</legend>
+                            <legend>@Localizer["CurrentResourcesSectionTitle"]</legend>
                             <div class="mb-3">
-                                <label class="form-label" asp-for="CurrentEquipment">@Model.Localization.CurrentEquipmentFieldLabel</label>
+                                <label class="form-label" asp-for="CurrentEquipment">@Localizer["CurrentEquipmentFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="CurrentEquipment"></textarea>
                                 <span class="form-text">
-                                    @Model.Localization.CurrentEquipmentFieldText
+                                    @Localizer["CurrentEquipmentFieldText"]
                                 </span>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input reveal-input" asp-for="HasAudioSpace" data-target="audioSpace-description-div">
-                                    <label class="form-check-label" asp-for="HasAudioSpace">@Model.Localization.AudioSpaceCheckboxLabel</label>
+                                    <label class="form-check-label" asp-for="HasAudioSpace">@Localizer["AudioSpaceCheckboxLabel"]</label>
                                 </div>
                             </div>
                             <div class="mb-3 d-none" id="audioSpace-description-div">
-                                <label class="form-label" asp-for="AudioSpaceDescription">@Model.Localization.AudioSpaceDescriptionFieldLabel</label>
+                                <label class="form-label" asp-for="AudioSpaceDescription">@Localizer["AudioSpaceDescriptionFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="AudioSpaceDescription"></textarea>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input reveal-input" asp-for="HasComputer" data-target="computer-description-div">
-                                    <label class="form-check-label" asp-for="HasComputer">@Model.Localization.HaveComputerCheckboxLabel</label>
+                                    <label class="form-check-label" asp-for="HasComputer">@Localizer["HaveComputerCheckboxLabel"]</label>
                                 </div>
                             </div>
                             <div id="computer-description-div" class="mb-3 d-none">
-                                <label class="form-label" asp-for="ComputerDescription">@Model.Localization.ComputerDescriptionFieldLabel</label>
+                                <label class="form-label" asp-for="ComputerDescription">@Localizer["ComputerDescriptionFieldLabel"]</label>
                                 <textarea class="form-control" asp-for="ComputerDescription"></textarea>
                                 <span class="form-text">
-                                    @Model.Localization.ComputerDescriptionFieldText
+                                    @Localizer["ComputerDescriptionFieldText"]
                                 </span>
                             </div>
                         </fieldset>
                         <fieldset class="mb-4">
                             <legend>
-                                @Model.Localization.PortfolioSectionTitle
+                                @Localizer["PortfolioSectionTitle"]
                                 <button class="btn btn-secondary float-end" type="button" id="links-input-add-btn">
                                     <i class="bi bi-plus"></i>
-                                    @Model.Localization.AddLinkButtonText
+                                    @Localizer["AddLinkButtonText"]
                                 </button>
                             </legend>
                             <span class="form-text">
-                                @Model.Localization.PortfolioSectionDescription
+                                @Localizer["PortfolioSectionDescription"]
                             </span>
                             <div id="links-input-container">
                             </div>
                         </fieldset>
                         <div class="alert alert-info">
                             <h4 class="alert-heading">
-                                @Model.Localization.EndingNoteHeader
+                                @Localizer["EndingNoteHeader"]
                             </h4>
-                            @Model.Localization.EndingNoteText
+                            @Localizer["EndingNoteText"]
                         </div>
                         <div class="float-end">
                             <button class="btn btn-primary">
                                 <i class="bi bi-send-fill"></i>
-                                @Model.Localization.SubmitButtonText
+                                @Localizer["SubmitButtonText"]
                             </button>
                         </div>
                     </div>
