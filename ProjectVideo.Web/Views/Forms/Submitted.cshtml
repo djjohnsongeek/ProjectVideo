@@ -1,11 +1,14 @@
-﻿<div class="card mt-3">
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<div class="card mt-3">
     <div class="card-header">
-        <h1 class="card-title h3">Submission Successful</h1>
+        <h1 class="card-title h3">@Localizer["FormSubmittedTitle"]</h1>
     </div>
     <div class="card-body">
         <div class="alert alert-success">
             <i class="bi bi-check-circle-fill"></i>
-            The Project Video team will get back to you within 30 days.
+            @Localizer["FormSubmittedMessage"]
         </div>
     </div>
 </div>

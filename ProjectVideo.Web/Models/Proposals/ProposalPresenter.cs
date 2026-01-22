@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 using ProjectVideo.Core.Interactors.DataObjects;
+using ProjectVideo.Web.Controllers;
 using System.Text.Json;
 
 namespace ProjectVideo.Web.Models.Proposals
@@ -14,22 +16,22 @@ namespace ProjectVideo.Web.Models.Proposals
             };
         }
 
-		public ProposalFormViewModel BuildViewModel(ProposalFormResult interactorResult)
+		public ProposalFormViewModel BuildViewModel(IStringLocalizer<ProposalsController> localizer)
 		{
             ProposalFormViewModel viewModel = new ProposalFormViewModel();
-            AddLocalization(viewModel, interactorResult);
+            AddLocalization(viewModel, localizer);
             return viewModel;
 		}
 
-        public void AddLocalization(ProposalFormViewModel viewModel, ProposalFormResult interactorResult)
+        public void AddLocalization(ProposalFormViewModel viewModel, IStringLocalizer<ProposalsController> localizer)
         {
             // These values are used by JS on the frontend
             Dictionary<string, string> localizationDict = new Dictionary<string, string> {
-                ["TeamMemberRoleFieldLabel"] = interactorResult.Localization.TeamMemberRoleFieldLabel,
-                ["TeamMemberNameFieldLabel"] = interactorResult.Localization.TeamMemberNameFieldLabel,
-                ["RemoveBtnText"] = interactorResult.Localization.RemoveTeamMemberButtonText,
-                ["PortfolioLinkNameFieldLabel"] = interactorResult.Localization.PortfolioLinkNameFieldLabel,
-                ["PortfolioLinkUrlFieldLabel"] = interactorResult.Localization.PortfolioLinkUrlFieldLabel,
+                ["TeamMemberRoleFieldLabel"] = localizer["TeamMemberRoleFieldLabel"],
+                ["TeamMemberNameFieldLabel"] = localizer["TeamMemberNameFieldLabel"],
+                ["RemoveBtnText"] = localizer["RemoveTeamMemberButtonText"],
+                ["PortfolioLinkNameFieldLabel"] = localizer["PortfolioLinkNameFieldLabel"],
+                ["PortfolioLinkUrlFieldLabel"] = localizer["PortfolioLinkUrlFieldLabel"],
             };
             viewModel.LocalizationJson = JsonSerializer.Serialize(localizationDict);
         }

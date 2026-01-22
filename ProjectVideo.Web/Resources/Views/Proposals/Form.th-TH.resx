@@ -163,7 +163,7 @@
     <value>พนักงานของเราได้รับค่าจ้าง</value>
   </data>
   <data name="TeamMembersSectionTitle" xml:space="preserve">
-    <value>สมาชิกในทีม</value>
+    <value>สมาชิกในทีม </value>
   </data>
   <data name="TeamMemberAddButtonText" xml:space="preserve">
     <value>เพิ่มสมาชิก</value>
@@ -262,19 +262,19 @@
     <value>ส่ง</value>
   </data>
   <data name="TeamMemberRoleOption1" xml:space="preserve">
-    <value>ผู้อำนวยการกระทรวง</value>
+    <value>ผู้อำนวยการฝ่ายพันธกิจ</value>
   </data>
   <data name="TeamMemberRoleOption2" xml:space="preserve">
-    <value>ผู้จัดการสตูดิโอ / ทีม</value>
+    <value>ผู้จัดการสตูดิโอ / ผู้จัดการทีม</value>
   </data>
   <data name="TeamMemberRoleOption3" xml:space="preserve">
-    <value>ช่างกล้อง</value>
+    <value>เจ้าหน้าที่ควบคุมกล้อง</value>
   </data>
   <data name="TeamMemberRoleOption4" xml:space="preserve">
-    <value>ผู้ตัดต่อวิดีโอ</value>
+    <value>เจ้าหน้าที่ตัดต่อวิดีโอ</value>
   </data>
   <data name="TeamMemberRoleOption5" xml:space="preserve">
-    <value>วิศวกรเสียง</value>
+    <value>วิศวกรเสียง (ซาวด์เอ็นจิเนียร์)</value>
   </data>
   <data name="ProjectTimeFrameIntervalOption1" xml:space="preserve">
     <value>วัน</value>

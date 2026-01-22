@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using ProjectVideo.Core;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
@@ -12,14 +13,17 @@ namespace ProjectVideo.Web.Controllers
 	{
 		private readonly IProposalFetchInteractor _fetchInteractor;
 		private readonly IProposalUpdateInteractor _updateInteractor;
+		private readonly IStringLocalizer<ProposalsController> _localizer;
 
 		public ProposalsController(
 			ILogger<ProposalsController> logger,
 			IProposalFetchInteractor fetchInteractor,
-			IProposalUpdateInteractor updateInteractor) : base(logger)
+			IProposalUpdateInteractor updateInteractor,
+			IStringLocalizer<ProposalsController> localizer) : base(logger)
 		{
 			_fetchInteractor = fetchInteractor;
 			_updateInteractor = updateInteractor;
+			_localizer = localizer;
 		}
 
 		[Authorize]
@@ -33,11 +37,11 @@ namespace ProjectVideo.Web.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Form(string? culture)
+		public IActionResult Form()
 		{
-			ProposalFormResult result = await _fetchInteractor.GetFormRequirements(AppLanguage.English);
-			AddInteractorErrors(result);
-			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(result);
+			//ProposalFormResult result = await _fetchInteractor.GetFormRequirements(AppLanguage.English);
+			//AddInteractorErrors(result);
+			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(_localizer);
 			return View(viewModel);
 		}
 
@@ -65,12 +69,7 @@ namespace ProjectVideo.Web.Controllers
 				}
 			}
 
-			// Load Localization
-			string? langStr = Request.Query["lang"];
-			AppLanguage lang = Enum.Parse<AppLanguage>(langStr ?? "English");
-            ProposalFormResult formResult = await _fetchInteractor.GetFormRequirements(lang);
-			new ProposalPresenter().AddLocalization(model, formResult);
-
+			new ProposalPresenter().AddLocalization(model, _localizer);
             return View(model);
 		}
 
