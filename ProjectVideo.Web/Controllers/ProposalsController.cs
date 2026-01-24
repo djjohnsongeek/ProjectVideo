@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Globalization;
-using ProjectVideo.Core;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Web.Models;
 using ProjectVideo.Web.Models.Proposals;
+using System.Globalization;
 
 namespace ProjectVideo.Web.Controllers
 {

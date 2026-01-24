@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
 using ProjectVideo.Infrastructure.Data.Entities;
 
@@ -20,9 +19,6 @@ namespace ProjectVideo.Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 		public DbSet<Role> Roles { get; set; }
-        public DbSet<DropdownOption> DropdownOptions { get; set; }
-
-        public DbSet<Localization> Localizations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

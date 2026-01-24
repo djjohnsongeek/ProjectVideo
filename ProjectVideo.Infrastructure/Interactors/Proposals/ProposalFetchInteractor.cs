@@ -1,21 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectVideo.Infrastructure.Data;
 using ProjectVideo.Core.Interactors;
-using ProjectVideo.Infrastructure.Data.Entities;
 using ProjectVideo.Core.Interactors.DataObjects;
-using ProjectVideo.Core.Interactors.Proposal.DataObjects;
-using ProjectVideo.Core;
-using ProjectVideo.Infrastructure.Services;
+using ProjectVideo.Infrastructure.Data;
+using ProjectVideo.Infrastructure.Data.Entities;
 
 namespace ProjectVideo.Infrastructure.Interactors;
 
 public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 {
-	private LocalizationService _localizationService;
 
 	public ProposalFetchInteractor(ProjectVideoDbContext dbContext) : base(dbContext)
 	{
-		_localizationService = new LocalizationService(dbContext);
+
 	}
 
 	public async Task<ProposalListResult> GetProposals()
@@ -45,53 +41,6 @@ public class ProposalFetchInteractor : Interactor, IProposalFetchInteractor
 		if (propsal == null)
 		{
 			result.AddError("Proposal not found.");
-		}
-
-		return result;
-	}
-
-	public async Task<ProposalFormResult> GetFormRequirements(AppLanguage lang)
-	{
-		ProposalFormResult result = new ProposalFormResult();
-
-		List<DropdownOption> rolesOptions = await _dbContext.DropdownOptions
-			.Where(x => x.DropdownId == DropdownId.EthnicTeamRole)
-			.ToListAsync();
-
-		List<DropdownOption> timeFrameOptions = await _dbContext.DropdownOptions
-			.Where(x => x.DropdownId == DropdownId.TimeInterval)
-			.ToListAsync();
-		
-		if (_localizationService.FetchFailed)
-		{
-			result.AddError("Failed to fetch localization data.");
-		}
-
-		if (rolesOptions.Count == 0)
-		{
-			result.AddError("Team roles not found.");
-		}
-
-		if (!result.HasErrors)
-		{
-			result.EthnicTeamRoleOptions = rolesOptions.Select(o => new DropdownItem
-			{
-				Text = _localizationService.GetLocalizedText(o.LocalizationId, lang),
-				Value = o.DropdownOptionId.ToString(),
-			}).ToList();
-			result.ProjectTimeframeIntervalOptions = timeFrameOptions.Select(o => new DropdownItem
-			{
-				Text = _localizationService.GetLocalizedText(o.LocalizationId, lang),
-				Value = o.DropdownOptionId.ToString(),
-			}).ToList();
-            result.Localization = new ProposalFormLocalization
-			{
-				TeamMemberNameFieldLabel = _localizationService.GetLocalizedText("TeamMemberNameFieldLabel", lang),
-				TeamMemberRoleFieldLabel = _localizationService.GetLocalizedText("TeamMemberRoleFieldLabel", lang),
-				RemoveTeamMemberButtonText = _localizationService.GetLocalizedText("RemoveTeamMemberButtonText", lang),
-				PortfolioLinkNameFieldLabel = _localizationService.GetLocalizedText("PortfolioLinkNameFieldLabel", lang),
-				PortfolioLinkUrlFieldLabel = _localizationService.GetLocalizedText("PortfolioLinkUrlFieldLabel", lang),
-			};
 		}
 
 		return result;

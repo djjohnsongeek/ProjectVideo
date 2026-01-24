@@ -100,67 +100,6 @@ namespace ProjectVideo.DatabaseSetup
             }
         }
 
-        public async Task UpdateLocalizationRecords()
-        {
-			var options = new DbContextOptionsBuilder<ProjectVideoDbContext>();
-			options.UseSqlServer(ConnectionString)
-				.EnableDetailedErrors()
-				.EnableSensitiveDataLogging();
-
-			var dbContext = new ProjectVideoDbContext(options.Options);
-
-			// Truncate
-            await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE [Localizations]");
-
-            // Seed
-			List<LocalizationRow> localizationRows = ParseLocalizationRows();
-            foreach (var row in localizationRows)
-            {
-                var newLocalization = new Localization
-                {
-                    ControlName = row.ControlName,
-                    Page = row.Page,
-                    English = row.English,
-                    Thai = row.Thai
-                };
-                dbContext.Localizations.Add(newLocalization);
-            }
-
-            await dbContext.SaveChangesAsync();
-		}
-
-        private List<LocalizationRow> ParseLocalizationRows()
-        {
-            List<LocalizationRow> rows = [];
-
-            string localizationFilePath = Path.Join(
-                Directory.GetCurrentDirectory(),
-                LocalizationDirectoryName,
-                LocalizationFileName
-            );
-
-            try
-            {
-                using var reader = new StreamReader(localizationFilePath);
-                using var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
-                rows = csvReader.GetRecords<LocalizationRow>().ToList();
-			}
-            catch (FileNotFoundException e)
-            {
-                Console.Error.WriteLine(e.Message);
-            }
-            catch (DirectoryNotFoundException e)
-            {
-				Console.Error.WriteLine(e.Message);
-			}
-            catch (IOException e)
-            {
-				Console.Error.WriteLine(e.Message);
-			}
-
-            return rows;
-        }
-
         private async Task<bool> DatabaseExists(SqlConnection conn, string dbname)
         {
             SqlCommand cmd = conn.CreateCommand();
