@@ -1,5 +1,4 @@
-﻿using CsvHelper;
-using DbUp;
+﻿using DbUp;
 using DbUp.Engine;
 using DbUp.Support;
 using Microsoft.Data.SqlClient;
@@ -15,9 +14,6 @@ namespace ProjectVideo.DatabaseSetup
 {
 	public class DatabaseTools
     {
-
-        private const string LocalizationFileName = "Localizations.csv";
-        private const string LocalizationDirectoryName = "Localization";
 
         private readonly string ConnectionString;
         private readonly string DatabaseName;
