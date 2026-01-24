@@ -6,55 +6,58 @@ namespace ProjectVideo.Web.Models.Proposals
 {
 	public class ProposalFormViewModel
 	{
-        // match required fields
-        // https://docs.google.com/forms/d/e/1FAIpQLSc_AcUdBIYJDnDOA7TTDlw8oXuCb3D2CPwMxHq7__ZFVWXFtw/viewform
+		//  Attribute Validation localization:
+		// https://learn.microsoft.com/en-us/aspnet/core/fundamentals/localization/make-content-localizable?view=aspnetcore-10.0#dataannotations-localization
+		
+		// match required fields
+		// https://docs.google.com/forms/d/e/1FAIpQLSc_AcUdBIYJDnDOA7TTDlw8oXuCb3D2CPwMxHq7__ZFVWXFtw/viewform
 
 		[BindNever]
 		public string LocalizationJson { get; set; } = "{}";
 
 		// For Fields
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? ContactEmail { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? ContactPhoneNumber { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? ContactName { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? OrganizationName { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? OrganizationHistory { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public bool StaffArePaid { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? ProjectTitle { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? TargetAudience { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? KeyObjectives { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public int ProjectTimeFrameNumber { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? ProjectTimeFrameInterval { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? Methods { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? PlannedVideos { get; init; }
 
 		public List<ProposalTeamMember> TeamMembers { get; init; } = [];
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public string? CurrentEquipment { get; init; }
 
 		public bool HasAudioSpace { get; init; }
@@ -67,7 +70,7 @@ namespace ProjectVideo.Web.Models.Proposals
 
 		public string? ComputerDescription { get; init; }
 
-		[Required]
+		[Required(ErrorMessage = "RequiredField")]
 		public int EstimatedProjectCost { get; init; }
 
 		public List<ProposalLink> VideoLinks { get; init; } = [];
