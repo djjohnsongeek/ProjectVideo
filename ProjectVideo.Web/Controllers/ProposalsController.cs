@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Globalization;
 using ProjectVideo.Core;
 using ProjectVideo.Core.Interactors;
 using ProjectVideo.Core.Interactors.DataObjects;
@@ -39,10 +40,14 @@ namespace ProjectVideo.Web.Controllers
 		[HttpGet]
 		public IActionResult Form()
 		{
-			//ProposalFormResult result = await _fetchInteractor.GetFormRequirements(AppLanguage.English);
-			//AddInteractorErrors(result);
 			ProposalFormViewModel viewModel = new ProposalPresenter().BuildViewModel(_localizer);
 			return View(viewModel);
+		}
+
+		[HttpGet]
+		public IActionResult Submitted()
+		{
+			return View();
 		}
 
 		[Authorize]
@@ -65,7 +70,8 @@ namespace ProjectVideo.Web.Controllers
 				AddInteractorErrors(result);
 				if (!result.HasErrors)
 				{
-					return View("Views/Forms/Submitted.cshtml");
+					string culture = CultureInfo.CurrentCulture.Name;
+					return RedirectToAction("Submitted", new { culture });
 				}
 			}
 

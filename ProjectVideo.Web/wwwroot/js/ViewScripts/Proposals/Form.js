@@ -59,7 +59,7 @@ class ProposalFormPage {
         // Langauge Select
         this.langageSelect.addEventListener("change", (event) => {
             let url = new URL(window.location.href);
-            url.searchParams.set("lang", event.currentTarget.value);
+            url.searchParams.set("culture", event.currentTarget.value);
             window.location.assign(url);
         })
 

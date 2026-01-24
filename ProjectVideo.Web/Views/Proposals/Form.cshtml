@@ -1,8 +1,12 @@
 ﻿@model ProjectVideo.Web.Models.Proposals.ProposalFormViewModel
 @using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization;
 @inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = @Localizer["PageTitle"];
+    string currentCulture = CultureInfo.CurrentUICulture.Name;
+    string? thSelected = currentCulture == "th-TH" ? "selected" : null;
+    string? enSelected = currentCulture == "en" ? "selected" : null;
 }
 
 <div class="card-container" >
@@ -24,8 +28,8 @@
                         <div class="mb-3">
                             <label class="form-label">Language / ภาษา</label>
                             <select id="lang-select"  class="form-control">
-                                <option value="Thai">ภาษาไทย</option>
-                                <option value="English">English</option>
+                                <option value="th-TH" selected="@thSelected">ภาษาไทย</option>
+                                <option value="en" selected="@enSelected">English</option>
                             </select>
                         </div>
                     </div>
@@ -83,11 +87,11 @@
                         </fieldset>
                         <fieldset class="mb-4">
                             <datalist id="rolename-options">
-                                <option value="@Localizer["TeamMemberRoleOption1"]"></option>
-                                <option value="@Localizer["TeamMemberRoleOption2"]"></option>
-                                <option value="@Localizer["TeamMemberRoleOption3"]"></option>
-                                <option value="@Localizer["TeamMemberRoleOption4"]"></option>
-                                <option value="@Localizer["TeamMemberRoleOption5"]"></option>
+                                <option value="@Localizer["TeamMemberRoleOption1"].Value">@Localizer["TeamMemberRoleOption1"]</option>
+                                <option value="@Localizer["TeamMemberRoleOption2"].Value">@Localizer["TeamMemberRoleOption2"]</option>
+                                <option value="@Localizer["TeamMemberRoleOption3"].Value">@Localizer["TeamMemberRoleOption3"]</option>
+                                <option value="@Localizer["TeamMemberRoleOption4"].Value">@Localizer["TeamMemberRoleOption4"]</option>
+                                <option value="@Localizer["TeamMemberRoleOption5"].Value">@Localizer["TeamMemberRoleOption5"]</option>
                             </datalist>
                             <legend>
                                 @Localizer["TeamMembersSectionTitle"]
@@ -119,10 +123,10 @@
                                 <div class="input-group">
                                     <input class="form-control" asp-for="ProjectTimeFrameNumber" />
                                     <select class="form-control" asp-for="ProjectTimeFrameInterval">
-                                        <option value="@Localizer["ProjectTimeFrameIntervalOption1"]">@Localizer["ProjectTimeFrameIntervalOption1"]</option>
-                                        <option value="@Localizer["ProjectTimeFrameIntervalOption2"]">@Localizer["ProjectTimeFrameIntervalOption2"]</option>
-                                        <option value="@Localizer["ProjectTimeFrameIntervalOption3"]">@Localizer["ProjectTimeFrameIntervalOption3"]</option>
-                                        <option value="@Localizer["ProjectTimeFrameIntervalOption4"]">@Localizer["ProjectTimeFrameIntervalOption4"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption1"].Value">@Localizer["ProjectTimeFrameIntervalOption1"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption2"].Value">@Localizer["ProjectTimeFrameIntervalOption2"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption3"].Value">@Localizer["ProjectTimeFrameIntervalOption3"]</option>
+                                        <option value="@Localizer["ProjectTimeFrameIntervalOption4"].Value">@Localizer["ProjectTimeFrameIntervalOption4"]</option>
                                     </select>
                                 </div>
                             </div>
