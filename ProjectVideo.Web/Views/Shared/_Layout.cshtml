@@ -32,18 +32,6 @@
                                     Project Proposals
                                 </a>
                             </li>
-    @*                         <li>
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-people-fill"></i>
-                                    Ethnic Teams
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-person-vcard"></i>
-                                    Trainers
-                                </a>
-                            </li> *@
                         </ul>
                         string username = User.Claims.Where(x => x.Type == ClaimTypes.Name).First().Value;
                         <span class="navbar-text" style="margin-right: 10px;">Working as <strong>@username</strong></span>
